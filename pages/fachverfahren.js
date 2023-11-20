@@ -3,7 +3,7 @@ const db = require('./database'); // Angenommen, 'database.js' ist Ihre Datenban
 // Funktion, um die SQL-Abfrage auszuführen
 function getFachverfahren(tag) {
     // Erstellen des SQL-Befehls
-    const query = "SELECT name, verf_id, tag, verwendungszweck, laufzeitverfahren, auftraggeber, verf_betreuung, kundenmanagement, fachadministration FROM fachverfahren WHERE tag ~* $1 ORDER BY name";
+    const query = "SELECT name, verf_id, tag FROM fachverfahren WHERE verf_id IS NOT NULL ORDER BY name";
     
     // Ausführen der Abfrage
     return db.query(query, [tag])
