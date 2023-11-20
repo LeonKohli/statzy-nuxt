@@ -1,10 +1,11 @@
 <script lang="ts">
-    import type { NuxtLink } from '#build/components';
+import type { NuxtLink } from '#build/components';
+
 </script>
 
 <template>
     <div>
-         <span> Statzy </span>
-         <span> <a href="../pages/fachverfahren.vue"> Fachverfahren </a> </span>
+         <span> <NuxtLink to="/"> Statzy </NuxtLink> </span>
+         <span> <NuxtLink to="/fachverfahren"> Fachverfahren </NuxtLink> </span>
     </div>
 </template>
