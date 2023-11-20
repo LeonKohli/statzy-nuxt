@@ -1,12 +1,12 @@
 const db = require('./database'); // Angenommen, 'database.js' ist Ihre Datenbankverbindungsdatei
 
 // Funktion, um die SQL-Abfrage auszuführen
-function getFachverfahren(tag) {
+function getFachverfahren() {
     // Erstellen des SQL-Befehls
     const query = "SELECT name, verf_id, tag FROM fachverfahren WHERE verf_id IS NOT NULL ORDER BY name";
     
     // Ausführen der Abfrage
-    return db.query(query, [tag])
+    return db.query(query)
         .then(result => {
             // Verarbeitung und Rückgabe der Ergebnisse
             return result.rows;
