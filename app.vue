@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1 class="text-7xl text-center text-blue-500">Statzy</h1>
     <Navbar></Navbar>
     <router-view></router-view>
   </div>
