@@ -1,6 +1,8 @@
 <template>
   <div>
-    <h1 class="text-7xl text-center text-blue-500" v-if="!isLoginPage">Statzy</h1>
+    <div class="flex justify-center mt-4">
+      <img src="/Statzy-Logo.png" class="w-60 place-content-center" v-if="!isLoginPage"/>
+    </div>
     <Navbar v-if="!isLoginPage"></Navbar>
     <router-view></router-view>
   </div>
