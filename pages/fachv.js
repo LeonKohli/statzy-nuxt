@@ -1,9 +1,3 @@
-// Exportieren der Funktion, wenn sie in anderen Dateien verwendet werden soll
-module.exports = {
-    getFachverfahren
-};
-
-
 // Beispielobjekt für die Datenbankverbindung
 const database = {
   // Funktion zum Abrufen aller Fachverfahren
