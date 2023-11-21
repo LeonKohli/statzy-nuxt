@@ -11,4 +11,9 @@ import type { NuxtLink } from '#build/components';
 </template>
 
 <style>
+    div 
+    {
+        color: white;
+    }
+
 </style>
