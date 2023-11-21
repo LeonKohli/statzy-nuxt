@@ -269,7 +269,6 @@
         color: #facc15;
         margin-bottom: 30px;
         font-weight: bolder;
-        font-size: x-large;
     }
 
     button.button
