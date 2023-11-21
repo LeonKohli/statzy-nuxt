@@ -123,7 +123,7 @@
                         <td > <input class="eingabe" placeholder="Lieferzeit" /> </td>
                     </tr>
                     <tr>
-                        <th> HD-Kapazität </th>
+                        <th> Erreichbarkeit </th>
                         <td class=tableSeperator> <select class="eingabe" /> </td>
                     </tr>
                 </table>
