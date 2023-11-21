@@ -25,7 +25,7 @@ export default defineEventHandler(async (event) => {
     user_ins,
     user_upd,
     associatedPersons
-  } = await useBody(event);
+  } = await readBody(event);
 
   await query('BEGIN');
 

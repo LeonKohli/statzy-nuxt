@@ -3,7 +3,7 @@ import { query } from '../../db.js';
 
 export default defineEventHandler(async (event) => {
   const serverId = event.context.params.id;
-  const serverData = await useBody(event);
+  const serverData = await readBody(event);
 
   let setClauses = [];
   let params = [];

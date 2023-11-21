@@ -1,8 +1,9 @@
-// server/api/fachverf/create.post.js
+// server/api/fachverf/index.post.js
 import { query } from '../../db.js';
 
 export default defineEventHandler(async (event) => {
-  const newData = await useBody(event);
+  const newData = await readBody(event);
+  console.log('newData', newData);
 
   try {
     const result = await query(
