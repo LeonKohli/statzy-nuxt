@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="text-7xl text-center text-blue-500">Statzy</h1>
+    <h1 class="text-7xl text-center text-blue-500" v-if="!isLoginPage">Statzy</h1>
     <Navbar v-if="!isLoginPage"></Navbar>
     <router-view></router-view>
   </div>
@@ -27,7 +27,7 @@ export default {
 @media (prefers-color-scheme: dark) {
   html 
   {
-    background-color: black;
+    background-color: #0f172a;
     color: white;
   }
 }
