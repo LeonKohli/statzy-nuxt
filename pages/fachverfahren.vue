@@ -1,73 +1,73 @@
 <template>
     <div> 
-        <h1> Fachverfahren </h1>
+        <h1 class="fachverfahrenh1"> Fachverfahren </h1>
         <div>
-            <div id="suchmaske">
-                <h2> Verfahrens-Daten </h2>
-                <table id="verfahren">
+            <div class="suchmaske">
+                <h2 class="fachverfahrenh2"> Verfahrens-Daten </h2>
+                <table class="verfahren">
                     <tr>
-                        <td> <input placeholder="Verfahrens-ID"/> </td>
-                        <td> <input placeholder="Verfahrens-Name"/> </td>
-                        <td> <input placeholder="Tag"/> </td>
-                        <td> <input placeholder="Zweck"/> </td>
-                        <td> <input placeholder="Laufzeit"/> </td>
+                        <td class="tabledata"> <input class="eingabe" placeholder="Verfahrens-ID"/> </td>
+                        <td class="tabledata"> <input class="eingabe" placeholder="Verfahrens-Name"/> </td>
+                        <td class="tabledata"> <input class="eingabe" placeholder="Tag"/> </td>
+                        <td class="tabledata"> <input class="eingabe" placeholder="Zweck"/> </td>
+                        <td class="tabledata"> <input class="eingabe" placeholder="Laufzeit"/> </td>
                     </tr>
                 </table>
                 <br>
-                <h2> Personen-Daten </h2>
-                <table id="personen">
+                <h2 class="fachverfahrenh2"> Personen-Daten </h2>
+                <table class="personen">
                     <tr>
-                        <th>  </th>
-                        <th> Name </th>
-                        <th> Vorname </th>
-                        <th> Dezernat </th>
-                        <th> Telefon </th>
+                        <th class="tableheadtop">  </th>
+                        <th class="tableheadtop"> Name </th>
+                        <th class="tableheadtop"> Vorname </th>
+                        <th class="tableheadtop"> Dezernat </th>
+                        <th class="tableheadtop"> Telefon </th>
                     </tr> 
                     <tr>
-                        <th> Kundenmanagament: </th>
-                        <td> <input placeholder="Muster Name"/> </td>
-                        <td> "Muster Vorname" </td>
-                        <td> "Muster Dezernat" </td>
-                        <td> "Muster Telefon" </td>
+                        <th class="tableheadside"> Kundenmanagament: </th>
+                        <td class="tabledata"> <input class="eingabe" placeholder="Muster Name"/> </td>
+                        <td class="tabledata"> "Muster Vorname" </td>
+                        <td class="tabledata"> "Muster Dezernat" </td>
+                        <td class="tabledata"> "Muster Telefon" </td>
                     </tr>
                     <tr>
-                        <th> Fachadministration: </th>
-                        <td> <input placeholder="Muster Name"/> </td>
-                        <td> "Muster Vorname" </td>
-                        <td> "Muster Dezernat" </td>
-                        <td> "Muster Telefon" </td>
+                        <th class="tableheadside"> Fachadministration: </th>
+                        <td class="tabledata"> <input class="eingabe" placeholder="Muster Name"/> </td>
+                        <td class="tabledata"> "Muster Vorname" </td>
+                        <td class="tabledata"> "Muster Dezernat" </td>
+                        <td class="tabledata"> "Muster Telefon" </td>
                     </tr>
                     <tr>
-                        <th> Auftraggeber: </th>
-                        <td> <input placeholder="Muster Name"/> </td>
-                        <td> "Muster Vorname" </td>
-                        <td> "Muster Dezernat" </td>
-                        <td> "Muster Telefon" </td>
+                        <th class="tableheadside"> Auftraggeber: </th>
+                        <td class="tabledata"> <input class="eingabe" placeholder="Muster Name"/> </td>
+                        <td class="tabledata"> "Muster Vorname" </td>
+                        <td class="tabledata"> "Muster Dezernat" </td>
+                        <td class="tabledata"> "Muster Telefon" </td>
                     </tr>
                     <tr>
-                        <th> Verfahrensbetreuer: </th>
-                        <td> <input placeholder="Muster Name"/> </td>
-                        <td> "Muster Vorname" </td>
-                        <td> "Muster Dezernat" </td>
-                        <td> "Muster Telefon" </td>
+                        <th class="tableheadside"> Verfahrensbetreuer: </th>
+                        <td class="tabledata"> <input class="eingabe" placeholder="Muster Name"/> </td>
+                        <td class="tabledata"> "Muster Vorname" </td>
+                        <td class="tabledata"> "Muster Dezernat" </td>
+                        <td class="tabledata"> "Muster Telefon" </td>
                     </tr>
                 </table>
                 <br>
-                <table id="systeme"> 
+                <table class="systeme"> 
                     <tr> 
-                        <td> Anzahl zugeordneter Systeme: "Anzahl" </td>
-                        <td> <input type="number" placeholder="Zahl"/> </td>
+                        <td class="tabledata"> Anzahl zugeordneter Systeme: "Anzahl" </td>
+                        <td class="tabledata"> <input class="eingabe" type="number" placeholder="Zahl"/> </td>
                     </tr>
                 </table>
-                <button> Suchen </button>
+                <button class="button"> Suchen </button>
             </div>
             <br>
-            <hr>
+            <hr class="line">
             <br>
-            <div id="message">
+            <div class="message">
                 <span> Message "Successfull | ERROR"</span>
                 <br>
-                <button> Erstellen </button>
+                <button class="button"> Erstellen </button>
             </div>
         </div>
     </div>
@@ -75,80 +75,100 @@
 </template>
 
 <script>
-    const button = document.getElementsByTagName("button");
-
-    button.forEach(element => {
-        element.onClick = function() {
-            
-        }
-    });
+    
 </script>
 
 <style>
-    table
+    table.verfahren, table.personen, table.systeme
     {
         text-align: center;
         border-radius: 10px;
         background-color: #1e293b;
         margin-left: auto;
         margin-right: auto;
+        color: white
     }
 
-    td, th
+    td.tabledata
     {
-        padding: 15px;
+        padding: 10px;
     }
 
-    tr > th:nth-child(n+2):nth-child(-n+5)
+    th.tableheadtop, th.tableheadside
     {
-        font-size: 500;
-        padding-top: 10px;
-        padding-bottom: 10px;
+        padding: 10px;
+    }
+
+    tr > th.tableheadtop:nth-child(n + 2):nth-child(-n + 5)
+    {
         border-bottom: 1px solid #475569;
     }
 
-    tr:nth-child(n+2):nth-child(-n+5) > th:first-child
+    th.tableheadside
     {
         border-right: 1px solid #475569;
     }
 
-    input
+    input.eingabe
     {
         text-align: center;
+        margin: 10px;
+        border-radius: 5px;
+        padding: 5px;
     }
 
-    h1
+    
+    h1.fachverfahrenh1
     {
         font-size: xx-large;
         font-weight: 700;
         text-align: center;
     }
 
-    h2
+    h2.fachverfahrenh2
     {
         font-size: x-large;
         text-align: center;
         margin: 15px;
     }
 
-    div#suchmaske
+    div.suchmaske
     {
         align-items: center;
     }
 
-    button
+    div.message
+    {
+        text-align: center;
+    }
+
+    button.button
     {
         width: 146px; 
         height: 31px; 
         background: #1E293B; 
         border-radius: 9px;
+        margin: 0 auto;
+        display: block;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        font-weight: bolder;
+        color: white;
+        scale: 120%
     }
 
-    button:active
+    button.button:active
     {
         scale: 80%;
         background: #475569; 
-        border-radius: 9px
+        border-radius: 9px;
+        transition-duration: 30ms;
+    }
+
+    hr.line
+    {
+        border-radius: 10px;
+        border: 5px solid #1E293B;
     }
 </style>
 
