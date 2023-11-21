@@ -1,30 +1,45 @@
 // Beispielobjekt für die Datenbankverbindung
 const database = {
   // Funktion zum Abrufen aller Fachverfahren
-  getAllFachverfahren: function() {
-    // Implementiere die Logik zum Abrufen aller Fachverfahren aus der Datenbank
-    // Rückgabe: Array von Fachverfahren
-  },
+    getAllFachverfahren: function() {
+      // Implementiere die Logik zum Abrufen aller Fachverfahren aus der Datenbank
+      // Rückgabe: Array von Fachverfahren
+    },
 
-  // Funktion zum Abrufen der Details eines Fachverfahrens
-  getFachverfahrenDetails: function(verf_id) {
-    // Implementiere die Logik zum Abrufen der Details eines Fachverfahrens anhand der verf_id
-    // Rückgabe: Details des Fachverfahrens
-  },
+    // Funktion zum Abrufen der Details eines Fachverfahrens
+    getFachverfahrenDetails: function(verf_id) {
+      // Implementiere die Logik zum Abrufen der Details eines Fachverfahrens anhand der verf_id
+      // Rückgabe: Details des Fachverfahrens
+    },
 
-  // Funktion zum Bearbeiten eines Fachverfahrens
-  editFachverfahren: function(verf_id, newData) {
-    // Implementiere die Logik zum Bearbeiten der Informationen eines Fachverfahrens in der Datenbank
-    // newData enthält die aktualisierten Informationen
-    // Rückgabe: Erfolg oder Fehlermeldung
-  },
+    // Funktion zum Bearbeiten eines Fachverfahrens
+    editFachverfahren: function(verf_id, newData) {
+      // Implementiere die Logik zum Bearbeiten der Informationen eines Fachverfahrens in der Datenbank
+      // newData enthält die aktualisierten Informationen
+      // Rückgabe: Erfolg oder Fehlermeldung
+    },
 
-  // Funktion zum Erstellen eines neuen Fachverfahrens
-  createFachverfahren: function(newData) {
-    // Implementiere die Logik zum Erstellen eines neuen Fachverfahrens in der Datenbank
-    // newData enthält die Informationen für das neue Fachverfahren
-    // Rückgabe: Erfolg oder Fehlermeldung
-  }
+    // Funktion zum Erstellen eines neuen Fachverfahrens
+    createFachverfahren: function(newData) {
+      // Implementiere die Logik zum Erstellen eines neuen Fachverfahrens in der Datenbank
+      // newData enthält die Informationen für das neue Fachverfahren
+      // Rückgabe: Erfolg oder Fehlermeldung
+    },
+
+    createServer: function(newData) {
+      // Implementiere die Logik zum Erstellen eines neuen Servers in der Datenbank
+      // newData enthält die Informationen für den neuen Server
+      // Rückgabe: Erfolg oder Fehlermeldung
+    },
+
+    createPerson: function (newData) {
+      // Implementiere die Logik zum Erstellen einer neuen Person in der Datenbank
+      // newData enthält die Informationen für die neue Person
+      // Rückgabe: Erfolg oder Fehlermeldung
+    },
+
+
+
 };
 
 // Beispielobjekt für die Webseite

@@ -1,5 +1,5 @@
 import { defineEventHandler, createError } from 'h3';
-import { query } from '../db.js'; // Make sure this path is correct
+import { query } from '../db.js'; 
 
 export default defineEventHandler(async (event) => {
   try {

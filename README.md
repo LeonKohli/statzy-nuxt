@@ -1,75 +1,126 @@
-# Nuxt 3 Minimal Starter
+# Statzy Nuxt
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Transform your organizational data management with Statzy Nuxt, the web-based solution for a streamlined and interactive experience.
 
-## Setup
 
-Make sure to install the dependencies:
+![uses-nuxt](https://img.shields.io/badge/uses-Nuxt.js-04C690.svg)
+![npm version](https://img.shields.io/npm/v/nuxt)
+![node-current (scoped)](https://img.shields.io/node/v/nuxt@3.8.1)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192.svg)
+![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC.svg)
+![License](https://img.shields.io/github/license/ZIT-P22/statzy-nuxt)
 
-```bash
-# npm
-npm install
+### Table of Contents
 
-# pnpm
-pnpm install
+- [Statzy Nuxt](#statzy-nuxt)
+    - [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+  - [Database Setup](#database-setup)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Features](#features)
+  - [Server API](#server-api)
+  - [Contributing](#contributing)
+  - [License](#license)
 
-# yarn
-yarn install
+## Introduction
 
-# bun
-bun install
+The evolution of StatzyGUI, Statzy Nuxt harnesses Nuxt.js to offer a modern, user-centric data management system. Organize, edit, and view entity information with unparalleled ease. Interact edifyingly with back-end data through a clear and coherent interface.
+
+## Database Setup
+
+To run Statzy Nuxt, a PostgreSQL database is required. Set up the necessary tables and relationships. This application expects the following structure:
+
+- **Tables**: `person`, `server`, `fachverfahren`, and others related to your entities.
+- **Relationships**: Establish proper foreign keys between `person` and `server` to enable connections within the application.
+
+Your `.env` file should include the following environment variables:
+
+```
+DB_USER=your_username
+DB_HOST=localhost_or_your_database_host
+DB_NAME=your_database_name
+DB_PASSWORD=your_database_password
+DB_PORT=your_database_port
 ```
 
-## Development Server
+After configuring the `.env` file, verify that the database connection works correctly by running a test query through the application.
 
-Start the development server on `http://localhost:3000`:
+## Installation
 
-```bash
-# npm
-npm run dev
+Ensure Node.js and npm are installed. Follow these steps:
 
-# pnpm
-pnpm run dev
+1. Clone the repository:
 
-# yarn
-yarn dev
+    ```bash
+    git clone https://github.com/ZIT-P22/statzy-nuxt.git
+    cd statzy-nuxt
+    ```
 
-# bun
-bun run dev
-```
+2. Install dependencies:
 
-## Production
+    ```bash
+    npm install
+    ```
 
-Build the application for production:
+3. Run the development server:
 
-```bash
-# npm
-npm run build
+    ```bash
+    npm run dev
+    ```
 
-# pnpm
-pnpm run build
+4. Production build:
 
-# yarn
-yarn build
+    ```bash
+    npm run build
+    ```
 
-# bun
-bun run build
-```
+5. Start production server:
 
-Locally preview production build:
+    ```bash
+    npm start
+    ```
 
-```bash
-# npm
-npm run preview
+## Usage
 
-# pnpm
-pnpm run preview
+- **Login**: Start at **`/login`** with correct credentials.
+- **Entity Management**: Navigate to **`/fachverfahren`** or **`/servers/*`** to modify or view related data.
+- **Data Operations**: Perform data operations via server APIs provided within the `./server/api/` directory.
 
-# yarn
-yarn preview
+For example:
+- Listing persons: `GET /api/persons`
+- Creating a server: `POST /api/servers/create`
+- Fetching server details: `GET /api/servers/:id`
 
-# bun
-bun run preview
-```
+## Features
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+- User authentication and session management
+- Responsive front-end with Nuxt.js and Tailwind CSS
+- Database CRUD operations through server API endpoints
+- PostgreSQL integration
+- Dynamic server-side rendering
+
+## Server API
+
+Key components within the `./server/` directory include:
+
+- `auth.js`: Middleware for user authentication
+- `log.js`: Simple request logging middleware
+- `db.js`: Setup of PostgreSQL database connection
+- `*.js` files in `./api/`: Define endpoints for database operations
+- `auswahl_data.js`: Deliver dropdown selection data on server initialization
+
+## Contributing
+
+We encourage community contributions:
+1. Fork and clone the repository.
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`).
+3. Add commits (`git commit -m 'Add some AmazingFeature'`).
+4. Push to the branch (`git push origin feature/AmazingFeature`).
+5. Submit a pull request.
+
+Please ensure your contributions follow the established coding conventions and include comments for clarity.
+
+## License
+
+Statzy Nuxt is open-sourced under the MIT License. See the [LICENSE](https://github.com/ZIT-P22/statzy-nuxt/blob/main/LICENSE) file for more details.
