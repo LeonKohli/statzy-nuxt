@@ -1,4 +1,4 @@
-// server/api/persons/fachverf.js
+// server/api/servers/fachverf.js
 import { query } from '../../db.js';
 
 export default defineEventHandler(async (event) => {
