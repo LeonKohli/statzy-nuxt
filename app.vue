@@ -1,15 +1,26 @@
 <template>
   <div>
     <h1 class="text-7xl text-center text-blue-500">Statzy</h1>
-    <Navbar></Navbar>
+    <Navbar v-if="!isLoginPage"></Navbar>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+import navbar from '/components/navbar.vue';
+
 export default {
   name: 'App',
-}
+  components: {
+    navbar,
+  },
+  computed: {
+    isLoginPage() {
+      // Überprüfe, ob die aktuelle Seite die Login-Seite ist
+      return this.$route.name === 'login';
+    },
+  },
+};
 </script>
 
 <style>
