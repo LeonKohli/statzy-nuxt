@@ -1,13 +1,11 @@
 <template>
   <section>
     <div
-      class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0"
+      class="flex flex-col items-center px-6 py-8 mx-auto md:h-screen lg:py-0"
     >
-    <div class="flex justify-center mt-4">
-        <img
-            src="/Statzy-Logo.png"
-        />
-    </div>
+      <div class="flex justify-center mt-4">
+        <img src="/Statzy-Logo.png" />
+      </div>
       <div
         class="w-full bg-slate-700 rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0"
       >
