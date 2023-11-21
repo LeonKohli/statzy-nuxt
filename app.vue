@@ -27,7 +27,7 @@ export default {
 @media (prefers-color-scheme: dark) {
   html 
   {
-    background-color: black;
+    background-color: #0f172a;
     color: white;
   }
 }
