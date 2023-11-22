@@ -29,26 +29,126 @@
               </div>
               <a href="#" class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">Forgot password?</a>
             </div>
-            <button type="submit" class="w-full px-5 py-3 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue">Sign in</button>
+            <button type="submit" class="w-full px-5 py-3 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue" @click="showPopup = true">Sign in</button>
           </form>
         </div>
+      </div>
+    </div>
+    <div v-if="showPopup" class="popup">
+      <button class="close-button" @click="showPopup = false">Close</button>
+      <div class="card">
+        <div class="bg"></div>
+        <div class="blob"></div>
       </div>
     </div>
   </section>
 </template>
 
 <script>
-import { loginFunction } from '../utils/functions.js';
-
 export default {
-  methods: {
+  data() {
+    return {
+      showPopup: false
+    };
+  },
+  /*methods: {
     handleLogin() {
       const email = document.getElementById('username').value;
       const password = document.getElementById('password').value;
       loginFunction(username, password);
-      // zusätzliche Logik z.B. Fehlerbehandlung
+      // additional logic, e.g. error handling
     }
+  }*/
+};
+</script>
+
+<style>
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+.card {
+  position: relative;
+  width: 200px;
+  height: 250px;
+  border-radius: 14px;
+  z-index: 1111;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 20px 20px 60px #1e293b, -20px -20px 60px #334155;
+}
+
+.bg {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 190px;
+  height: 240px;
+  z-index: 2;
+  background: #1e293b(255, 255, 255, .95);
+  backdrop-filter: blur(200px);
+  border-radius: 10px;
+  overflow: hidden;
+  outline: 2px solid #334155;
+}
+
+.blob {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #ff0000;
+  opacity: 1;
+  filter: blur(12px);
+  animation: blob-bounce 5s infinite ease;
+}
+@keyframes blob-bounce {
+  0% {
+    transform: translate(-100%, -100%) translate3d(0, 0, 0);
+  }
+
+  25% {
+    transform: translate(-100%, -100%) translate3d(100%, 0, 0);
+  }
+
+  50% {
+    transform: translate(-100%, -100%) translate3d(100%, 100%, 0);
+  }
+
+  75% {
+    transform: translate(-100%, -100%) translate3d(0, 100%, 0);
+  }
+
+  100% {
+    transform: translate(-100%, -100%) translate3d(0, 0, 0);
   }
 }
-</script>
-../utils/functions.js
+
+.close-button {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 16px;
+  background-color: #ff0000;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+</style>
