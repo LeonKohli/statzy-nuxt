@@ -160,8 +160,7 @@ export default {
   methods: {
     async fetchDropdownData() {
       try {
-        const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
-        const response = await fetch(`${baseUrl}/api/servers/auswahl_data`);
+        const response = await fetch(`/api/servers/auswahl_data`);
         const data = await response.json();
         this.dropdownData = data;
       } catch (error) {
@@ -170,8 +169,7 @@ export default {
     },
     async createServer() {
       try {
-        const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
-        const response = await fetch(`${baseUrl}/api/servers/create.post`, {
+        const response = await fetch(`/api/servers/create.post`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -187,8 +185,7 @@ export default {
     },
     async listServers() {
       try {
-        const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
-        const response = await fetch(`${baseUrl}/api/servers`);
+        const response = await fetch(`/api/servers`);
         const responseData = await response.json();
         this.servers = responseData;
       } catch (error) {

@@ -1,19 +1,53 @@
 <template>
-  <button class="user-button">
-    <img src="https://avatars.githubusercontent.com/u/98176333?v=4" alt="User" />
-  </button>
+  <div class="user-button">
+    <button class="user-avatar" @click="toggleDropdown">
+      <img src="https://avatars.githubusercontent.com/u/98176333?v=4" alt="User" />
+    </button>
+    <div v-if="showDropdown" class="dropdown">
+      <ul>
+        <li @click="logout">Logout</li>
+      </ul>
+    </div>
+  </div>
 </template>
 
 <script>
+import { useToken } from '~/composables/useToken';
+import { useRouter } from 'vue-router';
+
 export default {
-  // Add any required script here
+  data() {
+    return {
+      showDropdown: false
+    };
+  },
+  setup() {
+    const token = useToken();
+    const router = useRouter();
+
+    const logout = () => {
+      token.value = null; // Clear the token
+      router.push('/login'); // Redirect to login page
+    };
+
+    return { logout };
+  },
+  methods: {
+    toggleDropdown() {
+      this.showDropdown = !this.showDropdown;
+    }
+  }
 }
 </script>
 
-<style>
+<style scoped>
 .user-button {
+  position: relative;
+}
+
+.user-avatar {
   border: none;
-  background-color: transparent;
+  background: transparent;
   border-radius: 50%;
   padding: 0.5rem;
   cursor: pointer;
@@ -22,9 +56,39 @@ export default {
   justify-content: center;
 }
 
-.user-button img {
-  width: 40px; /* Adjust size as needed */
-  height: 40px; /* Adjust size as needed */
-  border-radius: 50%; /* Make image round */
+.user-avatar img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.dropdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown li {
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.dropdown li:hover {
+  background-color: rgba(100, 116, 139, 0.2); /* Lighter slate color for hover */
 }
 </style>
