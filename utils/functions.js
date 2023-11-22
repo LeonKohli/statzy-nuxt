@@ -1,239 +1,368 @@
+// Funktion zum Abrufen von Fachverfahrensdaten aus der API
 export async function fetchFachverfahrenData() {
-    try {
+  try {
+      // Basis-URL für die API, falls nicht vorhanden wird localhost:3000 verwendet
       const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
+
+      // Anfrage an den Server, um Fachverfahrensdaten abzurufen
       const response = await fetch(`${baseUrl}/api/fachverf/index`);
+
+      // Überprüfen, ob die Anfrage erfolgreich war (HTTP-Status 200-299)
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+          throw new Error(`HTTP-Fehler! Status: ${response.status}`);
       }
+
+      // Antwortdaten als JSON parsen und zurückgeben
       const data = await response.json();
       return data;
-    } catch (error) {
-      console.error('Error fetching Fachverfahren data:', error);
-      return null; // Return null or handle the error as needed
-    }
-  }
-
-  export async function fetchPersonsData() {
-    try {
-      const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
-      const response = await fetch(`${baseUrl}/api/persons/index`);
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error('Error fetching persons data:', error);
-      return null; // Return null or handle the error as needed
-    }
-  }
-
-  export async function fetchServersData() {
-    try {
-      const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
-      const response = await fetch(`${baseUrl}/api/servers/index`);
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error('Error fetching servers data:', error);
-      return null; // Return null or handle the error as needed
-    }
-  }
-
-  export async function fetchAuswahlData() {
-    try {
-      const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
-      const response = await fetch(`${baseUrl}/api/servers/auswahl_data`);
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error('Error fetching Auswahl data:', error);
-      return null; // Return null or handle the error as needed
-    }
-  }
-  
-
-  export async function fetchFachverfahrenById(verfId) {
-   try {
-    const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
-    const response = await fetch(`${baseUrl}/api/fachverf/${verfId}`);
-    if (!response.ok) {
-      // Handle 404 Not Found separately if needed
-      if (response.status === 404) {
-        console.error('Fachverfahren not found');
-        return null;
-      }
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const data = await response.json();
-    return data;
   } catch (error) {
-    console.error('Error fetching Fachverfahren details:', error);
-    return null; // Return null or handle the error as needed
+      // Fehlerbehandlung: Konsolenausgabe und Rückgabe von null oder Behandlung nach Bedarf
+      console.error('Fehler beim Abrufen von Fachverfahrensdaten:', error);
+      return null;
+  }
+}
+
+// Funktion zum Abrufen von Personen-Daten aus der API
+export async function fetchPersonsData() {
+  try {
+      // Basis-URL für die API, falls nicht durch Umgebungsvariable definiert, wird der lokale Entwicklungsserver (http://localhost:3000) verwendet
+      const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
+
+      // API-Anfrage an den Endpunkt für Personen-Daten
+      const response = await fetch(`${baseUrl}/api/persons/index`);
+
+      // Überprüfe, ob die Anfrage erfolgreich war (HTTP-Status 200-299)
+      if (!response.ok) {
+          throw new Error(`HTTP-Fehler! Status: ${response.status}`);
+      }
+
+      // Extrahiere und parsiere die Daten aus der API-Antwort
+      const data = await response.json();
+
+      // Gebe die abgerufenen Daten zurück
+      return data;
+  } catch (error) {
+      // Behandele Fehler, falls sie auftreten, und gebe null zurück oder handle den Fehler entsprechend
+      console.error('Fehler beim Abrufen der Personen-Daten:', error);
+      return null;
   }
 }
 
 
+// Funktion zum Abrufen von Serverdaten aus der API
+export async function fetchServersData() {
+  try {
+      // Basis-URL für die API, kann aus der Umgebungsvariable oder einem Standardwert abgeleitet werden
+      const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
+
+      // API-Anfrage an den Endpunkt für Serverdaten
+      const response = await fetch(`${baseUrl}/api/servers/index`);
+
+      // Überprüfen, ob die Anfrage erfolgreich war (HTTP-Status 2xx)
+      if (!response.ok) {
+          throw new Error(`HTTP-Fehler! Status: ${response.status}`);
+      }
+
+      // Daten aus der Antwort extrahieren und als JSON interpretieren
+      const data = await response.json();
+
+      // Die abgerufenen Daten zurückgeben
+      return data;
+  } catch (error) {
+      // Fehler behandeln und in der Konsole protokollieren
+      console.error('Fehler beim Abrufen von Serverdaten:', error);
+      
+      // Null zurückgeben oder den Fehler je nach Bedarf behandeln
+      return null;
+  }
+}
+
+
+// Funktion zum Abrufen von Auswahl-Daten aus der API
+export async function fetchAuswahlData() {
+  try {
+    // Basis-URL für die API, fallback zu 'http://localhost:3000', wenn nicht definiert
+    const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
+
+    // Anfrage an den Server, um Auswahl-Daten abzurufen
+    const response = await fetch(`${baseUrl}/api/servers/auswahl_data`);
+
+    // Überprüfe, ob die Anfrage erfolgreich war (HTTP-Statuscode 2xx)
+    if (!response.ok) {
+      // Wirft einen Fehler, wenn die Anfrage nicht erfolgreich war
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    // Wandele die Antwort in JSON-Format um
+    const data = await response.json();
+
+    // Rückgabe der abgerufenen Daten
+    return data;
+  } catch (error) {
+    // Fehlerbehandlung im Falle eines Fehlers während des Abrufs
+    console.error('Error fetching Auswahl data:', error);
+
+    // Rückgabe von null oder Behandlung des Fehlers je nach Bedarf
+    return null;
+  }
+}
+
+  
+
+  // Funktion zum Abrufen von Fachverfahrensdetails anhand der verfId
+export async function fetchFachverfahrenById(verfId) {
+  try {
+    // Basis-URL für API-Anfragen, verwendet die Umgebungsvariable BASE_URL oder den lokalen Standardwert
+    const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
+
+    // API-Anfrage an die spezifische Route für Fachverfahrensdetails mit der verfId
+    const response = await fetch(`${baseUrl}/api/fachverf/${verfId}`);
+
+    // Überprüfen, ob die Anfrage erfolgreich war (Status 200 OK)
+    if (!response.ok) {
+      // Behandlung von 404 Not Found separat, falls erforderlich
+      if (response.status === 404) {
+        console.error('Fachverfahren nicht gefunden');
+        return null;
+      }
+      throw new Error(`HTTP-Fehler! Status: ${response.status}`);
+    }
+
+    // Extrahieren der JSON-Daten aus der Antwort
+    const data = await response.json();
+
+    // Rückgabe der abgerufenen Daten
+    return data;
+  } catch (error) {
+    // Behandlung von Fehlern während des API-Aufrufs
+    console.error('Fehler beim Abrufen von Fachverfahrensdetails:', error);
+    return null; // Rückgabe von null oder Behandlung des Fehlers nach Bedarf
+  }
+}
+
+
+
+// Funktion zum Aktualisieren eines Fachverfahrens anhand der verfId
 export async function updateFachverfahrenById(verfId, updateData) {
   try {
+    // Basis-URL für die API (verwende entweder die Umgebungsvariable BASE_URL oder den lokalen Standardwert)
     const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
+
+    // Sendet eine PUT-Anfrage an die API, um das Fachverfahren zu aktualisieren
     const response = await fetch(`${baseUrl}/api/fachverf/${verfId}`, {
       method: 'PUT',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json', // Setzt den Header für JSON-Daten
       },
-      body: JSON.stringify(updateData),
+      body: JSON.stringify(updateData), // Konvertiert die zu aktualisierenden Daten in JSON und sendet sie im Body
     });
 
+    // Überprüft, ob die Anfrage erfolgreich war, andernfalls wirft einen Fehler mit dem HTTP-Statuscode
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
+    // Verarbeitet die JSON-Antwort von der API und gibt sie zurück
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('Error updating Fachverfahren:', error);
-    return null; // Return null or handle the error as needed
+    console.error('Fehler beim Aktualisieren des Fachverfahrens:', error);
+    return null; // Gibt null zurück oder behandelt den Fehler nach Bedarf
   }
 }
 
 
+
+// Funktion zum Erstellen eines neuen Fachverfahrens
 export async function createFachverfahren(newFachverfahrenData) {
   try {
+    // Basis-URL für die API, falls nicht vorhanden, verwende 'http://localhost:3000'
     const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
+
+    // Senden einer HTTP POST-Anfrage an die API mit den bereitgestellten Daten
     const response = await fetch(`${baseUrl}/api/fachverf`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(newFachverfahrenData),
+      body: JSON.stringify(newFachverfahrenData), // Umwandlung der Daten in JSON-Format
     });
 
+    // Überprüfung, ob die Anfrage erfolgreich war (HTTP-Statuscode 2xx)
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      throw new Error(`HTTP-Fehler! Status: ${response.status}`);
     }
 
+    // Verarbeiten der Antwort und Rückgabe der Daten
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('Error creating Fachverfahren:', error);
-    return null; // Return null or handle the error as needed
+    console.error('Fehler beim Erstellen des Fachverfahrens:', error);
+    return null; // Bei einem Fehler null zurückgeben oder den Fehler entsprechend behandeln
   }
 }
 
 
+
+// Funktion zum Abrufen von Fachverfahrensdaten aus der API
 export async function fetchFachverfData() {
   try {
+    // Basis-URL für die API, falls nicht vorhanden, verwende localhost:3000
     const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
+    
+    // API-Aufruf, um Fachverfahrensdaten abzurufen
     const response = await fetch(`${baseUrl}/api/fachverfahren/fachverf`);
+    
+    // Überprüfe, ob die Antwort erfolgreich ist (HTTP-Statuscode 2xx)
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      throw new Error(`HTTP-Fehler! Status: ${response.status}`);
     }
+
+    // Verarbeite die JSON-Daten aus der Antwort
     const data = await response.json();
+    
+    // Gebe die abgerufenen Daten zurück
     return data;
   } catch (error) {
-    console.error('Error fetching Fachverf data:', error);
-    return null; // Return null or handle the error as needed
+    // Behandele Fehler, falls sie auftreten, und gib null zurück oder verarbeite den Fehler entsprechend
+    console.error('Fehler beim Abrufen der Fachverf-Daten:', error);
+    return null;
   }
 }
 
 
+
+// Diese Funktion löscht einen Server anhand seiner ID
 export async function deleteServerById(serverId) {
   try {
+    // Basis-URL für die API-Anfragen. Falls nicht definiert, wird die lokale Entwicklungsumgebung angenommen.
     const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
+
+    // API-Anfrage zum Löschen des Servers mit der angegebenen ID
     const response = await fetch(`${baseUrl}/api/servers/${serverId}`, {
       method: 'DELETE',
     });
 
+    // Überprüfe, ob die API-Anfrage erfolgreich war (HTTP-Statuscode 200-299)
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      throw new Error(`HTTP-Fehler! Status: ${response.status}`);
     }
 
+    // Extrahiere die Daten aus der API-Antwort (erwartet JSON-Daten)
     const data = await response.json();
+    
+    // Gebe die gelöschten Daten zurück
     return data;
   } catch (error) {
-    console.error('Error deleting server:', error);
-    return null; // Return null or handle the error as needed
+    // Bei einem Fehler, logge die Fehlermeldung und gebe null zurück oder behandle den Fehler entsprechend
+    console.error('Fehler beim Löschen des Servers:', error);
+    return null; // Gebe null zurück oder behandle den Fehler entsprechend
   }
 }
 
 
+
+// Funktion zum Abrufen von Serverdetails anhand der Server-ID
 export async function fetchServerById(serverId) {
   try {
+    // Basis-URL für API-Anfragen, verwendet die Umgebungsvariable BASE_URL oder standardmäßig http://localhost:3000
     const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
+
+    // API-Anfrage, um Serverdetails abzurufen
     const response = await fetch(`${baseUrl}/api/servers/${serverId}`);
+
+    // Überprüfung, ob die Anfrage erfolgreich war
     if (!response.ok) {
+      // Falls der Server nicht gefunden wurde (HTTP-Statuscode 404)
       if (response.status === 404) {
-        console.error('Server not found');
-        return null;
+        console.error('Server nicht gefunden');
+        return null; // Rückgabe von null, um anzuzeigen, dass der Server nicht gefunden wurde
       }
-      throw new Error(`HTTP error! status: ${response.status}`);
+
+      // Bei anderen HTTP-Fehlern wird eine allgemeine Fehlermeldung geworfen
+      throw new Error(`HTTP-Fehler! Status: ${response.status}`);
     }
+
+    // Verarbeitung der JSON-Daten und Rückgabe der Serverdetails
     const data = await response.json();
-    return data.server; // Assuming the response structure based on your endpoint
+    return data.server; // Unter der Annahme der Struktur der Antwort basierend auf deinem Endpunkt
   } catch (error) {
-    console.error('Error fetching server details:', error);
-    return null; // Return null or handle the error as needed
+    // Fehlerbehandlung im Falle eines Fehlers während des Abrufs
+    console.error('Fehler beim Abrufen von Serverdetails:', error);
+    return null; // Rückgabe von null oder Behandlung des Fehlers, wie benötigt
   }
 }
 
 
+
+// Funktion zum Aktualisieren eines Servers anhand seiner ID
 export async function updateServerById(serverId, updateData) {
   try {
+    // Basis-URL für die API, falls die Umgebungsvariable BASE_URL nicht gesetzt ist, wird der lokale Entwicklungs-Server verwendet
     const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
+
+    // HTTP-Anfrage an die API senden, um den Server mit der angegebenen ID zu aktualisieren
     const response = await fetch(`${baseUrl}/api/servers/${serverId}`, {
-      method: 'PUT',
+      method: 'PUT', // Verwendung der PUT-Methode für Aktualisierungen
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json', // Der Inhalt der Anfrage ist im JSON-Format
       },
-      body: JSON.stringify(updateData),
+      body: JSON.stringify(updateData), // Konvertierung der Aktualisierungsdaten in JSON und Senden im Anfragekörper
     });
 
+    // Überprüfen, ob die Anfrage erfolgreich war (HTTP-Statuscode 200-299)
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      throw new Error(`HTTP-Fehler! Status: ${response.status}`);
     }
 
+    // Antwortdaten im JSON-Format abrufen
     const data = await response.json();
+
+    // Die aktualisierten Daten zurückgeben
     return data;
   } catch (error) {
-    console.error('Error updating server:', error);
-    return null; // Return null or handle the error as needed
+    console.error('Fehler beim Aktualisieren des Servers:', error);
+    return null; // Null zurückgeben oder den Fehler entsprechend behandeln
   }
 }
 
 
+
+// Funktion zum Erstellen eines Servers durch Senden der Daten an die API
 export async function createServer(newServerData) {
   try {
+    // Basis-URL für die API, fallback auf 'http://localhost:3000', wenn BASE_URL nicht definiert ist
     const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
+
+    // Anfrage an die API senden, um einen neuen Server zu erstellen
     const response = await fetch(`${baseUrl}/api/servers/create`, {
-      method: 'POST',
+      method: 'POST', // HTTP-Methode: POST für das Erstellen neuer Ressourcen
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json', // Der Inhalt der Anfrage ist im JSON-Format
       },
-      body: JSON.stringify(newServerData),
+      body: JSON.stringify(newServerData), // Die Serverdaten als JSON im Anfragekörper senden
     });
 
+    // Überprüfen, ob die Anfrage erfolgreich war (HTTP-Status 200-299)
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      throw new Error(`HTTP-Fehler! Status: ${response.status}`);
     }
 
+    // Die Antwort als JSON parsen und zurückgeben
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('Error creating server:', error);
-    return null; // Return null or handle the error as needed
+    // Fehler behandeln und auf der Konsole ausgeben
+    console.error('Fehler beim Erstellen des Servers:', error);
+    return null; // Null zurückgeben oder den Fehler nach Bedarf behandeln
   }
 }
 
-export function loginFunction(username, password) {
-  // die Überprüfung der Anmeldedaten
 
-  // Leitet den Benutzer zur Startseite der Website
+export function loginFunction(username, password) {
+  // Hier erfolgt die Überprüfung der Anmeldedaten
+
+  // Wenn die Anmeldeinformationen gültig sind, wird der Benutzer zur Startseite der Website weitergeleitet
   window.location.href = '/fachverfahren';
 }
+
