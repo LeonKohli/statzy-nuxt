@@ -1,172 +1,67 @@
 <template>
     <div> 
-        <h1 class="fachverfahrenh1"> Fachverfahren </h1>
-        <div>
-            <div class="suchmaske">
-                <h2 class="fachverfahrenh2"> Verfahrens-Daten </h2>
-                <table class="verfahren">
-                    <tr>
-                        <td class="tabledata"> <input class="eingabe" placeholder="Verfahrens-ID"/> </td>
-                        <td class="tabledata"> <input class="eingabe" placeholder="Verfahrens-Name"/> </td>
-                        <td class="tabledata"> <input class="eingabe" placeholder="Tag"/> </td>
-                        <td class="tabledata"> <input class="eingabe" placeholder="Zweck"/> </td>
-                        <td class="tabledata"> <input class="eingabe" placeholder="Laufzeit"/> </td>
-                    </tr>
-                </table>
-                <br>
-                <h2 class="fachverfahrenh2"> Personen-Daten </h2>
-                <table class="personen">
-                    <tr>
-                        <th class="tableheadtop">  </th>
-                        <th class="tableheadtop"> Name </th>
-                        <th class="tableheadtop"> Vorname </th>
-                        <th class="tableheadtop"> Dezernat </th>
-                        <th class="tableheadtop"> Telefon </th>
-                    </tr> 
-                    <tr>
-                        <th class="tableheadside"> Kundenmanagament: </th>
-                        <td class="tabledata"> <input class="eingabe" placeholder="Muster Name"/> </td>
-                        <td class="tabledata"> "Muster Vorname" </td>
-                        <td class="tabledata"> "Muster Dezernat" </td>
-                        <td class="tabledata"> "Muster Telefon" </td>
-                    </tr>
-                    <tr>
-                        <th class="tableheadside"> Fachadministration: </th>
-                        <td class="tabledata"> <input class="eingabe" placeholder="Muster Name"/> </td>
-                        <td class="tabledata"> "Muster Vorname" </td>
-                        <td class="tabledata"> "Muster Dezernat" </td>
-                        <td class="tabledata"> "Muster Telefon" </td>
-                    </tr>
-                    <tr>
-                        <th class="tableheadside"> Auftraggeber: </th>
-                        <td class="tabledata"> <input class="eingabe" placeholder="Muster Name"/> </td>
-                        <td class="tabledata"> "Muster Vorname" </td>
-                        <td class="tabledata"> "Muster Dezernat" </td>
-                        <td class="tabledata"> "Muster Telefon" </td>
-                    </tr>
-                    <tr>
-                        <th class="tableheadside"> Verfahrensbetreuer: </th>
-                        <td class="tabledata"> <input class="eingabe" placeholder="Muster Name"/> </td>
-                        <td class="tabledata"> "Muster Vorname" </td>
-                        <td class="tabledata"> "Muster Dezernat" </td>
-                        <td class="tabledata"> "Muster Telefon" </td>
-                    </tr>
-                </table>
-                <br>
-                <table class="systeme"> 
-                    <tr> 
-                        <td class="tabledata"> Anzahl zugeordneter Systeme: "Anzahl" </td>
-                        <td class="tabledata"> <input class="eingabe" type="number" placeholder="Zahl"/> </td>
-                    </tr>
-                </table>
-                <button class="button"> Suchen </button>
-            </div>
-            <br>
-            <hr class="line">
-            <br>
-            <div class="messageContainer">
-                <span> Message "Successfull | ERROR" </span>
-                <br>
-                <br>
-                <button class="button"> Erstellen </button>
-            </div>
-            <hr class="line">
-            <div class="server">
-                <h2 class="fachverfahrenh2"> Server </h2>
-                <table class="server">
-                    <tr>
-                        <th> Name </th>
-                        <td class=tableSeperator> <input class="eingabe" placeholder="Name" /> </td>
-                        <th> Hochverfügbar </th>
-                        <td > <input class="eingabeCheck" type="checkbox" /> </td>
-                    </tr>
-                    <tr>
-                        <th> Umgebung </th>
-                        <td class=tableSeperator> <select class="eingabe" /> </td>
-                        <th> Verfügbarkeit </th>
-                        <td > <input class="eingabe" placeholder="Verfügbarkeit" /> </td>
-                    </tr>
-                    <tr>
-                        <th> Netzwerk </th>
-                        <td class=tableSeperator> <select class="eingabe" /> </td>
-                        <th> Vertraulichkeit </th>
-                        <td > <input class="eingabe" placeholder="Vertraulichkeit" /> </td>
-                    </tr>
-                    <tr>
-                        <th> CPU </th>
-                        <td class=tableSeperator> <select class="eingabe" /> </td>
-                        <th> Integrität </th>
-                        <td > <input class="eingabe" placeholder="Integrität" /> </td>
-                    </tr>
-                    <tr>
-                        <th> Arbeitsspeicher </th>
-                        <td class=tableSeperator> <select class="eingabe" /> </td>
-                        <th> Verwendungszweck </th>
-                        <td > <select class="eingabe" /> </td>
-                    </tr>
-                    <tr>
-                        <th> Betriebssystem </th>
-                        <td class=tableSeperator> <select class="eingabe" /> </td>
-                        <th> Anmerkungen </th>
-                        <td > <input class="eingabe" placeholder="Integrietät" /> </td>
-                    </tr>
-                    <tr>
-                        <th> HD-Typ </th>
-                        <td class=tableSeperator> <select class="eingabe" /> </td>
-                        <th> Bereitstellungszeitpunkt </th>
-                        <td > <input class="eingabeDate" type="date" /> </td>
-                    </tr>
-                    <tr>
-                        <th> HD-Kapazität </th>
-                        <td class=tableSeperator> <input class="eingabe" placeholder="Kapazität" /> </td>
-                        <th> vorraussichtl. Lieferzeit </th>
-                        <td > <input class="eingabe" placeholder="Lieferzeit" /> </td>
-                    </tr>
-                    <tr>
-                        <th> Erreichbarkeit </th>
-                        <td class=tableSeperator> <select class="eingabe" /> </td>
-                    </tr>
-                </table>
-            </div>
-            <br>
-            <br>
-            <div class="datenbanken">
-                <h2 class="fachverfahrenh2"> Datenbanken </h2>
-                <table class="db">
-                    <tr>
-                        <th> Name </th>
-                        <td> <input class="eingabe" placeholder="Name" /> </td>
-                    </tr>
-                    <tr>
-                        <th> Datenbank-Typ </th>
-                        <td> <select class="eingabe" /> </td>
-                    </tr>
-                    <tr>
-                        <th> Clusterlösung </th>
-                        <td> <input class="eingabe" placeholder="Lösung" /> </td>
-                    </tr>
-                    <tr>
-                        <th> Größe der Instanz </th>
-                        <td> <input class="eingabe" placeholder="Größe" /> </td>
-                    </tr>
-                    <tr>
-                        <th> Festplattengröße </th>
-                        <td> <input class="eingabe" placeholder="Größe" /> </td>
-                    </tr>
-                </table>
-                <button class="button"> Bearbeiten </button>
-                <button class="buttonDelete"> Löschen </button>
-            </div>
-            <br>
-            <br>
-        </div>
+      <h1 class="fachverfahrenh1">Fachverfahren</h1>
+      <div class="suchmaske">
+        <h2 class="fachverfahrenh2">Verfahrens-Daten</h2>
+        <TableComponent 
+          tableClass="verfahren" 
+          :rows="verfahrenRows"
+        />
+        <h2 class="fachverfahrenh2">Personen-Daten</h2>
+        <TableComponent 
+          tableClass="personen" 
+          :rows="personenRows"
+        />
+        <h2 class="fachverfahrenh2">Server</h2>
+        <TableComponent 
+          tableClass="server" 
+          :rows="serverRows"
+        />
+        <h2 class="fachverfahrenh2">Datenbanken</h2>
+        <TableComponent 
+          tableClass="db" 
+          :rows="dbRows"
+        />
+        <button class="button">Suchen</button>
+        <button class="button">Erstellen</button>
+        <button class="buttonDelete">Löschen</button>
+      </div>
     </div>
-
-</template>
-
-<script>
-    
-</script>
+  </template>
+  
+  <script>
+  import TableComponent from '@/components/TableComponent.vue';
+  
+  export default {
+    components: {
+      TableComponent
+    },
+    data() {
+      return {
+        verfahrenRows: [
+          { label: null, inputs: [{ type: 'text', placeholder: 'Verfahrens-ID' }, ] },
+          { label: null, inputs: [{ type: 'text', placeholder: 'Verfahrens-Name' }, ] },
+          { label: null, inputs: [{ type: 'text', placeholder: 'Tag' }, ] },
+          { label: null, inputs: [{ type: 'text', placeholder: 'Zweck' }, ] },
+          { label: null, inputs: [{ type: 'text', placeholder: 'Laufzeit' }, ] },
+          // More rows for 'Verfahrens-Daten'
+        ],
+        personenRows: [
+          { label: 'Kundenmanagement:', inputs: [{ type: 'text', placeholder: 'Muster Name' }, /* more inputs */] },
+          // More rows for 'Personen-Daten'
+        ],
+        serverRows: [
+          { label: 'Name', inputs: [{ type: 'text', placeholder: 'Name' }, { type: 'checkbox' }] },
+          // More rows for 'Server'
+        ],
+        dbRows: [
+          { label: 'Name', inputs: [{ type: 'text', placeholder: 'Name' }] },
+          // More rows for 'Datenbanken'
+        ]
+      };
+    }
+  }
+  </script>
 
 <style>
     table.verfahren, table.personen, table.systeme, table.server, table.db
