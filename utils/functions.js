@@ -231,7 +231,7 @@ export async function createServer(newServerData) {
   }
 }
 
-export function loginFunction(email, password) {
+export function loginFunction(username, password) {
   // die Überprüfung der Anmeldedaten
 
   // Leitet den Benutzer zur Startseite der Website
