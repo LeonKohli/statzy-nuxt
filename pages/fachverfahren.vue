@@ -330,5 +330,12 @@
         border-radius: 10px;
         border: 5px solid #1E293B;
     }
+        /* Schwarze Schriftfarbe für Eingabefelder */
+    input.eingabe,
+    input.eingabeCheck,
+    input.eingabeDate,
+    select.eingabe {
+        color: black; /* Schriftfarbe auf Schwarz ändern */
+    }
 </style>
 
