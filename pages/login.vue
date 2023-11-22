@@ -45,7 +45,7 @@ export default {
     handleLogin() {
       const email = document.getElementById('username').value;
       const password = document.getElementById('password').value;
-      loginFunction(email, password);
+      loginFunction(username, password);
       // zusätzliche Logik z.B. Fehlerbehandlung
     }
   }
