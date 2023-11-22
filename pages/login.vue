@@ -120,7 +120,7 @@ export default {
     width: 100vw;
     height: 100vh;
   backdrop-filter: blur(10px); /* Apply backdrop-filter for blurring */
-  background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent background */
+  background-color: rgba(15, 23, 42, 0.5); /* Semi-transparent background */
 }
 
 .card {
@@ -134,7 +134,7 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+  box-shadow: 20px 20px 60px #334155, -20px -20px 60px #334155;
 }
 
 .bg {
@@ -144,11 +144,11 @@ export default {
   width: 190px;
   height: 240px;
   z-index: 2;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(51, 65, 85, 0.95);
   backdrop-filter: blur(24px);
   border-radius: 10px;
   overflow: hidden;
-  outline: 2px solid white;
+  outline: 2px solid #475569;
 }
 
 .blob {
