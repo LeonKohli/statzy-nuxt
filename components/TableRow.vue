@@ -9,9 +9,9 @@
   </template>
 
   <style>
-tr.component-row{
+/* tr.component-row{
   display: inline-block;
-}
+} */
 </style>
   
   <script>

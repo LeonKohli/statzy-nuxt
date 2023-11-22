@@ -1,4 +1,73 @@
-  <template>
+<template>
+    <div> 
+      <h1 class="fachverfahrenh1">Fachverfahren</h1>
+      <div class="suchmaske">
+        <h2 class="fachverfahrenh2">Verfahrens-Daten</h2>
+        <TableComponent 
+          tableClass="verfahren" 
+          :rows="verfahrenRows"
+        />
+        <h2 class="fachverfahrenh2">Personen-Daten</h2>
+        
+        <TableComponent 
+          tableClass="personen" 
+          :rows="personenRows"
+        />
+        <h2 class="fachverfahrenh2">Server</h2>
+        <TableComponent 
+          tableClass="server" 
+          :rows="serverRows"
+        />
+        <h2 class="fachverfahrenh2">Datenbanken</h2>
+        <TableComponent 
+          tableClass="db" 
+          :rows="dbRows"
+        />
+        <button class="button">Suchen</button>
+        <button class="button">Erstellen</button>
+        <button class="buttonDelete">Löschen</button>
+      </div>
+    </div>
+  </template>
+  
+  <script>
+  import TableComponent from '@/components/TableComponent.vue';
+  
+  export default {
+    components: {
+      TableComponent
+    },
+    data() {
+      return {
+        verfahrenRows: [
+          { label: null, inputs: [{ type: 'text', placeholder: 'Verfahrens-ID' }, ] },
+          { label: null, inputs: [{ type: 'text', placeholder: 'Verfahrens-Name' }, ] },
+          { label: null, inputs: [{ type: 'text', placeholder: 'Tag' }, ] },
+          { label: null, inputs: [{ type: 'text', placeholder: 'Zweck' }, ] },
+          { label: null, inputs: [{ type: 'text', placeholder: 'Laufzeit' }, ] },
+          // More rows for 'Verfahrens-Daten'
+        ],
+        personenRows: [
+          { label: 'Kundenmanagement:', inputs: [{ type: 'text', placeholder: 'Muster Name' },{ type: 'text', placeholder: 'Muster Vorname' },{ type: 'text', placeholder: 'Muster Dezernat' },{ type: 'text', placeholder: 'Muster Telefon' }, ] },
+          { label: 'Fachadministration:', inputs: [{ type: 'text', placeholder: 'Muster Name' },{ type: 'text', placeholder: 'Muster Vorname' },{ type: 'text', placeholder: 'Muster Dezernat' },{ type: 'text', placeholder: 'Muster Telefon' }, ] },
+          { label: 'Auftraggeber:', inputs: [{ type: 'text', placeholder: 'Muster Name' },{ type: 'text', placeholder: 'Muster Vorname' },{ type: 'text', placeholder: 'Muster Dezernat' },{ type: 'text', placeholder: 'Muster Telefon' }, ] },
+          { label: 'Verfahrensbetreuer:', inputs: [{ type: 'text', placeholder: 'Muster Name' },{ type: 'text', placeholder: 'Muster Vorname' },{ type: 'text', placeholder: 'Muster Dezernat' },{ type: 'text', placeholder: 'Muster Telefon' }, ] },
+          // More rows for 'Personen-Daten'
+        ],
+        serverRows: [
+          { label: 'Name', inputs: [{ type: 'text', placeholder: 'Name' }, { type: 'checkbox' }] },
+          // More rows for 'Server'
+        ],
+        dbRows: [
+          { label: 'Name', inputs: [{ type: 'text', placeholder: 'Name' }] },
+          // More rows for 'Datenbanken'
+        ]
+      };
+    }
+  }
+  </script>
+
+  <!-- <template>
     <div> 
         <h1 class="fachverfahrenh1"> Fachverfahren </h1>
         <div>
@@ -161,7 +230,7 @@
             <br>
         </div>
       </div>
-</template>
+</template> -->
 <style>
     table.verfahren, table.personen, table.systeme, table.server, table.db
     {
