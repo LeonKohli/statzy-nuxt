@@ -12,16 +12,22 @@
           <form class="space-y-4 md:space-y-6" @submit.prevent="handleLogin">
             <div>
               <label for="email" class="block mb-2 text-sm font-medium text-white">Benutzername</label>
-              <input type="username" name="username" id="username" class="bg-slate-600 border border-transparent text-white sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Benutzername" required />
+              <input type="username" name="username" id="username"
+                class="bg-slate-600 border border-transparent text-white sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                placeholder="Benutzername" required />
             </div>
             <div>
               <label for="password" class="block mb-2 text-sm font-medium text-white">Passwort</label>
-              <input type="password" name="password" id="password" placeholder="••••••••" class="bg-slate-600 border border-transparent text-white sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
+              <input type="password" name="password" id="password" placeholder="••••••••"
+                class="bg-slate-600 border border-transparent text-white sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                required />
             </div>
             <div class="flex items-center justify-between">
-              <a href="#" class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">Passwort vergessen?</a>
+              <a href="#" class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">Passwort
+                vergessen?</a>
             </div>
-            <button type="submit" class="w-full px-5 py-3 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue">Login</button>
+            <button type="submit"
+              class="w-full px-5 py-3 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue">Login</button>
           </form>
         </div>
       </div>
@@ -33,6 +39,7 @@
 import { useToken } from '~/composables/useToken';
 import { useLoggedIn } from '~/composables/useLoggedIn';
 import { useRouter } from 'vue-router';
+import { nextTick } from 'vue';
 
 export default {
   setup() {
@@ -60,10 +67,14 @@ export default {
         const data = await response.json();
         token.value = data.token;
 
-        if (isLoggedIn.value) {
-          router.push('/');
-        }
-      } catch (error) {
+        // Redirect after a short delay to ensure reactivity updates
+        setTimeout(() => {
+          if (isLoggedIn.value) {
+            router.push('/');
+          }
+        }, 100); // Adjust the delay as needed
+      }
+      catch (error) {
         console.error(error);
         // Handle login error (show message to user, etc.)
       }
