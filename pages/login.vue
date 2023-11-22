@@ -27,7 +27,8 @@
                 vergessen?</a>
             </div>
             <button type="submit"
-              class="w-full px-5 py-3 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue" @click="showPopup = true">Login</button>
+              class="w-full px-5 py-3 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue"
+              @click="showPopup = true">Login</button>
           </form>
         </div>
       </div>
@@ -54,6 +55,7 @@ export default {
     const isLoggedIn = useLoggedIn();
     const router = useRouter();
 
+    // Inside your login script
     const handleLogin = async () => {
       const username = document.getElementById('username').value;
       const password = document.getElementById('password').value;
@@ -74,18 +76,14 @@ export default {
         const data = await response.json();
         token.value = data.token;
 
-        // Redirect after a short delay to ensure reactivity updates
-        setTimeout(() => {
-          if (isLoggedIn.value) {
-            router.push('/');
-          }
-        }, 100); // Adjust the delay as needed
-      }
-      catch (error) {
+        // Redirect to home page
+        router.push('/');
+      } catch (error) {
         console.error(error);
         // Handle login error (show message to user, etc.)
       }
     };
+
 
     return { handleLogin };
   }
