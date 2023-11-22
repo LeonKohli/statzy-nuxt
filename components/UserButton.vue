@@ -1,6 +1,6 @@
 <template>
   <button class="user-button">
-    <img src="/path-to-user-icon.png" alt="User" />
+    <img src="https://avatars.githubusercontent.com/u/98176333?v=4" alt="User" />
   </button>
 </template>
 

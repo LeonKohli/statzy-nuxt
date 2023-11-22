@@ -38,17 +38,46 @@
 </template>
 
 <script>
-import { loginFunction } from '../utils/functions.js';
+import { useToken } from '~/composables/useToken';
+import { useLoggedIn } from '~/composables/useLoggedIn';
+import { useRouter } from 'vue-router';
 
 export default {
-  methods: {
-    handleLogin() {
-      const email = document.getElementById('username').value;
+  setup() {
+    const token = useToken();
+    const isLoggedIn = useLoggedIn();
+    const router = useRouter();
+
+    const handleLogin = async () => {
+      const username = document.getElementById('username').value;
       const password = document.getElementById('password').value;
-      loginFunction(username, password);
-      // zusätzliche Logik z.B. Fehlerbehandlung
-    }
+
+      try {
+        const response = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ username, password }),
+        });
+
+        if (!response.ok) {
+          throw new Error('Login failed');
+        }
+
+        const data = await response.json();
+        token.value = data.token;
+
+        if (isLoggedIn.value) {
+          router.push('/');
+        }
+      } catch (error) {
+        console.error(error);
+        // Handle login error (show message to user, etc.)
+      }
+    };
+
+    return { handleLogin };
   }
-}
+};
 </script>
-../utils/functions.js

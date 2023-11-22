@@ -13,17 +13,17 @@
 
 <script lang="ts">
 import UserButton from './UserButton.vue';
-import type { NuxtLink } from '#build/components';
+import { useLoggedIn } from '~/composables/useLoggedIn';
 import { ref, onMounted, onUnmounted } from 'vue';
 
 export default {
-    components: {
-        UserButton,
-    },
-    setup() {
-        const isNavbarHidden = ref(false);
-        const isLoggedIn = ref(false);
-        let lastScrollTop = 0;
+  components: {
+    UserButton,
+  },
+  setup() {
+    const isNavbarHidden = ref(false);
+    const isLoggedIn = useLoggedIn();
+    let lastScrollTop = 0;
 
         const handleScroll = () => {
             let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
@@ -43,7 +43,7 @@ export default {
             window.removeEventListener('scroll', handleScroll);
         });
 
-        return { isNavbarHidden };
+        return { isNavbarHidden, isLoggedIn };
     }
 }
 </script>
