@@ -6,4 +6,5 @@ export default defineNuxtConfig({
     'nuxt-headlessui',
     'nuxt-icon'
   ]
-})
+}
+)
