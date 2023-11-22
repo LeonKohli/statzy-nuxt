@@ -9,7 +9,7 @@
           <h1 class="text-2xl font-bold leading-tight tracking-tight text-white md:text-3xl">
             Sign in to your account
           </h1>
-          <form class="space-y-4 md:space-y-6" action="#">
+          <form class="space-y-4 md:space-y-6" @submit.prevent="handleLogin">
             <div>
               <label for="email" class="block mb-2 text-sm font-medium text-white">Your email</label>
               <input type="email" name="email" id="email" class="bg-slate-600 border border-transparent text-white sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="name@company.com" required />
@@ -36,3 +36,18 @@
     </div>
   </section>
 </template>
+
+<script>
+import { loginFunction } from './functions.js';
+
+export default {
+  methods: {
+    handleLogin() {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      loginFunction(email, password);
+      // zusätzliche Logik z.B. Fehlerbehandlung
+    }
+  }
+}
+</script>

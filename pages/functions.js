@@ -230,3 +230,10 @@ export async function createServer(newServerData) {
     return null; // Return null or handle the error as needed
   }
 }
+
+export function loginFunction(email, password) {
+  // die Überprüfung der Anmeldedaten
+
+  // Leitet den Benutzer zur Startseite der Website
+  window.location.href = '/fachverfahren';
+}
