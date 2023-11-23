@@ -192,12 +192,60 @@
 export default {
     data() {
         return {
+            fachverfahrenId: '',
+            verfahrensName: '',
+            verfahrensTag: '',
+            verfahrensZweck: '',
+            verfahrensLaufzeit: '',
             Error: false,
             Server: false,
             DB: false,
+            // ... Weitere Datenfelder nach Bedarf
         };
     },
     methods: {
+        async sucheFachverfahren() {
+            try {
+            // Führe die API-Anfrage durch, um Fachverfahrensdaten für die angegebene ID abzurufen
+            const fachverfahrenData = await fetchFachverfahrenById(this.fachverfahrenId);
+
+            // Überprüfe, ob Daten zurückgegeben wurden
+            if (fachverfahrenData) {
+                // Setze die anderen Eingabefelder mit den abgerufenen Daten
+                this.verfahrensName = fachverfahrenData.verfahrensName;
+                this.verfahrensTag = fachverfahrenData.verfahrensTag;
+                this.verfahrensZweck = fachverfahrenData.verfahrensZweck;
+                this.verfahrensLaufzeit = fachverfahrenData.verfahrensLaufzeit;
+                // ... Setze weitere Felder nach Bedarf
+
+                // Zeige eine Erfolgsmeldung im Terminal an
+                console.log('Fachverfahren erfolgreich gefunden:', fachverfahrenData);
+            } else {
+                // Handle den Fall, dass keine Daten gefunden wurden
+                console.warn('Fachverfahren nicht gefunden.');
+
+                // Setze die anderen Felder auf leere Werte oder handle es entsprechend
+                this.verfahrensName = '';
+                this.verfahrensTag = '';
+                this.verfahrensZweck = '';
+                this.verfahrensLaufzeit = '';
+                // ... Setze weitere Felder nach Bedarf
+
+                // Zeige das Popup für den Fehler an
+                this.showPopup = true;
+                }
+            } catch (error) {
+                console.error('Fehler bei der Suche nach Fachverfahren:', error);
+                // Handle den Fehler angemessen, zum Beispiel zeige eine Fehlermeldung an
+                // Zeige das Popup für den Fehler an
+                this.showPopup = true;
+            } finally {
+                // Schließe das Popup, unabhängig davon, ob die Suche erfolgreich war oder nicht
+                this.showPopup = false;
+            }
+        },
+
+        // ... Weitere Methoden nach Bedarf
         openPopupError() {
             this.Error = true;
         },
@@ -208,7 +256,7 @@ export default {
             this.DB = true;
         },
     },
-};
+}
 </script>
 
 <style>
