@@ -1,4 +1,4 @@
-  <template>
+<template>
     <div> 
         <h1 class="fachverfahrenh1"> Fachverfahren </h1>
         <div>
@@ -66,7 +66,7 @@
                         <td class="tabledata"> <input class="eingabe" type="number" placeholder="Zahl"/> </td>
                     </tr>
                 </table>
-                <button class="button"> Suchen </button>
+                <button class="button" @click="showPopup = false"> Suchen </button>
             </div>
             <br>
             <hr class="line">
@@ -167,8 +167,33 @@
             <br>
             <br>
         </div>
-      </div>
+        <div v-if="showPopup" class="popup">
+        <button class="close-button" @click="showPopup = false">Close</button>
+            <div class="card">
+                <div class="bg"></div>
+                <div class="blob"></div>
+                <p class="popup-überschrift">Incorrect Login</p>
+                <p class="popup-text">Please check password and username</p>
+            </div>
+        </div>
+    </div>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+        showPopup: false,
+        };
+    },
+    methods: {
+        searchError() {
+        this.showPopup = true;
+        },
+    },
+};
+</script>
+
 <style>
     table.verfahren, table.personen, table.systeme, table.server, table.db
     {
@@ -353,5 +378,138 @@
     select.eingabe {
         color: black; /* Schriftfarbe auf Schwarz ändern */
     }
+
+
+
+.popup {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    top: 50%;
+        
+    border-radius: 8px; /* Optional: for rounded corners */
+    padding: 20px; /* Optional: for some spacing inside the popup */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: for a subtle shadow */
+}
+.popup::before{
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(10px); /* Apply backdrop-filter for blurring */
+    background-color: rgba(15, 23, 42, 0.5); /* Semi-transparent background */
+}
+
+.card {
+    position: relative;
+    width: 200px;
+    height: 250px;
+    border-radius: 14px;
+    z-index: 1111;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 20px 20px 60px #334155, -20px -20px 60px #334155;
+}
+
+.bg {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 190px;
+    height: 240px;
+    z-index: 2;
+    background: rgba(51, 65, 85, 0.95);
+    backdrop-filter: blur(24px);
+    border-radius: 10px;
+    overflow: hidden;
+    outline: 2px solid #475569;
+}
+
+.blob {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: #ff0000;
+    opacity: 1;
+    filter: blur(12px);
+    animation: blob-bounce 5s infinite ease;
+}
+.popup-überschrift {
+    color: rgb(255, 255, 255);
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    background-color: rgb(255, 10, 10);
+    border-radius: 5px;
+    z-index: 10;
+    font-size: 16px;
+    margin-top: 10px;
+    text-align: center; /* Added text-align center */
+}
+
+.popup-text {
+    color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+    z-index: 10;
+    font-size: 16px;
+    margin-top: 10px;
+    text-align: center; /* Added text-align center */
+}
+
+@keyframes blob-bounce {
+    0% {
+        transform: translate(-100%, -100%) translate3d(0, 0, 0);
+    }
+
+    25% {
+        transform: translate(-100%, -100%) translate3d(100%, 0, 0);
+    }
+
+    50% {
+        transform: translate(-100%, -100%) translate3d(100%, 100%, 0);
+    }
+
+    75% {
+        transform: translate(-100%, -100%) translate3d(0, 100%, 0);
+    }
+
+    100% {
+        transform: translate(-100%, -100%) translate3d(0, 0, 0);
+    }
+}
+
+.close-button {
+    position: absolute;
+    z-index: 1;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px 16px;
+    background-color: #334155;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 10000;
+    outline: 2px solid #475569;
+}
+.close-button:hover { 
+    background-color: #dc2626;
+    color: #fff;
+}
 </style>
 
