@@ -87,8 +87,7 @@
         <div v-if="Server" class="popupVerfahrenServer">
             <button class="close-button-verfahren-server" @click="Server = false"> Close </button>
             <div class="cardVerfahrenServer">
-                <div class="bgVerfahrenServer"></div>
-                <div class="blob"></div>
+                <div class="blob-server"></div>
             </div>
             <div class="server">
                 <h2 class="fachverfahrenh2"> Server </h2>
@@ -152,7 +151,6 @@
         <div v-if="DB" class="popupVerfahrenDB">
             <button class="close-button-verfahren-db" @click="DB = false"> Close </button>
             <div class="cardVerfahrenDB">
-                <div class="bgVerfahrenDB"></div>
                 <div class="blob"></div>
             </div>
             <div class="datenbanken">
@@ -307,6 +305,11 @@ export default {
     tr > th.tableheadtop:nth-child(n + 2):nth-child(-n + 5)
     {
         border-bottom: 1px solid #475569;
+    }
+
+    table.db > tbody > tr > th
+    {
+        padding-left: 10px;
     }
 
     th.tableheadside
@@ -550,15 +553,15 @@ export default {
         transform: translateX(-50%) translateY(-50%);
         display: block;
         width: 100vw;
-        height: 110vh;
+        height: 120vh;
         backdrop-filter: blur(10px); /* Apply backdrop-filter for blurring */
         background-color: rgba(15, 23, 42, 0.5); /* Semi-transparent background */
     }
 
     .cardVerfahrenServer {
         position: relative;
-        width: 250px;
-        height: 250px;
+        width: 820px;
+        height: 690px;
         border-radius: 14px;
         z-index: 1111;
         overflow: hidden;
@@ -569,18 +572,11 @@ export default {
         box-shadow: 20px 20px 60px #334155, -20px -20px 60px #334155;
     }
 
-    .bgVerfahrenServer {
+    div.server {
+        top: -5.6%;
         position: absolute;
-        top: 5px;
-        left: 5px;
-        width: 240px;
-        height: 240px;
-        z-index: 2;
-        background: rgba(51, 65, 85, 0.95);
-        backdrop-filter: blur(24px);
-        border-radius: 10px;
-        overflow: hidden;
-        outline: 2px solid #475569;
+        left: 2.8%;
+        z-index: 1111;
     }
 
     .popupVerfahrenDB {
@@ -618,20 +614,6 @@ export default {
         align-items: center;
         justify-content: center;
         box-shadow: 20px 20px 60px #334155, -20px -20px 60px #334155;
-    }
-
-    .bgVerfahrenDB {
-        position: absolute;
-        top: 5px;
-        left: 5px;
-        width: 240px;
-        height: 240px;
-        z-index: 2;
-        background: rgba(51, 65, 85, 0.95);
-        backdrop-filter: blur(24px);
-        border-radius: 10px;
-        overflow: hidden;
-        outline: 2px solid #475569;
     }
 
     .create-button {
@@ -687,8 +669,8 @@ export default {
     .close-button-verfahren-server {
     position: absolute;
     z-index: 1;
-    bottom: 10px;
-    left: 75%;
+    bottom: 50px;
+    left: 70%;
     transform: translateX(-50%);
     padding: 8px 16px;
     background-color: #334155;
@@ -732,6 +714,20 @@ export default {
     .close-button-verfahren-db:active { 
         scale: 90%;
         transition-duration: 25ms;
+    }
+
+    .blob-server {
+        position: absolute;
+        z-index: 1;
+        top: 50%;
+        left: 50%;
+        width: 550px;
+        height: 550px;
+        border-radius: 50%;
+        background-color: #2563eb;
+        opacity: 1;
+        filter: blur(12px);
+        animation: blob-bounce 5s infinite ease;
     }
 
 </style>
