@@ -46,6 +46,8 @@
       <div class="card">
         <div class="bg"></div>
         <div class="blob"></div>
+        <p class="popup-überschrift">Incorrect Login</p>
+        <p class="popup-text">Please check password and username</p>
       </div>
     </div>
   </section>
@@ -120,6 +122,29 @@
   filter: blur(12px);
   animation: blob-bounce 5s infinite ease;
 }
+.popup-überschrift {
+  color: rgb(255, 255, 255);
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  background-color: rgb(255, 10, 10);
+  border-radius: 5px;
+  z-index: 10;
+  font-size: 16px;
+  margin-top: 10px;
+  text-align: center; /* Added text-align center */
+}
+
+.popup-text {
+  color: white;
+  padding-left: 10px;
+  padding-right: 10px;
+  z-index: 10;
+  font-size: 16px;
+  margin-top: 10px;
+  text-align: center; /* Added text-align center */
+}
 
 @keyframes blob-bounce {
   0% {
@@ -145,15 +170,43 @@
 
 .close-button {
   position: absolute;
+  z-index: 1;
   bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
   padding: 8px 16px;
-  background-color: #ff0000;
+  background-color: #334155;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   z-index: 10000;
+  outline: 2px solid #475569;
+}
+.close-button:hover { 
+  background-color: #dc2626;
+  color: #fff;
+}
+
+@keyframes blob-bounce {
+  0% {
+    transform: translate(-100%, -100%) translate3d(0, 0, 0);
+  }
+
+  25% {
+    transform: translate(-100%, -100%) translate3d(100%, 0, 0);
+  }
+
+  50% {
+    transform: translate(-100%, -100%) translate3d(100%, 100%, 0);
+  }
+
+  75% {
+    transform: translate(-100%, -100%) translate3d(0, 100%, 0);
+  }
+
+  100% {
+    transform: translate(-100%, -100%) translate3d(0, 0, 0);
+  }
 }
 </style>
