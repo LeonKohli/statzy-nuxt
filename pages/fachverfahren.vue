@@ -3,7 +3,7 @@
         <h1 class="fachverfahrenh1"> Fachverfahren </h1>
         <div class="suchmaske">
             <!--form @submit.prevent="searchError"-->
-            <form @submit.prevent="searchServer">
+            <form @submit.prevent="sucheFachverfahren">
                 <h2 class="fachverfahrenh2"> Verfahrens-Daten </h2>
                 <table class="verfahren">
                     <tr>
