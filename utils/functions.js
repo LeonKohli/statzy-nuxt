@@ -366,3 +366,22 @@ export function loginFunction(username, password) {
   window.location.href = '/fachverfahren';
 }
 
+
+export async function searchPersonsByName(searchName) {
+  try {
+    const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
+    const response = await fetch(`${baseUrl}/api/persons/${encodeURIComponent(searchName)}.personen`);
+    if (!response.ok) {
+      if (response.status === 404) {
+        console.error('No matching names found');
+        return [];
+      }
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    return data.persons;
+  } catch (error) {
+    console.error('Error searching for persons:', error);
+    return []; // Return an empty array or handle the error as needed
+  }
+}

@@ -1,4 +1,4 @@
-// server/api/persons/[name]personen.js
+// server/api/persons/[name].personen.js
 import { query } from '../../db.js';
 
 export default defineEventHandler(async (event) => {
