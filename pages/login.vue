@@ -54,18 +54,18 @@
 </template>
 
 <script>
-/* export default {
-   data() {
-     return {
-       showPopup: false,
-     };
-   },
-   methods: {
-     handleLogin() {
-       this.showPopup = true;
-     },
-   },
- };*/
+//  export default {
+//    data() {
+//      return {
+//        showPopup: false,
+//      };
+//    },
+//    methods: {
+//      handleLogin() {
+//        this.showPopup = true;
+//      },
+//    },
+//  };
 </script>
 
 <style>
@@ -198,8 +198,13 @@
 .close-button:hover { 
   background-color: #dc2626;
   color: #fff;
+  transition-duration: 100ms;
 }
 
+.close-button:active { 
+        scale: 90%;
+        transition-duration: 25ms;
+    }
 @keyframes blob-bounce {
   0% {
     transform: translate(-100%, -100%) translate3d(0, 0, 0);
