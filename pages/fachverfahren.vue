@@ -204,6 +204,18 @@ export default {
         };
     },
     methods: {
+        async getServerDetails(serverId) {
+            try {
+                const response = await fetch(`/api/servers/${serverId}`);
+                const responseData = await response.json();
+                
+                // Angenommen, in der Antwort gibt es eine Eigenschaft 'serverDetails'
+                this.serverDetails = responseData.server;
+                console.log(`Details für Server mit ID ${serverId}:`, this.serverDetails);
+            } catch (error) {
+                console.error(`Fehler beim Abrufen der Details für Server mit ID ${serverId}:`, error);
+            }
+            },
         async sucheFachverfahren() {
             try {
             // Führe die API-Anfrage durch, um Fachverfahrensdaten für die angegebene ID abzurufen
@@ -257,6 +269,10 @@ export default {
         },
     },
 }
+
+
+
+
 </script>
 
 <style>
