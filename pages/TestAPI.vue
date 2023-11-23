@@ -191,7 +191,19 @@ export default {
       } catch (error) {
         console.error('Error fetching servers:', error);
       }
-    }
+    },
+    async getPersonDetails(personName) {
+      try {
+        const response = await fetch(`/api/persons/${encodeURIComponent(personName)}`);
+        const responseData = await response.json();
+        
+        // Assuming there's a property 'personDetails' in the response
+        this.personDetails = responseData.personDetails;
+        console.log(`Details for ${personName}:`, this.personDetails);
+      } catch (error) {
+        console.error(`Error fetching details for ${personName}:`, error);
+      }
+    },
   }
 };
 </script>

@@ -9,7 +9,7 @@ export default defineEventHandler(async (event) => {
   }
 
   let searchQuery = `
-    SELECT vornam, name, telefonnummer, dez 
+    SELECT name, vornam, dez, telefonnummer 
     FROM person
     WHERE name LIKE $1 OR vornam LIKE $1`;
   
