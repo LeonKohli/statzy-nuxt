@@ -151,7 +151,7 @@
         <div v-if="DB" class="popupVerfahrenDB">
             <button class="close-button-verfahren-db" @click="DB = false"> Close </button>
             <div class="cardVerfahrenDB">
-                <div class="blob"></div>
+                <div class="blob-db"></div>
             </div>
             <div class="datenbanken">
                 <h2 class="fachverfahrenh2"> Datenbanken </h2>
@@ -177,8 +177,9 @@
                         <td> <input class="eingabe" placeholder="Größe" /> </td>
                     </tr>
                 </table>
-                <button class="button"> Bearbeiten </button>
-                <button class="buttonDelete"> Löschen </button>
+                <button class="button-db"> Bearbeiten </button>
+                <button class="buttonDelete-db"> Löschen </button>
+                <span class="space"> </span>
             </div>
         </div>
         <br>
@@ -258,7 +259,7 @@ export default {
 </script>
 
 <style>
-    table.verfahren, table.personen, table.systeme, table.server, table.db
+    table.verfahren, table.personen, table.systeme, table.server
     {
         text-align: center;
         border-radius: 10px;
@@ -277,6 +278,15 @@ export default {
         color: white;
     }
 
+    table.db {
+        text-align: center;
+        border-radius: 10px;
+        background-color: #1e293b;
+        margin-left: auto;
+        margin-right: auto;
+        color: white;
+        margin-bottom: 20px;
+    }
 
     body {
         margin-top: 120px;
@@ -597,15 +607,15 @@ export default {
         transform: translateX(-50%) translateY(-50%);
         display: block;
         width: 100vw;
-        height: 110vh;
+        height: 120vh;
         backdrop-filter: blur(10px); /* Apply backdrop-filter for blurring */
         background-color: rgba(15, 23, 42, 0.5); /* Semi-transparent background */
     }
 
     .cardVerfahrenDB {
         position: relative;
-        width: 250px;
-        height: 250px;
+        width: 390px;
+        height: 580px;
         border-radius: 14px;
         z-index: 1111;
         overflow: hidden;
@@ -614,6 +624,80 @@ export default {
         align-items: center;
         justify-content: center;
         box-shadow: 20px 20px 60px #334155, -20px -20px 60px #334155;
+    }
+
+    button.button-db {
+        width: 146px; 
+        height: 31px; 
+        background: #475569; 
+        border-radius: 9px;
+        margin: 0 auto;
+        display: block;
+        margin-top: 25px;
+        margin-bottom: 25px;
+        font-weight: bolder;
+        color: white;
+        scale: 120%
+    }
+    button.button-db:active
+    {
+        scale: 90%;
+        background: #94a3b8; 
+        border-radius: 9px;
+        transition-duration: 30ms;
+    }
+    button.button-db:hover
+    {
+        transition-duration: 30ms;
+        background: #94a3b8; 
+    }
+
+    button.buttonDelete-db
+    {
+        width: 146px; 
+        height: 31px; 
+        background: #475569; 
+        border: 2px solid #ef4444; 
+        border-radius: 9px;
+        margin: 0 auto;
+        display: block;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        font-weight: bolder;
+        scale: 120%;
+        color: #ef4444;
+    }
+    button.buttonDelete-db:active
+    {
+        scale: 90%;
+        background: #dc2626; 
+        border-radius: 9px;
+        transition-duration: 30ms;
+        color: white;
+    }
+    button.buttonDelete-db:hover
+    {
+        transition-duration: 30ms;
+        background: #dc2626; 
+        color: white;
+    }
+
+    span.space {
+        width: 380px;
+        display: block;
+        background-color: #1e293b;
+        height: 230px;
+        position: absolute;
+        top: 71%;
+        border-radius: 10px;
+        z-index: -1;
+    }
+
+    div.datenbanken {
+        top: -6.3%;
+        position: absolute;
+        left: 5.7%;
+        z-index: 1111;
     }
 
     .create-button {
@@ -692,19 +776,18 @@ export default {
     }
 
     .close-button-verfahren-db {
-    position: absolute;
-    z-index: 1;
-    bottom: 10px;
-    left: 75%;
-    transform: translateX(-50%);
-    padding: 8px 16px;
-    background-color: #334155;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    z-index: 10000;
-    outline: 2px solid #475569;
+        position: absolute;
+        bottom: 45px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 8px 16px;
+        background-color: #334155;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        z-index: 10000;
+        outline: 2px solid #475569;
     }
     .close-button-verfahren-db:hover { 
         background-color: #dc2626;
@@ -723,6 +806,20 @@ export default {
         left: 50%;
         width: 550px;
         height: 550px;
+        border-radius: 50%;
+        background-color: #2563eb;
+        opacity: 1;
+        filter: blur(12px);
+        animation: blob-bounce 5s infinite ease;
+    }
+
+    .blob-db {
+        position: absolute;
+        z-index: 1;
+        top: 50%;
+        left: 50%;
+        width: 350px;
+        height: 350px;
         border-radius: 50%;
         background-color: #2563eb;
         opacity: 1;
