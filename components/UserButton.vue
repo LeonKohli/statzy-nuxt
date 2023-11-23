@@ -11,8 +11,10 @@
   </div>
 </template>
 
+
 <script>
 import { useRouter } from 'vue-router';
+import { useUserStore } from '@/stores/user'; // Import the user store
 
 export default {
   data() {
@@ -22,9 +24,11 @@ export default {
   },
   setup() {
     const router = useRouter();
+    const userStore = useUserStore(); // Use the user store
 
     const logout = () => {
-      router.push('/login'); // Redirect to login page
+      userStore.logout(); // Call the logout action from the store
+      router.push('/login'); // Redirect to the login page
     };
 
     return { logout };
@@ -36,6 +40,7 @@ export default {
   }
 }
 </script>
+
 
 <style scoped>
 .user-button {
