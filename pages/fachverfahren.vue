@@ -24,6 +24,16 @@
                 </table>
                 <button class="button" @click="showPopup = false"> Suchen </button>
             </form>
+            <div v-if="showPopup" class="popupVerfahren">
+                <button class="close-button-verfahren" @click="showPopup = false"> Close </button>
+                <button class="create-button" @click="showPopup = false"> Erstellen </button>
+                <div class="cardVerfahren">
+                    <div class="bgVerfahren"></div>
+                    <div class="blob"></div>
+                    <p class="popup-überschrift"> Kein Fachverfahren gefunden </p>
+                    <p class="popup-text"> Überprüfen sie ihre Suche <br> oder <br> Erstellen sie ein neues Fachverfahren </p>
+                </div>
+            </div>
         </div>
         <!-- <hr class="line"> -->
         <div class="personen col-span-2"> 
@@ -65,8 +75,12 @@
                     <td class="tabledata"> "Muster Telefon" </td>
                 </tr>
             </table>
-            <button class="button"> Bearbeiten </button>
-            <button class="button"> Erstellen </button>
+            <table class="personen-button">
+                <tr>
+                    <td class="tabledata"> <button class="button-person"> Bearbeiten </button> </td>
+                    <td class="tabledata"> <button class="button-person"> Erstellen </button> </td>
+                </tr>
+            </table>
         </div>
         <!-- <hr class="line"> -->
         <div class="server col-span-2">
@@ -153,17 +167,8 @@
             <button class="button"> Bearbeiten </button>
             <button class="buttonDelete"> Löschen </button>
         </div>
-
-        <div v-if="showPopup" class="popupVerfahren">
-        <button class="close-button-verfahren" @click="showPopup = false"> Close </button>
-        <button class="create-button" @click="showPopup = false"> Erstellen </button>
-            <div class="cardVerfahren">
-                <div class="bgVerfahren"></div>
-                <div class="blob"></div>
-                <p class="popup-überschrift"> No Procedure was found </p>
-                <p class="popup-text"> Check your Input-Data <br> or <br> create a new Procedure </p>
-            </div>
-        </div>
+        <br>
+        <br>
     </div>
 </template>
 
@@ -192,6 +197,16 @@ export default {
         margin-right: auto;
         color: white
     }
+
+    table.personen-button
+    {
+        text-align: center;
+        border-radius: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        color: white;
+    }
+
 
     body {
         margin-top: 120px;
@@ -308,7 +323,6 @@ export default {
         color: white;
         scale: 120%
     }
-
     button.button:active
     {
         scale: 90%;
@@ -316,7 +330,6 @@ export default {
         border-radius: 9px;
         transition-duration: 30ms;
     }
-
     button.button:hover
     {
         transition-duration: 30ms;
@@ -338,7 +351,6 @@ export default {
         scale: 120%;
         color: #dc2626;
     }
-
     button.buttonDelete:active
     {
         scale: 90%;
@@ -352,6 +364,35 @@ export default {
         transition-duration: 30ms;
         background: #dc2626; 
         color: white;
+    }
+
+    button.button-person
+    {
+        width: 146px; 
+        height: 31px; 
+        background: #1E293B; 
+        border-radius: 9px;
+        margin: 0 auto;
+        display: block;
+        margin-top: 25px;
+        margin-bottom: 25px;
+        font-weight: bolder;
+        color: white;
+        scale: 120%;
+        margin-right: 20px;
+        margin-left: 20px
+    }
+    button.button-person:active
+    {
+        scale: 90%;
+        background: #475569; 
+        border-radius: 9px;
+        transition-duration: 30ms;
+    }
+    button.button-person:hover
+    {
+        transition-duration: 30ms;
+        background: #475569; 
     }
 
     hr.line
