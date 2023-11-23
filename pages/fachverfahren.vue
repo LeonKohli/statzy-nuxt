@@ -1,9 +1,9 @@
 <template>
     <div class="grid grid-cols-3 gap-4"> 
-        <div>
+        <div class="col-span-3" >
             <h1 class="fachverfahrenh1"> Fachverfahren </h1>
         </div>
-        <div class="suchmaske">
+        <div class="suchmaske col-span-3">
             <form @submit.prevent="searchError">
                 <h2 class="fachverfahrenh2"> Verfahrens-Daten </h2>
                 <table class="verfahren">
@@ -26,7 +26,7 @@
             </form>
         </div>
         <!-- <hr class="line"> -->
-        <div class="personen"> 
+        <div class="personen col-span-2"> 
             <h2 class="fachverfahrenh2"> Personen-Daten </h2>
             <table class="personen">
                 <tr>
@@ -69,7 +69,7 @@
             <button class="button"> Erstellen </button>
         </div>
         <!-- <hr class="line"> -->
-        <div class="server">
+        <div class="server col-span-2">
             <h2 class="fachverfahrenh2"> Server </h2>
             <table class="server">
                 <tr>
@@ -153,7 +153,7 @@
             <button class="button"> Bearbeiten </button>
             <button class="buttonDelete"> Löschen </button>
         </div>
-        
+
         <div v-if="showPopup" class="popupVerfahren">
         <button class="close-button-verfahren" @click="showPopup = false"> Close </button>
         <button class="create-button" @click="showPopup = false"> Erstellen </button>
