@@ -293,6 +293,14 @@ export default {
                 this.verfahrensLaufzeit = fachverfahrenData.verfahrensLaufzeit;
                 // ... Setze weitere Felder nach Bedarf
 
+                // Rufe zusätzliche Personendaten mit der verfahrensId ab
+                const personenData = await fetchPersonVerf(this.fachverfahrenId);
+                if (personenData) {
+                    // Verarbeite die Personendaten
+                    // Zum Beispiel: this.personenName = personenData.name;
+                    // ... Setze weitere Felder nach Bedarf
+                }
+
                 // Zeige eine Erfolgsmeldung im Terminal an
                 console.log('Fachverfahren erfolgreich gefunden:', fachverfahrenData);
             } else {
@@ -308,19 +316,17 @@ export default {
 
                 // Zeige das Popup für den Fehler an
                 this.showPopup = true;
-                }
-            } catch (error) {
-                console.error('Fehler bei der Suche nach Fachverfahren:', error);
-                // Handle den Fehler angemessen, zum Beispiel zeige eine Fehlermeldung an
-                // Zeige das Popup für den Fehler an
-                this.showPopup = true;
-            } finally {
-                // Schließe das Popup, unabhängig davon, ob die Suche erfolgreich war oder nicht
-                this.showPopup = false;
             }
-        },
-
-        // ... Weitere Methoden nach Bedarf
+        } catch (error) {
+            console.error('Fehler bei der Suche nach Fachverfahren:', error);
+            // Handle den Fehler angemessen, zum Beispiel zeige eine Fehlermeldung an
+            // Zeige das Popup für den Fehler an
+            this.showPopup = true;
+        } finally {
+            // Schließe das Popup, unabhängig davon, ob die Suche erfolgreich war oder nicht
+            this.showPopup = false;
+        }
+    },
         openPopupError() {
             this.Error = true;
         },
