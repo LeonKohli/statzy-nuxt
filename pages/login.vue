@@ -54,6 +54,18 @@
 </template>
 
 <script>
+/* export default {
+   data() {
+     return {
+       showPopup: false,
+     };
+   },
+   methods: {
+     handleLogin() {
+       this.showPopup = true;
+     },
+   },
+ };*/
 </script>
 
 <style>
