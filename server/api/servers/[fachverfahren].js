@@ -6,7 +6,7 @@ export default defineEventHandler(async (event) => {
   const result = await query(`
   SELECT server.*, fachverfahren.name AS fachverfahren_name FROM public.server
   LEFT JOIN public.fachverfahren ON server.fachverfahren = fachverfahren.verf_id
-  WHERE server.server_id = $1`,
+  WHERE server.fachverfahren = '$1'`,
 
   
   [serverId]);
