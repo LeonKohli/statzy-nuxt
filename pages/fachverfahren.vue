@@ -2,30 +2,29 @@
     <div> 
         <h1 class="fachverfahrenh1"> Fachverfahren </h1>
         <div class="suchmaske">
-            <!--form @submit.prevent="searchError"-->
-            <form @submit.prevent="searchServer">
-                <h2 class="fachverfahrenh2"> Verfahrens-Daten </h2>
-                <table class="verfahren">
-                    <tr>
-                        <th class="tablehead"> Verfahrens-ID </th>
-                        <th class="tablehead"> Verfahrens-Name </th>
-                        <th class="tablehead"> Verfahrens-Tag </th>
-                        <th class="tablehead"> Verfahrens-Zweck </th>
-                        <th class="tablehead"> Verfahrens-Laufzeit </th>
-                    </tr>
-                    <tr>
-                        <td class="tabledata"> <input class="eingabe" placeholder="Verfahrens-ID"/> </td>
-                        <td class="tabledata"> <input class="eingabe" placeholder="Verfahrens-Name"/> </td>
-                        <td class="tabledata"> <input class="eingabe" placeholder="Tag"/> </td>
-                        <td class="tabledata"> <input class="eingabe" placeholder="Zweck"/> </td>
-                        <td class="tabledata"> <input class="eingabe" placeholder="Laufzeit"/> </td>
-                    </tr>
-                </table>
-                <button class="button" @click="sucheFachverfahren">Suchen</button>
-            </form>
-            <div v-if="showPopup" class="popupVerfahren">
-                <button class="close-button-verfahren" @click="showPopup = false"> Close </button>
-                <button class="create-button" @click="showPopup = false"> Erstellen </button>
+            <h2 class="fachverfahrenh2"> Verfahrens-Daten </h2>
+            <table class="verfahren">
+                <tr>
+                    <th class="tablehead"> Verfahrens-ID </th>
+                    <th class="tablehead"> Verfahrens-Name </th>
+                    <th class="tablehead"> Verfahrens-Tag </th>
+                    <th class="tablehead"> Verfahrens-Zweck </th>
+                    <th class="tablehead"> Verfahrens-Laufzeit </th>
+                </tr>
+                <tr>
+                    <td class="tabledata"> <input class="eingabe" placeholder="Verfahrens-ID"/> </td>
+                    <td class="tabledata"> <input class="eingabe" placeholder="Verfahrens-Name"/> </td>
+                    <td class="tabledata"> <input class="eingabe" placeholder="Tag"/> </td>
+                    <td class="tabledata"> <input class="eingabe" placeholder="Zweck"/> </td>
+                    <td class="tabledata"> <input class="eingabe" placeholder="Laufzeit"/> </td>
+                </tr>
+            </table>
+            <button class="button" @click="openPopupError"> Suchen </button>
+            <button class="button" @click="openPopupServer('Server')"> Server </button>
+            <button class="button" @click="openPopupDB('DB')"> DB </button>
+            <div v-if="Error" class="popupVerfahren">
+                <button class="close-button-verfahren" @click="Error = false"> Close </button>
+                <button class="create-button" @click="Error = false"> Erstellen </button>
                 <div class="cardVerfahren">
                     <div class="bgVerfahren"></div>
                     <div class="blob"></div>
@@ -85,11 +84,10 @@
         <br>
         <hr class="line">
         <br>
-        <div v-if="showPopupServer" class="popupVerfahrenServer">
-            <button class="close-button-verfahren-server" @click="showPopupServer = false"> Close </button>
+        <div v-if="Server" class="popupVerfahrenServer">
+            <button class="close-button-verfahren-server" @click="Server = false"> Close </button>
             <div class="cardVerfahrenServer">
-                <div class="bgVerfahrenServer"></div>
-                <div class="blob"></div>
+                <div class="blob-server"></div>
             </div>
             <div class="server">
                 <h2 class="fachverfahrenh2"> Server </h2>
@@ -148,7 +146,13 @@
                     </tr>
                 </table>
             </div>
-            <br>
+        </div>
+        <br>
+        <div v-if="DB" class="popupVerfahrenDB">
+            <button class="close-button-verfahren-db" @click="DB = false"> Close </button>
+            <div class="cardVerfahrenDB">
+                <div class="blob"></div>
+            </div>
             <div class="datenbanken">
                 <h2 class="fachverfahrenh2"> Datenbanken </h2>
                 <table class="db">
@@ -184,63 +188,73 @@
 
 <script>
 export default {
-  data() {
-    return {
-      fachverfahrenId: '',
-      verfahrensName: '',
-      verfahrensTag: '',
-      verfahrensZweck: '',
-      verfahrensLaufzeit: '',
-      showPopup: false,
-      // ... Weitere Datenfelder nach Bedarf
-    };
-  },
-  methods: {
-  async sucheFachverfahren() {
-    try {
-      // Führe die API-Anfrage durch, um Fachverfahrensdaten für die angegebene ID abzurufen
-      const fachverfahrenData = await fetchFachverfahrenById(this.fachverfahrenId);
+    data() {
+        return {
+            fachverfahrenId: '',
+            verfahrensName: '',
+            verfahrensTag: '',
+            verfahrensZweck: '',
+            verfahrensLaufzeit: '',
+            Error: false,
+            Server: false,
+            DB: false,
+            // ... Weitere Datenfelder nach Bedarf
+        };
+    },
+    methods: {
+        async sucheFachverfahren() {
+            try {
+            // Führe die API-Anfrage durch, um Fachverfahrensdaten für die angegebene ID abzurufen
+            const fachverfahrenData = await fetchFachverfahrenById(this.fachverfahrenId);
 
-      // Überprüfe, ob Daten zurückgegeben wurden
-      if (fachverfahrenData) {
-        // Setze die anderen Eingabefelder mit den abgerufenen Daten
-        this.verfahrensName = fachverfahrenData.verfahrensName;
-        this.verfahrensTag = fachverfahrenData.verfahrensTag;
-        this.verfahrensZweck = fachverfahrenData.verfahrensZweck;
-        this.verfahrensLaufzeit = fachverfahrenData.verfahrensLaufzeit;
-        // ... Setze weitere Felder nach Bedarf
+            // Überprüfe, ob Daten zurückgegeben wurden
+            if (fachverfahrenData) {
+                // Setze die anderen Eingabefelder mit den abgerufenen Daten
+                this.verfahrensName = fachverfahrenData.verfahrensName;
+                this.verfahrensTag = fachverfahrenData.verfahrensTag;
+                this.verfahrensZweck = fachverfahrenData.verfahrensZweck;
+                this.verfahrensLaufzeit = fachverfahrenData.verfahrensLaufzeit;
+                // ... Setze weitere Felder nach Bedarf
 
-        // Zeige eine Erfolgsmeldung im Terminal an
-        console.log('Fachverfahren erfolgreich gefunden:', fachverfahrenData);
+                // Zeige eine Erfolgsmeldung im Terminal an
+                console.log('Fachverfahren erfolgreich gefunden:', fachverfahrenData);
+            } else {
+                // Handle den Fall, dass keine Daten gefunden wurden
+                console.warn('Fachverfahren nicht gefunden.');
 
-      } else {
-        // Handle den Fall, dass keine Daten gefunden wurden
-        console.warn('Fachverfahren nicht gefunden.');
-        // Setze die anderen Felder auf leere Werte oder handle es entsprechend
-        this.verfahrensName = '';
-        this.verfahrensTag = '';
-        this.verfahrensZweck = '';
-        this.verfahrensLaufzeit = '';
-        // ... Setze weitere Felder nach Bedarf
+                // Setze die anderen Felder auf leere Werte oder handle es entsprechend
+                this.verfahrensName = '';
+                this.verfahrensTag = '';
+                this.verfahrensZweck = '';
+                this.verfahrensLaufzeit = '';
+                // ... Setze weitere Felder nach Bedarf
 
-        // Zeige das Popup für den Fehler an
-        this.showPopup = true;
-    
-      }
-    } catch (error) {
-      console.error('Fehler bei der Suche nach Fachverfahren:', error);
-      // Handle den Fehler angemessen, zum Beispiel zeige eine Fehlermeldung an
+                // Zeige das Popup für den Fehler an
+                this.showPopup = true;
+                }
+            } catch (error) {
+                console.error('Fehler bei der Suche nach Fachverfahren:', error);
+                // Handle den Fehler angemessen, zum Beispiel zeige eine Fehlermeldung an
+                // Zeige das Popup für den Fehler an
+                this.showPopup = true;
+            } finally {
+                // Schließe das Popup, unabhängig davon, ob die Suche erfolgreich war oder nicht
+                this.showPopup = false;
+            }
+        },
 
-      // Zeige das Popup für den Fehler an
-      this.showPopup = true;
-    } finally {
-      // Schließe das Popup, unabhängig davon, ob die Suche erfolgreich war oder nicht
-      this.showPopup = false;
-    }
-  },
-  // ... Weitere Methoden nach Bedarf
-},
-};
+        // ... Weitere Methoden nach Bedarf
+        openPopupError() {
+            this.Error = true;
+        },
+        openPopupServer() {
+            this.Server = true;
+        },
+        openPopupDB() {
+            this.DB = true;
+        },
+    },
+}
 </script>
 
 <style>
@@ -291,6 +305,11 @@ export default {
     tr > th.tableheadtop:nth-child(n + 2):nth-child(-n + 5)
     {
         border-bottom: 1px solid #475569;
+    }
+
+    table.db > tbody > tr > th
+    {
+        padding-left: 10px;
     }
 
     th.tableheadside
@@ -534,12 +553,56 @@ export default {
         transform: translateX(-50%) translateY(-50%);
         display: block;
         width: 100vw;
-        height: 110vh;
+        height: 120vh;
         backdrop-filter: blur(10px); /* Apply backdrop-filter for blurring */
         background-color: rgba(15, 23, 42, 0.5); /* Semi-transparent background */
     }
 
     .cardVerfahrenServer {
+        position: relative;
+        width: 820px;
+        height: 690px;
+        border-radius: 14px;
+        z-index: 1111;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 20px 20px 60px #334155, -20px -20px 60px #334155;
+    }
+
+    div.server {
+        top: -5.6%;
+        position: absolute;
+        left: 2.8%;
+        z-index: 1111;
+    }
+
+    .popupVerfahrenDB {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        top: 70%;
+        border-radius: 8px; /* Optional: for rounded corners */
+        padding: 20px; /* Optional: for some spacing inside the popup */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: for a subtle shadow */
+    }
+    .popupVerfahrenDB::before{
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        display: block;
+        width: 100vw;
+        height: 110vh;
+        backdrop-filter: blur(10px); /* Apply backdrop-filter for blurring */
+        background-color: rgba(15, 23, 42, 0.5); /* Semi-transparent background */
+    }
+
+    .cardVerfahrenDB {
         position: relative;
         width: 250px;
         height: 250px;
@@ -551,20 +614,6 @@ export default {
         align-items: center;
         justify-content: center;
         box-shadow: 20px 20px 60px #334155, -20px -20px 60px #334155;
-    }
-
-    .bgVerfahrenServer {
-        position: absolute;
-        top: 5px;
-        left: 5px;
-        width: 240px;
-        height: 240px;
-        z-index: 2;
-        background: rgba(51, 65, 85, 0.95);
-        backdrop-filter: blur(24px);
-        border-radius: 10px;
-        overflow: hidden;
-        outline: 2px solid #475569;
     }
 
     .create-button {
@@ -620,8 +669,8 @@ export default {
     .close-button-verfahren-server {
     position: absolute;
     z-index: 1;
-    bottom: 10px;
-    left: 75%;
+    bottom: 50px;
+    left: 70%;
     transform: translateX(-50%);
     padding: 8px 16px;
     background-color: #334155;
@@ -640,6 +689,45 @@ export default {
     .close-button-verfahren-server:active { 
         scale: 90%;
         transition-duration: 25ms;
+    }
+
+    .close-button-verfahren-db {
+    position: absolute;
+    z-index: 1;
+    bottom: 10px;
+    left: 75%;
+    transform: translateX(-50%);
+    padding: 8px 16px;
+    background-color: #334155;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 10000;
+    outline: 2px solid #475569;
+    }
+    .close-button-verfahren-db:hover { 
+        background-color: #dc2626;
+        color: #fff;
+        transition-duration: 100ms;
+    }
+    .close-button-verfahren-db:active { 
+        scale: 90%;
+        transition-duration: 25ms;
+    }
+
+    .blob-server {
+        position: absolute;
+        z-index: 1;
+        top: 50%;
+        left: 50%;
+        width: 550px;
+        height: 550px;
+        border-radius: 50%;
+        background-color: #2563eb;
+        opacity: 1;
+        filter: blur(12px);
+        animation: blob-bounce 5s infinite ease;
     }
 
 </style>

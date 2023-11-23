@@ -54,18 +54,18 @@
 </template>
 
 <script>
- export default {
-   data() {
-     return {
-       showPopup: false,
-     };
-   },
-   methods: {
-     handleLogin() {
-       this.showPopup = true;
-     },
-   },
- };
+  export default {
+    data() {
+      return {
+        showPopup: false,
+      };
+    },
+    methods: {
+      handleLogin() {
+        this.showPopup = true;
+      },
+    },
+  };
 </script>
 
 <style>
@@ -74,7 +74,6 @@
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
   top: 50%;
- 
   border-radius: 8px; /* Optional: for rounded corners */
   padding: 20px; /* Optional: for some spacing inside the popup */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: for a subtle shadow */
