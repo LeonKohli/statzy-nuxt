@@ -21,3 +21,4 @@ export default defineEventHandler(async (event) => {
 
   return { server: result.rows[0] };
 });
+1

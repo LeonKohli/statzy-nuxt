@@ -5,8 +5,7 @@
         <NuxtLink to="/" class="nav-link">Statzy</NuxtLink>
         <NuxtLink to="/fachverfahren" class="nav-link">Fachverfahren</NuxtLink>
       </nav>
-      <UserButton v-if="isLoggedIn" />
-      <NuxtLink to="/login" class="nav-link" v-if="!isLoggedIn">Login</NuxtLink>
+      <UserButton/>
     </div>
   </template>
   
