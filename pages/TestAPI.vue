@@ -107,6 +107,21 @@
                 </li>
             </ul>
         </div>
+        <div>
+          <h2>Test Fachverfahren Databases</h2>
+
+          <input v-model="fachverfahrenId" placeholder="Enter Fachverfahren ID" />
+          <button @click="fetchDatabasesForFachverfahren">Get Databases</button>
+
+          <div v-if="fachverfahrenDatabases.length > 0">
+              <h3>Databases:</h3>
+              <ul>
+                  <li v-for="database in fachverfahrenDatabases" :key="database.name">
+                      {{ database.name }} - {{ database.typ }}
+                  </li>
+              </ul>
+          </div>
+      </div>
     </div>
 </template>
 
@@ -136,7 +151,7 @@ export default {
         anmerkungen: '',
         user_ins: '',
         user_upd: '',
-        associatedPersons: ''
+        associatedPersons: '',
       },
       servers: [],
       dropdownData: {
@@ -148,7 +163,9 @@ export default {
         os: [],
         speichertyp: [],
         erreichbarkeit: [],
-      }
+      },
+      fachverfahrenId: '', // To store the input Fachverfahren ID
+fachverfahrenDatabases: [], // To store the databases associated with a Fachverfahren
     };
   },
   mounted() {
@@ -204,6 +221,26 @@ export default {
         console.error(`Error fetching details for ${personName}:`, error);
       }
     },
+    async fetchDatabasesForFachverfahren() {
+  if (!this.fachverfahrenId) {
+    alert('Please enter a Fachverfahren ID.');
+    return;
+  }
+
+  // Use window.location.origin to get the base URL of your Nuxt app
+  const baseUrl = window.location.origin;
+
+  try {
+    const response = await fetch(`${baseUrl}/api/databases/${encodeURIComponent(this.fachverfahrenId)}`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    this.fachverfahrenDatabases = await response.json();
+  } catch (error) {
+    console.error('Error fetching databases for Fachverfahren:', error.message);
+    this.fachverfahrenDatabases = []; // Reset in case of error
+  }
+},
   }
 };
 </script>
