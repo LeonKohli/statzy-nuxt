@@ -6,6 +6,13 @@
                 <h2 class="fachverfahrenh2"> Verfahrens-Daten </h2>
                 <table class="verfahren">
                     <tr>
+                        <th class="tablehead"> Verfahrens-ID </th>
+                        <th class="tablehead"> Verfahrens-Name </th>
+                        <th class="tablehead"> Verfahrens-Tag </th>
+                        <th class="tablehead"> Verfahrens-Zweck </th>
+                        <th class="tablehead"> Verfahrens-Laufzeit </th>
+                    </tr>
+                    <tr>
                         <td class="tabledata"> <input class="eingabe" placeholder="Verfahrens-ID"/> </td>
                         <td class="tabledata"> <input class="eingabe" placeholder="Verfahrens-Name"/> </td>
                         <td class="tabledata"> <input class="eingabe" placeholder="Tag"/> </td>
@@ -173,6 +180,11 @@
         color: white
     }
 
+    table.verfahren 
+    {
+        padding-top: 20px;
+    }
+
     table.server > tbody > tr > th, td
     {
         padding: 10px;
@@ -201,6 +213,11 @@
     th.tableheadside
     {
         border-right: 1px solid #475569;
+    }
+
+    th.tablehead 
+    {
+        padding-top: 15px;
     }
 
     input.eingabe
