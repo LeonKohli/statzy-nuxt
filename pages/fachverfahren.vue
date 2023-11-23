@@ -180,9 +180,8 @@
         color: white
     }
 
-    table.verfahren 
-    {
-        padding-top: 20px;
+    body {
+        margin-top: 120px;
     }
 
     table.server > tbody > tr > th, td
