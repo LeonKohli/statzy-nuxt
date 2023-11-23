@@ -12,7 +12,6 @@
 </template>
 
 <script>
-import { useToken } from '~/composables/useToken';
 import { useRouter } from 'vue-router';
 
 export default {
@@ -22,11 +21,9 @@ export default {
     };
   },
   setup() {
-    const token = useToken();
     const router = useRouter();
 
     const logout = () => {
-      token.value = null; // Clear the token
       router.push('/login'); // Redirect to login page
     };
 

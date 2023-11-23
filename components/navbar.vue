@@ -13,7 +13,6 @@
 
 <script lang="ts">
 import UserButton from './UserButton.vue';
-import { useLoggedIn } from '~/composables/useLoggedIn';
 import { ref, onMounted, onUnmounted } from 'vue';
 
 export default {
@@ -22,7 +21,6 @@ export default {
   },
   setup() {
     const isNavbarHidden = ref(false);
-    const isLoggedIn = useLoggedIn();
     let lastScrollTop = 0;
 
         const handleScroll = () => {
@@ -43,7 +41,7 @@ export default {
             window.removeEventListener('scroll', handleScroll);
         });
 
-        return { isNavbarHidden, isLoggedIn };
+        return { isNavbarHidden };
     }
 }
 </script>

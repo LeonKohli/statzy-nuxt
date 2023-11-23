@@ -173,6 +173,10 @@
         color: white
     }
 
+    body {
+        margin-top: 120px;
+    }
+
     table.server > tbody > tr > th, td
     {
         padding: 10px;

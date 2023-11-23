@@ -52,50 +52,6 @@
 </template>
 
 <script>
-import { useToken } from '~/composables/useToken';
-import { useLoggedIn } from '~/composables/useLoggedIn';
-import { useRouter } from 'vue-router';
-import { nextTick } from 'vue';
-
-export default {
-  setup() {
-    const token = useToken();
-    const isLoggedIn = useLoggedIn();
-    const router = useRouter();
-    const showPopup = ref(false);
-
-    // Inside your login script
-    const handleLogin = async () => {
-      const username = document.getElementById('username').value;
-      const password = document.getElementById('password').value;
-
-      try {
-        const response = await fetch('/api/auth/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ username, password }),
-        });
-
-        if (!response.ok) {
-          throw new Error('Login failed');
-        }
-
-        const data = await response.json();
-        token.value = data.token;
-
-        // Redirect to home page
-        router.push('/');
-      } catch (error) {
-        console.error(error);
-        // Handle login error (show message to user, etc.)
-      }
-    };
-
-    return { handleLogin, showPopup };
-  },
-};
 </script>
 
 <style>
