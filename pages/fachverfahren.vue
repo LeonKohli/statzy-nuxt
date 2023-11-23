@@ -31,7 +31,7 @@
                     <div class="bgVerfahren"></div>
                     <div class="blob"></div>
                     <p class="popup-überschrift"> Kein Fachverfahren gefunden </p>
-                    <p class="popup-text"> Überprüfen sie ihre Suche <br> oder <br> Erstellen sie ein neues Fachverfahren </p>
+                    <p class="popup-text"> Überprüfen sie ihre Suche  oder  Erstellen sie ein neues Fachverfahren </p>
                 </div>
             </div>
         </div>
@@ -167,8 +167,8 @@
             <button class="button"> Bearbeiten </button>
             <button class="buttonDelete"> Löschen </button>
         </div>
-        <br>
-        <br>
+        
+        
     </div>
 </template>
 
