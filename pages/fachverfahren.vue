@@ -319,12 +319,12 @@ export default {
                 // ... Setze weitere Felder nach Bedarf
 
                 // Rufe zusätzliche Personendaten mit der verfahrensId ab
-                /* const personenData = await fetchPersonVerf(this.fachverfahrenId);
+                const personenData = await fetchPersonVerf(this.fachverfahrenId);
                 if (personenData) {
                     // Verarbeite die Personendaten
                     // Zum Beispiel: this.personenName = personenData.name;
                     // ... Setze weitere Felder nach Bedarf
-                } */
+                }
 
                 // Zeige eine Erfolgsmeldung im Terminal an
                 console.log('Fachverfahren erfolgreich gefunden:', fachverfahrenData);
