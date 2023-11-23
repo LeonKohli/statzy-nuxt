@@ -19,7 +19,7 @@
                     <td class="tabledata"> <input class="eingabe" placeholder="Laufzeit"/> </td>
                 </tr>
             </table>
-            <button class="button" @click="openPopupError"> Suchen </button>
+            <button class="button" @click="sucheFachverfahren"> Suchen </button>
             <button class="button" @click="openPopupServer('Server')"> Server </button>
             <button class="button" @click="openPopupDB('DB')"> DB </button>
             <div v-if="Error" class="popupVerfahren">
