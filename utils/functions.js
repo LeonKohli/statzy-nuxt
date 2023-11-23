@@ -396,7 +396,7 @@ export async function searchPersonsByName(name) {
   }
 }
 
-async function fetchPersonVerf(verf_id) {
+export async function fetchPersonVerf(verf_id) {
   const apiUrl = `/api/fachverfahren/${verf_id}`;
 
   try {
