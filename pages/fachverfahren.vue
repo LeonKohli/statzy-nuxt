@@ -12,7 +12,7 @@
                     <th class="tablehead"> Verfahrens-Laufzeit </th>
                 </tr>
                 <tr>
-                    <td class="tabledata"> <input class="eingabe" placeholder="Verfahrens-ID"/> </td>
+                    <td class="tabledata"> <input class="eingabe" v-model="fachverfahrenId" placeholder="Verfahrens-ID"/> </td>
                     <td class="tabledata"> <input class="eingabe" placeholder="Verfahrens-Name"/> </td>
                     <td class="tabledata"> <input class="eingabe" placeholder="Tag"/> </td>
                     <td class="tabledata"> <input class="eingabe" placeholder="Zweck"/> </td>
@@ -319,12 +319,12 @@ export default {
                 // ... Setze weitere Felder nach Bedarf
 
                 // Rufe zusätzliche Personendaten mit der verfahrensId ab
-                const personenData = await fetchPersonVerf(this.fachverfahrenId);
+                /* const personenData = await fetchPersonVerf(this.fachverfahrenId);
                 if (personenData) {
                     // Verarbeite die Personendaten
                     // Zum Beispiel: this.personenName = personenData.name;
                     // ... Setze weitere Felder nach Bedarf
-                }
+                } */
 
                 // Zeige eine Erfolgsmeldung im Terminal an
                 console.log('Fachverfahren erfolgreich gefunden:', fachverfahrenData);
@@ -363,10 +363,6 @@ export default {
         },
     },
 }
-
-
-
-
 </script>
 
 <style>
