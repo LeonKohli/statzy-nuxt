@@ -1,74 +1,78 @@
-  <template>
+<template>
     <div> 
         <h1 class="fachverfahrenh1"> Fachverfahren </h1>
         <div>
             <div class="suchmaske">
-                <h2 class="fachverfahrenh2"> Verfahrens-Daten </h2>
-                <table class="verfahren">
-                    <tr>
-                        <td class="tabledata"> <input class="eingabe" placeholder="Verfahrens-ID"/> </td>
-                        <td class="tabledata"> <input class="eingabe" placeholder="Verfahrens-Name"/> </td>
-                        <td class="tabledata"> <input class="eingabe" placeholder="Tag"/> </td>
-                        <td class="tabledata"> <input class="eingabe" placeholder="Zweck"/> </td>
-                        <td class="tabledata"> <input class="eingabe" placeholder="Laufzeit"/> </td>
-                    </tr>
-                </table>
-                <br>
-                <h2 class="fachverfahrenh2"> Personen-Daten </h2>
-                <table class="personen">
-                    <tr>
-                        <th class="tableheadtop">  </th>
-                        <th class="tableheadtop"> Name </th>
-                        <th class="tableheadtop"> Vorname </th>
-                        <th class="tableheadtop"> Dezernat </th>
-                        <th class="tableheadtop"> Telefon </th>
-                    </tr> 
-                    <tr>
-                        <th class="tableheadside"> Kundenmanagament: </th>
-                        <td class="tabledata"> <input class="eingabe" placeholder="Muster Name"/> </td>
-                        <td class="tabledata"> "Muster Vorname" </td>
-                        <td class="tabledata"> "Muster Dezernat" </td>
-                        <td class="tabledata"> "Muster Telefon" </td>
-                    </tr>
-                    <tr>
-                        <th class="tableheadside"> Fachadministration: </th>
-                        <td class="tabledata"> <input class="eingabe" placeholder="Muster Name"/> </td>
-                        <td class="tabledata"> "Muster Vorname" </td>
-                        <td class="tabledata"> "Muster Dezernat" </td>
-                        <td class="tabledata"> "Muster Telefon" </td>
-                    </tr>
-                    <tr>
-                        <th class="tableheadside"> Auftraggeber: </th>
-                        <td class="tabledata"> <input class="eingabe" placeholder="Muster Name"/> </td>
-                        <td class="tabledata"> "Muster Vorname" </td>
-                        <td class="tabledata"> "Muster Dezernat" </td>
-                        <td class="tabledata"> "Muster Telefon" </td>
-                    </tr>
-                    <tr>
-                        <th class="tableheadside"> Verfahrensbetreuer: </th>
-                        <td class="tabledata"> <input class="eingabe" placeholder="Muster Name"/> </td>
-                        <td class="tabledata"> "Muster Vorname" </td>
-                        <td class="tabledata"> "Muster Dezernat" </td>
-                        <td class="tabledata"> "Muster Telefon" </td>
-                    </tr>
-                </table>
-                <br>
-                <table class="systeme"> 
-                    <tr> 
-                        <td class="tabledata"> Anzahl zugeordneter Systeme: "Anzahl" </td>
-                        <td class="tabledata"> <input class="eingabe" type="number" placeholder="Zahl"/> </td>
-                    </tr>
-                </table>
-                <button class="button"> Suchen </button>
+                <form @submit.prevent="searchError">
+                    <h2 class="fachverfahrenh2"> Verfahrens-Daten </h2>
+                    <table class="verfahren">
+                        <tr>
+                            <th class="tablehead"> Verfahrens-ID </th>
+                            <th class="tablehead"> Verfahrens-Name </th>
+                            <th class="tablehead"> Verfahrens-Tag </th>
+                            <th class="tablehead"> Verfahrens-Zweck </th>
+                            <th class="tablehead"> Verfahrens-Laufzeit </th>
+                        </tr>
+                        <tr>
+                            <td class="tabledata"> <input class="eingabe" placeholder="Verfahrens-ID"/> </td>
+                            <td class="tabledata"> <input class="eingabe" placeholder="Verfahrens-Name"/> </td>
+                            <td class="tabledata"> <input class="eingabe" placeholder="Tag"/> </td>
+                            <td class="tabledata"> <input class="eingabe" placeholder="Zweck"/> </td>
+                            <td class="tabledata"> <input class="eingabe" placeholder="Laufzeit"/> </td>
+                        </tr>
+                    </table>
+                    <br>
+                    <h2 class="fachverfahrenh2"> Personen-Daten </h2>
+                    <table class="personen">
+                        <tr>
+                            <th class="tableheadtop">  </th>
+                            <th class="tableheadtop"> Name </th>
+                            <th class="tableheadtop"> Vorname </th>
+                            <th class="tableheadtop"> Dezernat </th>
+                            <th class="tableheadtop"> Telefon </th>
+                        </tr> 
+                        <tr>
+                            <th class="tableheadside"> Kundenmanagament: </th>
+                            <td class="tabledata"> <input class="eingabe" placeholder="Muster Name"/> </td>
+                            <td class="tabledata"> "Muster Vorname" </td>
+                            <td class="tabledata"> "Muster Dezernat" </td>
+                            <td class="tabledata"> "Muster Telefon" </td>
+                        </tr>
+                        <tr>
+                            <th class="tableheadside"> Fachadministration: </th>
+                            <td class="tabledata"> <input class="eingabe" placeholder="Muster Name"/> </td>
+                            <td class="tabledata"> "Muster Vorname" </td>
+                            <td class="tabledata"> "Muster Dezernat" </td>
+                            <td class="tabledata"> "Muster Telefon" </td>
+                        </tr>
+                        <tr>
+                            <th class="tableheadside"> Auftraggeber: </th>
+                            <td class="tabledata"> <input class="eingabe" placeholder="Muster Name"/> </td>
+                            <td class="tabledata"> "Muster Vorname" </td>
+                            <td class="tabledata"> "Muster Dezernat" </td>
+                            <td class="tabledata"> "Muster Telefon" </td>
+                        </tr>
+                        <tr>
+                            <th class="tableheadside"> Verfahrensbetreuer: </th>
+                            <td class="tabledata"> <input class="eingabe" placeholder="Muster Name"/> </td>
+                            <td class="tabledata"> "Muster Vorname" </td>
+                            <td class="tabledata"> "Muster Dezernat" </td>
+                            <td class="tabledata"> "Muster Telefon" </td>
+                        </tr>
+                    </table>
+                    <br>
+                    <table class="systeme"> 
+                        <tr> 
+                            <td class="tabledata"> Anzahl zugeordneter Systeme: "Anzahl" </td>
+                            <td class="tabledata"> <input class="eingabe" type="number" placeholder="Zahl"/> </td>
+                        </tr>
+                    </table>
+                    <button class="button" @click="showPopup = false"> Suchen </button>
+                </form>
             </div>
             <br>
             <hr class="line">
             <br>
-            <div class="messageContainer">
-                <span> Message "Successfull | ERROR" </span>
-                <br>
-                <br>
-                <button class="button"> Erstellen </button>
             </div>
             <hr class="line">
             <div class="server">
@@ -160,8 +164,33 @@
             <br>
             <br>
         </div>
-      </div>
+        <div v-if="showPopup" class="popupVerfahren">
+        <button class="close-button-verfahren" @click="showPopup = false"> Close </button>
+        <button class="create-button" @click="showPopup = false"> Erstellen </button>
+            <div class="cardVerfahren">
+                <div class="bgVerfahren"></div>
+                <div class="blob"></div>
+                <p class="popup-überschrift"> No Procedure was found </p>
+                <p class="popup-text"> Check your Input-Data <br> or <br> create a new Procedure </p>
+            </div>
+        </div>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+        showPopup: false,
+        };
+    },
+    methods: {
+        searchError() {
+        this.showPopup = true;
+        },
+    },
+};
+</script>
+
 <style>
     table.verfahren, table.personen, table.systeme, table.server, table.db
     {
@@ -205,6 +234,11 @@
     th.tableheadside
     {
         border-right: 1px solid #475569;
+    }
+
+    th.tablehead 
+    {
+        padding-top: 15px;
     }
 
     input.eingabe
@@ -341,5 +375,108 @@
     select.eingabe {
         color: black; /* Schriftfarbe auf Schwarz ändern */
     }
+
+    .popupVerfahren {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        top: 50%;
+            
+        border-radius: 8px; /* Optional: for rounded corners */
+        padding: 20px; /* Optional: for some spacing inside the popup */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: for a subtle shadow */
+    }
+    .popupVerfahren::before{
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        display: block;
+        width: 100vw;
+        height: 110vh;
+        backdrop-filter: blur(10px); /* Apply backdrop-filter for blurring */
+        background-color: rgba(15, 23, 42, 0.5); /* Semi-transparent background */
+    }
+
+    .cardVerfahren {
+        position: relative;
+        width: 250px;
+        height: 250px;
+        border-radius: 14px;
+        z-index: 1111;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 20px 20px 60px #334155, -20px -20px 60px #334155;
+    }
+
+    .bgVerfahren {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        width: 240px;
+        height: 240px;
+        z-index: 2;
+        background: rgba(51, 65, 85, 0.95);
+        backdrop-filter: blur(24px);
+        border-radius: 10px;
+        overflow: hidden;
+        outline: 2px solid #475569;
+    }
+
+    .create-button {
+    position: absolute;
+    z-index: 1;
+    bottom: 10px;
+    left: 30%;
+    transform: translateX(-50%);
+    padding: 8px 16px;
+    background-color: #334155;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 10000;
+    outline: 2px solid #475569;
+    }
+    .create-button:hover { 
+        background-color: #1d4ed8;
+        color: #fff;
+        transition-duration: 100ms;
+    }
+    .create-button:active { 
+        scale: 90%;
+        transition-duration: 25ms;
+    }
+
+    .close-button-verfahren {
+    position: absolute;
+    z-index: 1;
+    bottom: 10px;
+    left: 75%;
+    transform: translateX(-50%);
+    padding: 8px 16px;
+    background-color: #334155;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 10000;
+    outline: 2px solid #475569;
+    }
+    .close-button-verfahren:hover { 
+        background-color: #dc2626;
+        color: #fff;
+        transition-duration: 100ms;
+    }
+    .close-button-verfahren:active { 
+        scale: 90%;
+        transition-duration: 25ms;
+    }
+
 </style>
 

@@ -367,21 +367,25 @@ export function loginFunction(username, password) {
 }
 
 
-export async function searchPersonsByName(searchName) {
+export async function searchPersonsByName(name) {
   try {
-    const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
-    const response = await fetch(`${baseUrl}/api/persons/${encodeURIComponent(searchName)}.personen`);
-    if (!response.ok) {
-      if (response.status === 404) {
-        console.error('No matching names found');
-        return [];
-      }
-      throw new Error(`HTTP error! status: ${response.status}`);
+    if (!name || name.length < 2) {
+      return []; // Frühzeitige Rückkehr, wenn die Eingabe zu kurz ist
     }
+
+    const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
+    const encodedName = encodeURIComponent(name);
+    const response = await fetch(`${baseUrl}/api/persons/${encodedName}`);
+
+    if (!response.ok) {
+      // Behandelt alle HTTP-Fehler, inklusive 404, wie vom Server definiert
+      throw new Error(`HTTP-Fehler! Status: ${response.status}`);
+    }
+
     const data = await response.json();
     return data.persons;
   } catch (error) {
-    console.error('Error searching for persons:', error);
-    return []; // Return an empty array or handle the error as needed
+    console.error('Fehler bei der Suche nach Personen:', error);
+    return []; // Gibt ein leeres Array zurück im Fehlerfall
   }
 }
