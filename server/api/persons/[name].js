@@ -1,11 +1,11 @@
-// server/api/persons/[name].personen.js
+// server/api/persons/[name].js
 import { query } from '../../db.js';
 
 export default defineEventHandler(async (event) => {
   const name = event.context.params.name;
 
   if (!name || name.length < 2) {
-    throw createError({ statusCode: 400, statusMessage: 'Input is too short' });
+    throw createError({ statusCode: 400, statusMessage: 'Eingabe ist zu kurz' });
   }
 
   let searchQuery = `
@@ -16,7 +16,7 @@ export default defineEventHandler(async (event) => {
   const result = await query(searchQuery, [`%${name}%`]);
 
   if (result.rowCount === 0) {
-    throw createError({ statusCode: 404, statusMessage: 'No matching names found' });
+    throw createError({ statusCode: 404, statusMessage: 'keine Übereinstimmungen gefunden' });
   }
 
   return { persons: result.rows };
