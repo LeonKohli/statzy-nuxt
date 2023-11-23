@@ -190,45 +190,70 @@
 <script>
 export default {
     data() {
-        return {
-            serverDetails: [{
-                serverId: '',
-                fachverfahrenId: '',
-                name: '',
-                umgebung: '',
-                laufzeitServer: '',
-                bereitstellungszeitpunkt: '',
-                verwendungszweck: '',
-                typ: '',
-                netzwerk: '',
-                ram: '',
-                cpu: '',
-                os: '',
-                speichertyp: '',
-                kapazität: '',
-                erreichbarkeit: '',
-                hochverfügbarkeit: '',
-                vertraulichkeit: '',
-                verfügbarkeit: '',
-                integrität: '',
-                anmerkungen: '',
-                zeitpunktIns: '',
-                userIns: '',
-                zeitpunktUpd: '',
-                userUpd: '',
-                fachverfahrenName: '',
-            },],
+    return {
+        serverDetails: [{
+            serverId: '',
             fachverfahrenId: '',
-            verfahrensName: '',
-            verfahrensTag: '',
-            verfahrensZweck: '',
-            verfahrensLaufzeit: '',
-            Error: false,
-            Server: false,
-            DB: false,
-            // ... Weitere Datenfelder nach Bedarf
-        };
-    },
+            name: '',
+            umgebung: '',
+            laufzeitServer: '',
+            bereitstellungszeitpunkt: '',
+            verwendungszweck: '',
+            typ: '',
+            netzwerk: '',
+            ram: '',
+            cpu: '',
+            os: '',
+            speichertyp: '',
+            kapazität: '',
+            erreichbarkeit: '',
+            hochverfügbarkeit: '',
+            vertraulichkeit: '',
+            verfügbarkeit: '',
+            integrität: '',
+            anmerkungen: '',
+            zeitpunktIns: '',
+            userIns: '',
+            zeitpunktUpd: '',
+            userUpd: '',
+            fachverfahrenName: '',
+        }],
+        fachverfahrenId: '',
+        verfahrensName: '',
+        verfahrensTag: '',
+        verfahrensZweck: '',
+        verfahrensLaufzeit: '',
+        Error: false,
+        Server: false,
+        DB: false,
+        // Hinzugefügte Daten für Personen
+        kundenmanagement: {
+            name: '',
+            vorname: '',
+            dezernat: '',
+            telefon: ''
+        },
+        fachadministration: {
+            name: '',
+            vorname: '',
+            dezernat: '',
+            telefon: ''
+        },
+        auftraggeber: {
+            name: '',
+            vorname: '',
+            dezernat: '',
+            telefon: ''
+        },
+        verfahrensbetreuer: {
+            name: '',
+            vorname: '',
+            dezernat: '',
+            telefon: ''
+        },
+        // ... Weitere Datenfelder nach Bedarf
+    };
+},
     methods: {
         async getServerDetails(serverId) {
             try {
