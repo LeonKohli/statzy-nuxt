@@ -1,10 +1,9 @@
 <template>
-    <div class="grid grid-cols-3 gap-4"> 
-        <div class="col-span-3" >
-            <h1 class="fachverfahrenh1"> Fachverfahren </h1>
-        </div>
-        <div class="suchmaske col-span-3">
-            <form @submit.prevent="searchError">
+    <div> 
+        <h1 class="fachverfahrenh1"> Fachverfahren </h1>
+        <div class="suchmaske">
+            <!--form @submit.prevent="searchError"-->
+            <form @submit.prevent="searchServer">
                 <h2 class="fachverfahrenh2"> Verfahrens-Daten </h2>
                 <table class="verfahren">
                     <tr>
@@ -22,7 +21,8 @@
                         <td class="tabledata"> <input class="eingabe" placeholder="Laufzeit"/> </td>
                     </tr>
                 </table>
-                <button class="button" @click="showPopup = false"> Suchen </button>
+                <!--button class="button" @click="showPopup = false"> Suchen </button-->
+                <button class="button" @click="showPopupServer = false"> Suchen </button>
             </form>
             <div v-if="showPopup" class="popupVerfahren">
                 <button class="close-button-verfahren" @click="showPopup = false"> Close </button>
@@ -31,12 +31,13 @@
                     <div class="bgVerfahren"></div>
                     <div class="blob"></div>
                     <p class="popup-überschrift"> Kein Fachverfahren gefunden </p>
-                    <p class="popup-text"> Überprüfen sie ihre Suche  oder  Erstellen sie ein neues Fachverfahren </p>
+                    <p class="popup-text"> Überprüfen sie ihre Suche <br> oder <br> Erstellen sie ein neues Fachverfahren </p>
                 </div>
             </div>
         </div>
-        <!-- <hr class="line"> -->
-        <div class="personen col-span-2"> 
+        <hr class="line">
+        <br>
+        <div class="personen"> 
             <h2 class="fachverfahrenh2"> Personen-Daten </h2>
             <table class="personen">
                 <tr>
@@ -82,93 +83,103 @@
                 </tr>
             </table>
         </div>
-        <!-- <hr class="line"> -->
-        <div class="server col-span-2">
-            <h2 class="fachverfahrenh2"> Server </h2>
-            <table class="server">
-                <tr>
-                    <th> Name </th>
-                    <td class=tableSeperator> <input class="eingabe" placeholder="Name" /> </td>
-                    <th> Hochverfügbar </th>
-                    <td > <input class="eingabeCheck" type="checkbox" /> </td>
-                </tr>
-                <tr>
-                    <th> Umgebung </th>
-                    <td class=tableSeperator> <select class="eingabe" /> </td>
-                    <th> Verfügbarkeit </th>
-                    <td > <input class="eingabe" placeholder="Verfügbarkeit" /> </td>
-                </tr>
-                <tr>
-                    <th> Netzwerk </th>
-                    <td class=tableSeperator> <select class="eingabe" /> </td>
-                    <th> Vertraulichkeit </th>
-                    <td > <input class="eingabe" placeholder="Vertraulichkeit" /> </td>
-                </tr>
-                <tr>
-                    <th> CPU </th>
-                    <td class=tableSeperator> <select class="eingabe" /> </td>
-                    <th> Integrität </th>
-                    <td > <input class="eingabe" placeholder="Integrität" /> </td>
-                </tr>
-                <tr>
-                    <th> Arbeitsspeicher </th>
-                    <td class=tableSeperator> <select class="eingabe" /> </td>
-                    <th> Verwendungszweck </th>
-                    <td > <select class="eingabe" /> </td>
-                </tr>
-                <tr>
-                    <th> Betriebssystem </th>
-                    <td class=tableSeperator> <select class="eingabe" /> </td>
-                    <th> Anmerkungen </th>
-                    <td > <input class="eingabe" placeholder="Integrietät" /> </td>
-                </tr>
-                <tr>
-                    <th> HD-Typ </th>
-                    <td class=tableSeperator> <select class="eingabe" /> </td>
-                    <th> Bereitstellungszeitpunkt </th>
-                    <td > <input class="eingabeDate" type="date" /> </td>
-                </tr>
-                <tr>
-                    <th> HD-Kapazität </th>
-                    <td class=tableSeperator> <input class="eingabe" placeholder="Kapazität" /> </td>
-                    <th> vorraussichtl. Lieferzeit </th>
-                    <td > <input class="eingabe" placeholder="Lieferzeit" /> </td>
-                </tr>
-                <tr>
-                    <th> Erreichbarkeit </th>
-                    <td class=tableSeperator> <select class="eingabe" /> </td>
-                </tr>
-            </table>
+        <br>
+        <hr class="line">
+        <br>
+        <div v-if="showPopupServer" class="popupVerfahrenServer">
+            <button class="close-button-verfahren-server" @click="showPopupServer = false"> Close </button>
+            <div class="cardVerfahrenServer">
+                <div class="bgVerfahrenServer"></div>
+                <div class="blob"></div>
+            </div>
+            <div class="server">
+                <h2 class="fachverfahrenh2"> Server </h2>
+                <table class="server">
+                    <tr>
+                        <th> Name </th>
+                        <td class=tableSeperator> <input class="eingabe" placeholder="Name" /> </td>
+                        <th> Hochverfügbar </th>
+                        <td > <input class="eingabeCheck" type="checkbox" /> </td>
+                    </tr>
+                    <tr>
+                        <th> Umgebung </th>
+                        <td class=tableSeperator> <select class="eingabe" /> </td>
+                        <th> Verfügbarkeit </th>
+                        <td > <input class="eingabe" placeholder="Verfügbarkeit" /> </td>
+                    </tr>
+                    <tr>
+                        <th> Netzwerk </th>
+                        <td class=tableSeperator> <select class="eingabe" /> </td>
+                        <th> Vertraulichkeit </th>
+                        <td > <input class="eingabe" placeholder="Vertraulichkeit" /> </td>
+                    </tr>
+                    <tr>
+                        <th> CPU </th>
+                        <td class=tableSeperator> <select class="eingabe" /> </td>
+                        <th> Integrität </th>
+                        <td > <input class="eingabe" placeholder="Integrität" /> </td>
+                    </tr>
+                    <tr>
+                        <th> Arbeitsspeicher </th>
+                        <td class=tableSeperator> <select class="eingabe" /> </td>
+                        <th> Verwendungszweck </th>
+                        <td > <select class="eingabe" /> </td>
+                    </tr>
+                    <tr>
+                        <th> Betriebssystem </th>
+                        <td class=tableSeperator> <select class="eingabe" /> </td>
+                        <th> Anmerkungen </th>
+                        <td > <input class="eingabe" placeholder="Integrietät" /> </td>
+                    </tr>
+                    <tr>
+                        <th> HD-Typ </th>
+                        <td class=tableSeperator> <select class="eingabe" /> </td>
+                        <th> Bereitstellungszeitpunkt </th>
+                        <td > <input class="eingabeDate" type="date" /> </td>
+                    </tr>
+                    <tr>
+                        <th> HD-Kapazität </th>
+                        <td class=tableSeperator> <input class="eingabe" placeholder="Kapazität" /> </td>
+                        <th> vorraussichtl. Lieferzeit </th>
+                        <td > <input class="eingabe" placeholder="Lieferzeit" /> </td>
+                    </tr>
+                    <tr>
+                        <th> Erreichbarkeit </th>
+                        <td class=tableSeperator> <select class="eingabe" /> </td>
+                    </tr>
+                </table>
+            </div>
+            <br>
+            <div class="datenbanken">
+                <h2 class="fachverfahrenh2"> Datenbanken </h2>
+                <table class="db">
+                    <tr>
+                        <th> Name </th>
+                        <td> <input class="eingabe" placeholder="Name" /> </td>
+                    </tr>
+                    <tr>
+                        <th> Datenbank-Typ </th>
+                        <td> <select class="eingabe" /> </td>
+                    </tr>
+                    <tr>
+                        <th> Clusterlösung </th>
+                        <td> <input class="eingabe" placeholder="Lösung" /> </td>
+                    </tr>
+                    <tr>
+                        <th> Größe der Instanz </th>
+                        <td> <input class="eingabe" placeholder="Größe" /> </td>
+                    </tr>
+                    <tr>
+                        <th> Festplattengröße </th>
+                        <td> <input class="eingabe" placeholder="Größe" /> </td>
+                    </tr>
+                </table>
+                <button class="button"> Bearbeiten </button>
+                <button class="buttonDelete"> Löschen </button>
+            </div>
         </div>
-        <div class="datenbanken">
-            <h2 class="fachverfahrenh2"> Datenbanken </h2>
-            <table class="db">
-                <tr>
-                    <th> Name </th>
-                    <td> <input class="eingabe" placeholder="Name" /> </td>
-                </tr>
-                <tr>
-                    <th> Datenbank-Typ </th>
-                    <td> <select class="eingabe" /> </td>
-                </tr>
-                <tr>
-                    <th> Clusterlösung </th>
-                    <td> <input class="eingabe" placeholder="Lösung" /> </td>
-                </tr>
-                <tr>
-                    <th> Größe der Instanz </th>
-                    <td> <input class="eingabe" placeholder="Größe" /> </td>
-                </tr>
-                <tr>
-                    <th> Festplattengröße </th>
-                    <td> <input class="eingabe" placeholder="Größe" /> </td>
-                </tr>
-            </table>
-            <button class="button"> Bearbeiten </button>
-            <button class="buttonDelete"> Löschen </button>
-        </div>
-        
-        
+        <br>
+        <br>
     </div>
 </template>
 
@@ -181,7 +192,17 @@ export default {
     },
     methods: {
         searchError() {
-        this.showPopup = true;
+        this.showPopup = false;
+        },
+    },
+    data() {
+        return {
+        showPopupServer: true,
+        };
+    },
+    methods: {
+        searchServer() {
+        this.showPopupServer = false;
         },
     },
 };
@@ -460,6 +481,57 @@ export default {
         outline: 2px solid #475569;
     }
 
+    .popupVerfahrenServer {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        top: 70%;
+        border-radius: 8px; /* Optional: for rounded corners */
+        padding: 20px; /* Optional: for some spacing inside the popup */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: for a subtle shadow */
+    }
+    .popupVerfahrenServer::before{
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        display: block;
+        width: 100vw;
+        height: 110vh;
+        backdrop-filter: blur(10px); /* Apply backdrop-filter for blurring */
+        background-color: rgba(15, 23, 42, 0.5); /* Semi-transparent background */
+    }
+
+    .cardVerfahrenServer {
+        position: relative;
+        width: 250px;
+        height: 250px;
+        border-radius: 14px;
+        z-index: 1111;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 20px 20px 60px #334155, -20px -20px 60px #334155;
+    }
+
+    .bgVerfahrenServer {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        width: 240px;
+        height: 240px;
+        z-index: 2;
+        background: rgba(51, 65, 85, 0.95);
+        backdrop-filter: blur(24px);
+        border-radius: 10px;
+        overflow: hidden;
+        outline: 2px solid #475569;
+    }
+
     .create-button {
     position: absolute;
     z-index: 1;
@@ -506,6 +578,31 @@ export default {
         transition-duration: 100ms;
     }
     .close-button-verfahren:active { 
+        scale: 90%;
+        transition-duration: 25ms;
+    }
+
+    .close-button-verfahren-server {
+    position: absolute;
+    z-index: 1;
+    bottom: 10px;
+    left: 75%;
+    transform: translateX(-50%);
+    padding: 8px 16px;
+    background-color: #334155;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 10000;
+    outline: 2px solid #475569;
+    }
+    .close-button-verfahren-server:hover { 
+        background-color: #dc2626;
+        color: #fff;
+        transition-duration: 100ms;
+    }
+    .close-button-verfahren-server:active { 
         scale: 90%;
         transition-duration: 25ms;
     }
