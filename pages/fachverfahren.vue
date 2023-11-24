@@ -315,10 +315,9 @@ export default {
                     const responseData = await response.json();
                     console.log('Antwort der API:', responseData);
                     // Annahme: In der Antwort gibt es eine Eigenschaft 'servers' als Array von Servern
-                    if (responseData.servers && responseData.servers.length > 0) {
+                    if (responseData.server && responseData.server.length > 0) {
                         // Fülle das serverDetails-Array mit den Serverdaten
-                        console.log('im if');
-                        this.serverDetails = responseData.servers.map(server => ({
+                        this.serverDetails = responseData.server.map(server => ({
                             serverId: server.serverId,
                             fachverfahrenId: server.fachverfahrenId,
                             name: server.name,
