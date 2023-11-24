@@ -185,79 +185,64 @@
         <br>
         <br>
     </div>
+
+    <div>
+    <!-- Fachverfahren-Eingabefeld -->
+    <input v-model="fachverfahrenId" placeholder="Fachverfahren ID" />
+
+    <!-- Button zum Abrufen der Serverdetails für das angegebene Fachverfahren -->
+    <button @click="getServerDetails(4711)">Serverdetails abrufen</button>
+
+    <!-- ... andere UI-Elemente -->
+  </div>
 </template>
 
 <script>
 export default {
     data() {
-    return {
-        serverDetails: [{
-            serverId: '',
+        return {
+            serverDetails: [{
+                serverId: '',
+                fachverfahrenId: '',
+                name: '',
+                umgebung: '',
+                laufzeitServer: '',
+                bereitstellungszeitpunkt: '',
+                verwendungszweck: '',
+                typ: '',
+                netzwerk: '',
+                ram: '',
+                cpu: '',
+                os: '',
+                speichertyp: '',
+                kapazität: '',
+                erreichbarkeit: '',
+                hochverfügbarkeit: '',
+                vertraulichkeit: '',
+                verfügbarkeit: '',
+                integrität: '',
+                anmerkungen: '',
+                zeitpunktIns: '',
+                userIns: '',
+                zeitpunktUpd: '',
+                userUpd: '',
+                fachverfahrenName: '',
+            },],
             fachverfahrenId: '',
-            name: '',
-            umgebung: '',
-            laufzeitServer: '',
-            bereitstellungszeitpunkt: '',
-            verwendungszweck: '',
-            typ: '',
-            netzwerk: '',
-            ram: '',
-            cpu: '',
-            os: '',
-            speichertyp: '',
-            kapazität: '',
-            erreichbarkeit: '',
-            hochverfügbarkeit: '',
-            vertraulichkeit: '',
-            verfügbarkeit: '',
-            integrität: '',
-            anmerkungen: '',
-            zeitpunktIns: '',
-            userIns: '',
-            zeitpunktUpd: '',
-            userUpd: '',
-            fachverfahrenName: '',
-        }],
-        fachverfahrenId: '',
-        verfahrensName: '',
-        verfahrensTag: '',
-        verfahrensZweck: '',
-        verfahrensLaufzeit: '',
-        Error: false,
-        Server: false,
-        DB: false,
-        // Hinzugefügte Daten für Personen
-        kundenmanagement: {
-            name: '',
-            vorname: '',
-            dezernat: '',
-            telefon: ''
-        },
-        fachadministration: {
-            name: '',
-            vorname: '',
-            dezernat: '',
-            telefon: ''
-        },
-        auftraggeber: {
-            name: '',
-            vorname: '',
-            dezernat: '',
-            telefon: ''
-        },
-        verfahrensbetreuer: {
-            name: '',
-            vorname: '',
-            dezernat: '',
-            telefon: ''
-        },
-        // ... Weitere Datenfelder nach Bedarf
-    };
-},
+            verfahrensName: '',
+            verfahrensTag: '',
+            verfahrensZweck: '',
+            verfahrensLaufzeit: '',
+            Error: false,
+            Server: false,
+            DB: false,
+            // ... Weitere Datenfelder nach Bedarf
+        };
+    },
     methods: {
-        async getServerDetails(serverId) {
+        async getServerDetails(fachverfahren) {
             try {
-                const response = await fetch(`/api/servers/${serverId}`);
+                const response = await fetch(`/api/servers/${fachverfahren}`);
                 const responseData = await response.json();
 
                 // Annahme: In der Antwort gibt es eine Eigenschaft 'servers' als Array von Servern
@@ -291,14 +276,14 @@ export default {
                     fachverfahrenName: server.fachverfahrenName,
                 }));
 
-                console.log(`Details für Server mit ID ${serverId}:`, this.serverDetails);
+                console.log(`Details für Server mit ID ${fachverfahren}:`, this.serverDetails);
                 } else {
-                console.warn(`Keine Daten für Server mit ID ${serverId} gefunden.`);
+                console.warn(`Keine Daten für Server mit ID ${fachverfahren} gefunden.`);
                 // Setze serverDetails auf ein leeres Array oder handle es entsprechend
                 this.serverDetails = [];
                 }
             } catch (error) {
-                console.error(`Fehler beim Abrufen der Details für Server mit ID ${serverId}:`, error);
+                console.error(`Fehler beim Abrufen der Details für Server mit ID ${fachverfahren}:`, error);
                 // Setze serverDetails auf ein leeres Array oder handle es entsprechend
                 this.serverDetails = [];
             }
@@ -318,14 +303,6 @@ export default {
                 this.verfahrensLaufzeit = fachverfahrenData.verfahrensLaufzeit;
                 // ... Setze weitere Felder nach Bedarf
 
-                // Rufe zusätzliche Personendaten mit der verfahrensId ab
-                const personenData = await fetchPersonVerf(this.fachverfahrenId);
-                if (personenData) {
-                    // Verarbeite die Personendaten
-                    // Zum Beispiel: this.personenName = personenData.name;
-                    // ... Setze weitere Felder nach Bedarf
-                }
-
                 // Zeige eine Erfolgsmeldung im Terminal an
                 console.log('Fachverfahren erfolgreich gefunden:', fachverfahrenData);
             } else {
@@ -341,17 +318,19 @@ export default {
 
                 // Zeige das Popup für den Fehler an
                 this.showPopup = true;
+                }
+            } catch (error) {
+                console.error('Fehler bei der Suche nach Fachverfahren:', error);
+                // Handle den Fehler angemessen, zum Beispiel zeige eine Fehlermeldung an
+                // Zeige das Popup für den Fehler an
+                this.showPopup = true;
+            } finally {
+                // Schließe das Popup, unabhängig davon, ob die Suche erfolgreich war oder nicht
+                this.showPopup = false;
             }
-        } catch (error) {
-            console.error('Fehler bei der Suche nach Fachverfahren:', error);
-            // Handle den Fehler angemessen, zum Beispiel zeige eine Fehlermeldung an
-            // Zeige das Popup für den Fehler an
-            this.showPopup = true;
-        } finally {
-            // Schließe das Popup, unabhängig davon, ob die Suche erfolgreich war oder nicht
-            this.showPopup = false;
-        }
-    },
+        },
+
+        // ... Weitere Methoden nach Bedarf
         openPopupError() {
             this.Error = true;
         },
