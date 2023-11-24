@@ -324,7 +324,7 @@ export default {
                     // Setze die Eingabefelder mit den abgerufenen Daten
                     this.name = fachverfahrenData.name;
                     this.tag = fachverfahrenData.tag;
-                    this.verwendungszweck = fachverfahrenData.verwendungszweck;
+                    this.verwendungszweck = fachverfahrenData.vewendungszweck;
                     this.laufzeitverfahren = fachverfahrenData.laufzeitverfahren;
                     // ... Setze weitere Felder nach Bedarf
 
