@@ -819,6 +819,7 @@ export default {
 
     .popupVerfahrenServer {
         position: absolute;
+        z-index: 1;
         left: 50%;
         transform: translateX(-50%) translateY(-50%);
         top: 70%;
@@ -845,7 +846,7 @@ export default {
         width: 782px;
         height: 690px;
         border-radius: 14px;
-        z-index: 1111;
+        z-index: 1;
         overflow: hidden;
         display: flex;
         flex-direction: column;
@@ -863,6 +864,7 @@ export default {
 
     .popupVerfahrenDB {
         position: absolute;
+        z-index: 1;
         left: 50%;
         transform: translateX(-50%) translateY(-50%);
         top: 70%;
@@ -886,6 +888,7 @@ export default {
 
     .cardVerfahrenDB {
         position: relative;
+        z-index: 1;
         width: 390px;
         height: 580px;
         border-radius: 14px;
