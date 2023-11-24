@@ -317,6 +317,7 @@ export default {
                     // Annahme: In der Antwort gibt es eine Eigenschaft 'servers' als Array von Servern
                     if (responseData.servers && responseData.servers.length > 0) {
                         // Fülle das serverDetails-Array mit den Serverdaten
+                        console.log('im if');
                         this.serverDetails = responseData.servers.map(server => ({
                             serverId: server.serverId,
                             fachverfahrenId: server.fachverfahrenId,
@@ -345,9 +346,9 @@ export default {
                             fachverfahrenName: server.fachverfahrenName,
                         }));
 
-                        console.log(`Details für Server mit ID ${this.fachverfahrenId}:`, this.serverDetails);
+                        console.log(`Details für Server mit FachverfahrensID ${this.fachverfahrenId}:`, this.serverDetails);
                     } else {
-                        console.warn(`Keine Daten für Server mit ID ${this.fachverfahrenId} gefunden.`);
+                        console.warn(`Keine Daten für Server mit FachverfahrensID ${this.fachverfahrenId} gefunden.`);
                         // Setze serverDetails auf ein leeres Array oder handle es entsprechend
                         this.serverDetails = [];
                     }
