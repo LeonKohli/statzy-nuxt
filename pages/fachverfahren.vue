@@ -1,5 +1,5 @@
 <template>
-    <div> 
+    <div>
         <h1 class="fachverfahrenh1"> Fachverfahren </h1>
         <div class="suchmaske">
             <h2 class="fachverfahrenh2"> Verfahrens-Daten </h2>
@@ -12,14 +12,18 @@
                     <th class="tablehead"> Verfahrens-Laufzeit </th>
                 </tr>
                 <tr>
-                    <td class="tabledata"> <input class="eingabe" v-model="fachverfahrenId" @keyup.enter="sucheFachverfahren" placeholder="Verfahrens-ID"/> </td>
-                    <td class="tabledata"> <input class="eingabe" v-model="name" placeholder="Verfahrens-Name"/> </td>
-                    <td class="tabledata"> <input class="eingabe" v-model="tag" placeholder="Tag"/> </td>
-                    <td class="tabledata"> <input class="eingabe" v-model="verwendungszweck" placeholder="Zweck"/> </td>
-                    <td class="tabledata"> <input class="eingabe" v-model="laufzeitverfahren" placeholder="Laufzeit"/> </td>
+                    <td class="tabledata"> <input class="eingabe" v-model="fachverfahrenId" placeholder="Verfahrens-ID" />
+                    </td>
+                    <td class="tabledata"> <input class="eingabe" v-model="name" placeholder="Verfahrens-Name" /> </td>
+                    <td class="tabledata"> <input class="eingabe" v-model="tag" placeholder="Tag" /> </td>
+                    <td class="tabledata"> <input class="eingabe" v-model="verwendungszweck" placeholder="Zweck" /> </td>
+                    <td class="tabledata"> <input class="eingabe" v-model="laufzeitverfahren" placeholder="Laufzeit" />
+                    </td>
                 </tr>
             </table>
             <button class="button" @click="sucheFachverfahren"> Suchen </button>
+            <button class="button" @click="openPopupServer('Server')"> Server </button>
+            <button class="button" @click="openPopupDB('DB')"> DB </button>
             <div v-if="Error" class="popupVerfahren">
                 <button class="close-button-verfahren" @click="Error = false"> Schließen </button>
                 <button class="create-button" @click="Error = false"> Erstellen </button>
@@ -27,51 +31,54 @@
                     <div class="bgVerfahren"></div>
                     <div class="blob"></div>
                     <p class="popup-überschrift"> Kein Fachverfahren gefunden </p>
-                    <p class="popup-text"> Überprüfen sie ihre Suche <br> oder <br> Erstellen sie ein neues Fachverfahren </p>
+                    <p class="popup-text"> Überprüfen sie ihre Suche <br> oder <br> Erstellen sie ein neues Fachverfahren
+                    </p>
                 </div>
             </div>
         </div>
         <hr class="line">
         <br>
-        <div class="personen"> 
-            <h2 class="fachverfahrenh2-personen"> Personen-Daten </h2>
+        <div class="personen">
+            <h2 class="fachverfahrenh2"> Personen-Daten </h2>
             <table class="personen">
                 <tr>
-                    <th class="tableheadtop">  </th>
+                    <th class="tableheadtop"> </th>
                     <th class="tableheadtop"> Name </th>
                     <th class="tableheadtop"> Vorname </th>
                     <th class="tableheadtop"> Dezernat </th>
                     <th class="tableheadtop"> Telefon </th>
-                </tr> 
+                </tr>
                 <tr>
                     <th class="tableheadside"> Kundenmanagement: </th>
-                    <td class="tabledata"><input class="eingabe" v-model="kundenmanagement.name" placeholder="Name"/></td>
-                    <td class="tabledata"><input class="eingabe" v-model="kundenmanagement.vorname" placeholder="Vorname"/></td>
-                    <td class="tabledata"><input class="eingabe" v-model="kundenmanagement.dezernat" placeholder="Dezernat"/></td>
-                    <td class="tabledata"><input class="eingabe" v-model="kundenmanagement.telefon" placeholder="Telefon"/></td>
+                    <td class="tabledata"><input class="eingabe" v-model="kundenmanagement.name" placeholder="Name" /></td>
+                    <td class="tabledata">{{ kundenmanagement.vorname }}</td>
+                    <td class="tabledata">{{ kundenmanagement.dezernat }}</td>
+                    <td class="tabledata">{{ kundenmanagement.telefon }}</td>
                 </tr>
                 <tr>
                     <th class="tableheadside"> Fachadministration: </th>
-                    <td class="tabledata"><input class="eingabe" v-model="fachadministration.name" placeholder="Name"/></td>
-                    <td class="tabledata"><input class="eingabe" v-model="fachadministration.vorname" placeholder="Vorname"/></td>
-                    <td class="tabledata"><input class="eingabe" v-model="fachadministration.dezernat" placeholder="Dezernat"/></td>
-                    <td class="tabledata"><input class="eingabe" v-model="fachadministration.telefon" placeholder="Telefon"/></td>
+                    <td class="tabledata"><input class="eingabe" v-model="fachadministration.name" placeholder="Name" />
+                    </td>
+                    <td class="tabledata">{{ fachadministration.vorname }}</td>
+                    <td class="tabledata">{{ fachadministration.dezernat }}</td>
+                    <td class="tabledata">{{ fachadministration.telefon }}</td>
                 </tr>
                 <tr>
                     <th class="tableheadside"> Auftraggeber: </th>
-                    <td class="tabledata"><input class="eingabe" v-model="auftraggeber.name" placeholder="Name"/></td>
-                    <td class="tabledata"><input class="eingabe" v-model="auftraggeber.vorname" placeholder="Vorname"/></td>
-                    <td class="tabledata"><input class="eingabe" v-model="auftraggeber.dezernat" placeholder="Dezernat"/></td>
-                    <td class="tabledata"><input class="eingabe" v-model="auftraggeber.telefon" placeholder="Telefon"/></td>
+                    <td class="tabledata"><input class="eingabe" v-model="auftraggeber.name" placeholder="Name" /></td>
+                    <td class="tabledata">{{ auftraggeber.vorname }}</td>
+                    <td class="tabledata">{{ auftraggeber.dezernat }}</td>
+                    <td class="tabledata">{{ auftraggeber.telefon }}</td>
                 </tr>
                 <tr>
                     <th class="tableheadside"> Verfahrensbetreuer: </th>
-                    <td class="tabledata"><input class="eingabe" v-model="verfahrensbetreuer.name" placeholder="Name"/></td>
-                    <td class="tabledata"><input class="eingabe" v-model="verfahrensbetreuer.vorname" placeholder="Vorname"/></td>
-                    <td class="tabledata"><input class="eingabe" v-model="verfahrensbetreuer.dezernat" placeholder="Dezernat"/></td>
-                    <td class="tabledata"><input class="eingabe" v-model="verfahrensbetreuer.telefon" placeholder="Telefon"/></td>
+                    <td class="tabledata"><input class="eingabe" v-model="verfahrensbetreuer.name" placeholder="Name" />
+                    </td>
+                    <td class="tabledata">{{ verfahrensbetreuer.vorname }}</td>
+                    <td class="tabledata">{{ verfahrensbetreuer.dezernat }}</td>
+                    <td class="tabledata">{{ verfahrensbetreuer.telefon }}</td>
                 </tr>
-            </table>                        
+            </table>
             <table class="personen-button">
                 <tr>
                     <td class="tabledata"> <button class="button-person"> Bearbeiten </button> </td>
@@ -92,59 +99,59 @@
                 <table class="server">
                     <tr>
                         <th> Name </th>
-                        <td class="tableSeperator"> 
+                        <td class="tableSeperator">
                             <input class="eingabe" v-model="serverDetails.name" placeholder="Name" />
                         </td>
                         <th> Hochverfügbar </th>
-                        <td> 
+                        <td>
                             <input class="eingabeCheck" type="checkbox" v-model="serverDetails.hochverfügbar" />
                         </td>
                     </tr>
                     <tr>
                         <th> Umgebung </th>
-                        <td class="tableSeperator"> 
+                        <td class="tableSeperator">
                             <select class="eingabe" v-model="serverDetails.umgebung">
                                 <!-- Optionen hier -->
                             </select>
                         </td>
                         <th> Verfügbarkeit </th>
-                        <td> 
+                        <td>
                             <input class="eingabe" v-model="serverDetails.verfügbarkeit" placeholder="Verfügbarkeit" />
                         </td>
                     </tr>
                     <tr>
                         <th> Netzwerk </th>
-                        <td class="tableSeperator"> 
+                        <td class="tableSeperator">
                             <select class="eingabe" v-model="serverDetails.netzwerk">
                                 <!-- Optionen hier -->
                             </select>
                         </td>
                         <th> Vertraulichkeit </th>
-                        <td> 
+                        <td>
                             <input class="eingabe" v-model="serverDetails.vertraulichkeit" placeholder="Vertraulichkeit" />
                         </td>
                     </tr>
                     <tr>
                         <th> CPU </th>
-                        <td class="tableSeperator"> 
+                        <td class="tableSeperator">
                             <select class="eingabe" v-model="serverDetails.cpu">
                                 <!-- Optionen hier -->
                             </select>
                         </td>
                         <th> Integrität </th>
-                        <td> 
+                        <td>
                             <input class="eingabe" v-model="serverDetails.integrität" placeholder="Integrität" />
                         </td>
                     </tr>
                     <tr>
                         <th> Arbeitsspeicher </th>
-                        <td class="tableSeperator"> 
+                        <td class="tableSeperator">
                             <select class="eingabe" v-model="serverDetails.arbeitsspeicher">
                                 <!-- Optionen hier -->
                             </select>
                         </td>
                         <th> Verwendungszweck </th>
-                        <td> 
+                        <td>
                             <select class="eingabe" v-model="serverDetails.verwendungszweck">
                                 <!-- Optionen hier -->
                             </select>
@@ -152,49 +159,49 @@
                     </tr>
                     <tr>
                         <th> Betriebssystem </th>
-                        <td class="tableSeperator"> 
+                        <td class="tableSeperator">
                             <select class="eingabe" v-model="serverDetails.betriebssystem">
                                 <!-- Optionen hier -->
                             </select>
                         </td>
                         <th> Anmerkungen </th>
-                        <td> 
+                        <td>
                             <input class="eingabe" v-model="serverDetails.anmerkungen" placeholder="Anmerkungen" />
                         </td>
                     </tr>
                     <tr>
                         <th> HD-Typ </th>
-                        <td class="tableSeperator"> 
+                        <td class="tableSeperator">
                             <select class="eingabe" v-model="serverDetails.hdTyp">
                                 <!-- Optionen hier -->
                             </select>
                         </td>
                         <th> Bereitstellungszeitpunkt </th>
-                        <td> 
+                        <td>
                             <input class="eingabeDate" type="date" v-model="serverDetails.bereitstellungszeitpunkt" />
                         </td>
                     </tr>
                     <tr>
                         <th> HD-Kapazität </th>
-                        <td class="tableSeperator"> 
+                        <td class="tableSeperator">
                             <input class="eingabe" v-model="serverDetails.hdKapazität" placeholder="Kapazität" />
                         </td>
                         <th> vorraussichtl. Lieferzeit </th>
-                        <td> 
+                        <td>
                             <input class="eingabe" v-model="serverDetails.lieferzeit" placeholder="Lieferzeit" />
                         </td>
                     </tr>
                     <tr>
                         <th> Erreichbarkeit </th>
-                        <td class="tableSeperator"> 
+                        <td class="tableSeperator">
                             <select class="eingabe" v-model="serverDetails.erreichbarkeit">
                                 <!-- Optionen hier -->
                             </select>
                         </td>
                     </tr>
                 </table>
-            </div>  
-        </div>           
+            </div>
+        </div>
         <br>
         <div v-if="DB" class="popupVerfahrenDB">
             <button class="close-button-verfahren-db" @click="DB = false"> Schließen </button>
@@ -232,30 +239,28 @@
         </div>
         <br>
         <br>
-        <div v-if="fachverfahrenDatabases.length > 0" class="db-details">
+        <div v-if="fachverfahrenDatabases.length > 0">
             <h2 class="fachverfahrenh2">Datenbank Details</h2>
             <table class="db">
-            <!-- ... your table headers -->
-                <button v-for="database in fachverfahrenDatabases" :key="database.id"
-                class="list-button" @click="openPopupDB('DB')">
-                {{ database.name }} 
-                <!-- ... additional data fields -->
+                <!-- ... your table headers -->
+                <button v-for="database in fachverfahrenDatabases" :key="database.id" class="list-button">
+                    {{ database.name }}
+                    <!-- ... additional data fields -->
                 </button>
             </table>
+        </div>
+        <div v-else>
+            <p>Keine Datenbanken gefunden.</p>
         </div>
         <br>
         <br>
     </div>
-    <div v-if="fachverfahrenServer.length > 0" class="server-details">
-        <h2 class="fachverfahrenh2">Server Details</h2>
-        <table class="server">
-            <!-- Für JACOB -->
-            <button v-for="server in serverDetails" :key="server.serverId" @click="openPopupServer('Server')"
-            class="list-button">
-            {{ server.name }}
-            </button>
-        </table>
-    </div>
+
+
+    <!-- Für JACOB -->
+    <button v-for="server in serverDetails" :key="server.serverId" @click="openPopupServer('Server')" class="list-button">
+        {{ server.name }}
+    </button>
 </template>
 
 <script>
@@ -297,7 +302,6 @@ export default {
             Error: false,
             Server: false,
             DB: false,
-            
             kundenmanagement: {
                 name: '',
                 vorname: '',
@@ -323,14 +327,12 @@ export default {
                 telefon: ''
             },
             fachverfahrenDatabases: [],
-            fachverfahrenServer: [],
         };
     },
     // Weitere Methoden und Optionen
     methods: {
         async getServerDetails(fachverfahren) {
             try {
-                
             } catch (error) {
                 console.error(`Fehler beim Abrufen der Details für Server mit ID ${fachverfahren}:`, error);
                 // Setze serverDetails auf ein leeres Array oder handle es entsprechend
@@ -467,35 +469,22 @@ export default {
             this.DB = true;
         },
         async fetchDatabasesForFachverfahren() {
-        if (!this.fachverfahrenId) {
-            alert('Please enter a Fachverfahren ID.');
-            return;
-        }
-        
-        try {
-            const response = await fetch(`/api/databases/${encodeURIComponent(this.fachverfahrenId)}`);
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            this.fachverfahrenDatabases = await response.json();
-        } catch (error) {
-            console.error('Error fetching databases for Fachverfahren:', error.message);
-            this.fachverfahrenDatabases = []; // Reset in case of error
-            this.Error = true;
-        }
-
-        try {
-            const response = await fetch(`/api/databases/${encodeURIComponent(this.fachverfahrenId)}`);
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            this.fachverfahrenServer = await response.json();
-        } catch (error) {
-            console.error('Error fetching databases for Fachverfahren:', error.message);
-            this.fachverfahrenServer = []; // Reset in case of error
-            this.Error = true;
-        }
-    },
+                if (!this.fachverfahrenId) {
+                    alert('Please enter a Fachverfahren ID.');
+                    return;
+                }
+                try {
+                    const response = await fetch(`/api/databases/${encodeURIComponent(this.fachverfahrenId)}`);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    this.fachverfahrenDatabases = await response.json();
+                } catch (error) {
+                    console.error('Error fetching databases for Fachverfahren:', error.message);
+                    this.fachverfahrenDatabases = []; // Reset in case of error
+                    this.Error = true;
+                }
+            },
     },
 }
 </script>
@@ -503,48 +492,101 @@ export default {
 
 
 <style>
+* {
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+  color: #ff00ff;
+  text-shadow: 2px 2px 2px #0000ff;
+}
+
 body {
-    background-color: lime; /* Bright background */
-    font-family: 'Comic Sans MS', 'Comic Sans', cursive; /* Funny font */
-}
-
-table, th, td {
-    border: 5px dashed red; /* Inconsistent border */
-    background-color: fuchsia; /* Clashing background */
-    color: aqua; /* Hard to read text color */
-}
-
-h1, h2 {
-    font-size: 48px; /* Inconsistent size */
-    color: yellow; /* Clashing color */
-    text-shadow: 0 0 10px purple; /* Hard on eyes */
-}
-
-button {
-    font-family: Papyrus, fantasy; /* Inconsistent font */
-    background-color: #ff00ff; /* Neon color */
-    animation: spin 2s linear infinite; /* Unnecessary animation */
+  background-color: #00ff00;
+  animation: spin 5s linear infinite;
 }
 
 @keyframes spin {
-    from {transform: rotate(0deg);}
-    to {transform: rotate(360deg);}
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
-img {
-    width: 20px; /* Randomly small */
-    height: 400px; /* Disproportionate height */
+table {
+  border: 5px dotted red;
 }
 
-a {
-    color: orange; /* Hard to read */
-    text-decoration: blink; /* Annoying effect */
+input, select, button {
+  font-weight: bold;
+  color: #ff0000;
+  background-color: #ffff00;
+  border: 3px dashed #ff00ff;
 }
 
-/* Add a loud, auto-playing background MIDI */
-body::before {
-    content: url('path_to_midi_file.mid');
+input::placeholder {
+  color: #0000ff;
+  font-style: italic;
+}
+
+button {
+  cursor: url('http://example.com/crazy-cursor.cur'), auto;
+}
+
+.popupVerfahren, .popupVerfahrenServer, .popupVerfahrenDB {
+  background-color: rgba(255, 0, 255, 0.5);
+  border: 5px wavy blue;
+  transform: skew(10deg);
+}
+
+.blob-server, .blob-db {
+  background-color: #ff69b4;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.5; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+hr.line {
+  border: none;
+  height: 5px;
+  background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+}
+
+.popup-überschrift, .popup-text {
+  font-size: 20px;
+  color: #00ffff;
+  text-decoration: underline wavy pink;
+}
+
+.list-button {
+  background-image: linear-gradient(45deg, #ff0000, #ffff00);
+  border-radius: 0;
+}
+
+.create-button, .close-button-verfahren, .close-button-verfahren-server, .close-button-verfahren-db {
+  background-color: #ff4500;
+  border: 2px solid #00ff00;
+  box-shadow: 0 0 10px #0000ff;
+}
+
+.create-button:hover, .close-button-verfahren:hover, .close-button-verfahren-server:hover, .close-button-verfahren-db:hover {
+  background-color: #ff1493;
+}
+
+.button-db, .buttonDelete-db {
+  background-color: #add8e6;
+  border: 2px solid #ff00ff;
+}
+
+.button-db:active, .buttonDelete-db:active {
+  background-color: #32cd32;
+}
+
+.space {
+  background-color: #ffa500;
+}
+
+.server-list {
+  background-color: #ff6347;
 }
 
 </style>
-
