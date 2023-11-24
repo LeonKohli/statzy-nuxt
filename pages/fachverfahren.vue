@@ -357,16 +357,16 @@ export default {
                 } else {
                     console.warn('Fachverfahren nicht gefunden.');
                     this.resetFachverfahrenData();
-                    this.Error = true;
+                    this.openPopupError();
                 }
             } catch (error) {
                 console.error('Fehler bei der Suche nach Fachverfahren:', error);
                 // Handle den Fehler angemessen, zum Beispiel zeige eine Fehlermeldung an
                 // Zeige das Popup für den Fehler an
-                this.Error = true;
+                this.openPopupError();
             } finally {
                 // Schließe das Popup, unabhängig davon, ob die Suche erfolgreich war oder nicht
-                this.Error = false;
+                this.openPopupError = false;
             }
         },
 
@@ -398,34 +398,6 @@ export default {
     },
 }
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
