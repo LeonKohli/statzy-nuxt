@@ -186,15 +186,6 @@
         <br>
     </div>
 
-    <div>
-    <!-- Fachverfahren-Eingabefeld -->
-    <input v-model="fachverfahrenId" placeholder="Fachverfahren ID" />
-
-    <!-- Button zum Abrufen der Serverdetails für das angegebene Fachverfahren -->
-    <button @click="getServerDetails(4711)">Serverdetails abrufen</button>
-
-    <!-- ... andere UI-Elemente -->
-  </div>
 </template>
 
 <script>
@@ -267,46 +258,7 @@ export default {
     methods: {
         async getServerDetails(fachverfahren) {
             try {
-                const response = await fetch(`/api/servers/${fachverfahren}`);
-                const responseData = await response.json();
-                console.log('Antwort der API:', responseData);
-                // Annahme: In der Antwort gibt es eine Eigenschaft 'servers' als Array von Servern
-                if (responseData.servers && responseData.servers.length > 0) {
-                // Fülle das serverDetails-Array mit den Serverdaten
-                this.serverDetails = responseData.servers.map(server => ({
-                    serverId: server.serverId,
-                    fachverfahrenId: server.fachverfahrenId,
-                    name: server.name,
-                    umgebung: server.umgebung,
-                    laufzeitServer: server.laufzeitServer,
-                    bereitstellungszeitpunkt: server.bereitstellungszeitpunkt,
-                    verwendungszweck: server.verwendungszweck,
-                    typ: server.typ,
-                    netzwerk: server.netzwerk,
-                    ram: server.ram,
-                    cpu: server.cpu,
-                    os: server.os,
-                    speichertyp: server.speichertyp,
-                    kapazität: server.kapazität,
-                    erreichbarkeit: server.erreichbarkeit,
-                    hochverfügbarkeit: server.hochverfügbarkeit,
-                    vertraulichkeit: server.vertraulichkeit,
-                    verfügbarkeit: server.verfügbarkeit,
-                    integrität: server.integrität,
-                    anmerkungen: server.anmerkungen,
-                    zeitpunktIns: server.zeitpunktIns,
-                    userIns: server.userIns,
-                    zeitpunktUpd: server.zeitpunktUpd,
-                    userUpd: server.userUpd,
-                    fachverfahrenName: server.fachverfahrenName,
-                }));
-
-                console.log(`Details für Server mit ID ${fachverfahren}:`, this.serverDetails);
-                } else {
-                console.warn(`Keine Daten für Server mit ID ${fachverfahren} gefunden.`);
-                // Setze serverDetails auf ein leeres Array oder handle es entsprechend
-                this.serverDetails = [];
-                }
+                
             } catch (error) {
                 console.error(`Fehler beim Abrufen der Details für Server mit ID ${fachverfahren}:`, error);
                 // Setze serverDetails auf ein leeres Array oder handle es entsprechend
@@ -358,7 +310,49 @@ export default {
                     } else {
                         console.warn('Keine Personendaten gefunden.');
                     }
+                    // Janneck nistet sich hier ein
+                    const response = await fetch(`/api/servers/${this.fachverfahrenId}`);
+                    const responseData = await response.json();
+                    console.log('Antwort der API:', responseData);
+                    // Annahme: In der Antwort gibt es eine Eigenschaft 'servers' als Array von Servern
+                    if (responseData.servers && responseData.servers.length > 0) {
+                        // Fülle das serverDetails-Array mit den Serverdaten
+                        console.log('im if');
+                        this.serverDetails = responseData.servers.map(server => ({
+                            serverId: server.serverId,
+                            fachverfahrenId: server.fachverfahrenId,
+                            name: server.name,
+                            umgebung: server.umgebung,
+                            laufzeitServer: server.laufzeitServer,
+                            bereitstellungszeitpunkt: server.bereitstellungszeitpunkt,
+                            verwendungszweck: server.verwendungszweck,
+                            typ: server.typ,
+                            netzwerk: server.netzwerk,
+                            ram: server.ram,
+                            cpu: server.cpu,
+                            os: server.os,
+                            speichertyp: server.speichertyp,
+                            kapazität: server.kapazität,
+                            erreichbarkeit: server.erreichbarkeit,
+                            hochverfügbarkeit: server.hochverfügbarkeit,
+                            vertraulichkeit: server.vertraulichkeit,
+                            verfügbarkeit: server.verfügbarkeit,
+                            integrität: server.integrität,
+                            anmerkungen: server.anmerkungen,
+                            zeitpunktIns: server.zeitpunktIns,
+                            userIns: server.userIns,
+                            zeitpunktUpd: server.zeitpunktUpd,
+                            userUpd: server.userUpd,
+                            fachverfahrenName: server.fachverfahrenName,
+                        }));
 
+                        console.log(`Details für Server mit FachverfahrensID ${this.fachverfahrenId}:`, this.serverDetails);
+                    } else {
+                        console.warn(`Keine Daten für Server mit FachverfahrensID ${this.fachverfahrenId} gefunden.`);
+                        // Setze serverDetails auf ein leeres Array oder handle es entsprechend
+                        this.serverDetails = [];
+                    }
+                    // Janneck nistet sich hier aus
                     console.log('Fachverfahren erfolgreich gefunden:', fachverfahrenData);
                 } else {
                     console.warn('Fachverfahren nicht gefunden.');
