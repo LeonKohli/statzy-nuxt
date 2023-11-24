@@ -186,6 +186,14 @@
         <br>
     </div>
 
+
+    <!--! Für JACOB -->
+    <button v-for="server in serverDetails" :key="server.serverId" @click="handleButtonClick(server)">
+      {{ server.name }}
+    </button>
+
+
+
 </template>
 
 <script>
@@ -312,12 +320,12 @@ export default {
                     }
                     // Janneck nistet sich hier ein
                     const response = await fetch(`/api/servers/${this.fachverfahrenId}`);
-                    const responseData = await response.json();
-                    console.log('Antwort der API:', responseData);
+                    const serverData = await response.json();
+                    console.log('Antwort der Server API:', serverData);
                     // Annahme: In der Antwort gibt es eine Eigenschaft 'servers' als Array von Servern
-                    if (responseData.server && responseData.server.length > 0) {
+                    if (serverData.server && serverData.server.length > 0) {
                         // Fülle das serverDetails-Array mit den Serverdaten
-                        this.serverDetails = responseData.server.map(server => ({
+                        this.serverDetails = serverData.server.map(server => ({
                             serverId: server.serverId,
                             fachverfahrenId: server.fachverfahrenId,
                             name: server.name,
