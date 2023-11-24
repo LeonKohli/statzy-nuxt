@@ -186,15 +186,6 @@
         <br>
     </div>
 
-    <div>
-    <!-- Fachverfahren-Eingabefeld -->
-    <input v-model="fachverfahrenId" placeholder="Fachverfahren ID" />
-
-    <!-- Button zum Abrufen der Serverdetails für das angegebene Fachverfahren -->
-    <button @click="getServerDetails(4711)">Serverdetails abrufen</button>
-
-    <!-- ... andere UI-Elemente -->
-  </div>
 </template>
 
 <script>
