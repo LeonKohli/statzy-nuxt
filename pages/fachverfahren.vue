@@ -291,33 +291,48 @@ export default {
 
         async sucheFachverfahren() {
             try {
-            // Führe die API-Anfrage durch, um Fachverfahrensdaten für die angegebene ID abzurufen
-            const fachverfahrenData = await fetchFachverfahrenById(this.fachverfahrenId);
+                // Führe die API-Anfrage durch, um Fachverfahrensdaten für die angegebene ID abzurufen
+                const fachverfahrenData = await fetchFachverfahrenById(this.fachverfahrenId);
 
-            // Überprüfe, ob Daten zurückgegeben wurden
-            if (fachverfahrenData) {
-                // Setze die anderen Eingabefelder mit den abgerufenen Daten
-                this.verfahrensName = fachverfahrenData.verfahrensName;
-                this.verfahrensTag = fachverfahrenData.verfahrensTag;
-                this.verfahrensZweck = fachverfahrenData.verfahrensZweck;
-                this.verfahrensLaufzeit = fachverfahrenData.verfahrensLaufzeit;
-                // ... Setze weitere Felder nach Bedarf
+                // Überprüfe, ob Daten zurückgegeben wurden
+                if (fachverfahrenData) {
+                    // Setze die Eingabefelder mit den abgerufenen Daten
+                    this.verfahrensName = fachverfahrenData.verfahrensName;
+                    this.verfahrensTag = fachverfahrenData.verfahrensTag;
+                    this.verfahrensZweck = fachverfahrenData.verfahrensZweck;
+                    this.verfahrensLaufzeit = fachverfahrenData.verfahrensLaufzeit;
+                    // ... Setze weitere Felder nach Bedarf
 
-                // Zeige eine Erfolgsmeldung im Terminal an
-                console.log('Fachverfahren erfolgreich gefunden:', fachverfahrenData);
-            } else {
-                // Handle den Fall, dass keine Daten gefunden wurden
-                console.warn('Fachverfahren nicht gefunden.');
+                    // Rufe zusätzliche Personendaten mit der verfahrensId ab
+                    const personenData = await fetchPersonVerf(this.fachverfahrenId);
+                    if (personenData) {
+                        // Verarbeite die Personendaten für jede Rolle
+                        this.kundenmanagement.name = personenData.kundenmanagement_name;
+                        this.kundenmanagement.vorname = personenData.kundenmanagement_vornam;
+                        this.kundenmanagement.dezernat = personenData.kundenmanagement_dez;
+                        this.kundenmanagement.telefon = personenData.kundenmanagement_telefon;
 
-                // Setze die anderen Felder auf leere Werte oder handle es entsprechend
-                this.verfahrensName = '';
-                this.verfahrensTag = '';
-                this.verfahrensZweck = '';
-                this.verfahrensLaufzeit = '';
-                // ... Setze weitere Felder nach Bedarf
+                        this.fachadministration.name = personenData.fachadministration_name;
+                        this.fachadministration.vorname = personenData.fachadministration_vornam;
+                        this.fachadministration.dezernat = personenData.fachadministration_dez;
+                        this.fachadministration.telefon = personenData.fachadministration_telefon;
 
-                // Zeige das Popup für den Fehler an
-                this.showPopup = true;
+                        this.auftraggeber.name = personenData.auftraggeber_name;
+                        this.auftraggeber.vorname = personenData.auftraggeber_vornam;
+                        this.auftraggeber.dezernat = personenData.auftraggeber_dez;
+                        this.auftraggeber.telefon = personenData.auftraggeber_telefon;
+
+                        this.verfahrensbetreuer.name = personenData.verfahrensbetreuer_name;
+                        this.verfahrensbetreuer.vorname = personenData.verfahrensbetreuer_vornam;
+                        this.verfahrensbetreuer.dezernat = personenData.verfahrensbetreuer_dez;
+                        this.verfahrensbetreuer.telefon = personenData.verfahrensbetreuer_telefon;
+                    }
+
+                    console.log('Fachverfahren erfolgreich gefunden:', fachverfahrenData);
+                } else {
+                    console.warn('Fachverfahren nicht gefunden.');
+                    this.resetFachverfahrenData();
+                    this.showPopup = true;
                 }
             } catch (error) {
                 console.error('Fehler bei der Suche nach Fachverfahren:', error);
@@ -330,7 +345,22 @@ export default {
             }
         },
 
-        // ... Weitere Methoden nach Bedarf
+        resetFachverfahrenData() {
+            // Setze alle Datenfelder zurück
+            this.verfahrensName = '';
+            this.verfahrensTag = '';
+            this.verfahrensZweck = '';
+            this.verfahrensLaufzeit = '';
+            // ... Setze weitere Felder nach Bedarf
+
+            // Setze Personendaten zurück
+            const emptyPersonData = { name: '', vorname: '', dezernat: '', telefon: '' };
+            this.kundenmanagement = { ...emptyPersonData };
+            this.fachadministration = { ...emptyPersonData };
+            this.auftraggeber = { ...emptyPersonData };
+            this.verfahrensbetreuer = { ...emptyPersonData };
+        },
+        
         openPopupError() {
             this.Error = true;
         },
