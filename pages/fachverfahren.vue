@@ -252,10 +252,10 @@
     </div>
 
 
-    <!--! Für JACOB -->
-    <button v-for="server in serverDetails" :key="server.serverId" @click="handleButtonClick(server)"
+    <!-- Für JACOB -->
+    <button v-for="server in serverDetails" :key="server.serverId" @click="openPopupServer('Server')"
     class="list-button">
-      {{ server.name }}
+        {{ server.name }}
     </button>
 
 
@@ -967,7 +967,7 @@ export default {
     position: absolute;
     z-index: 1;
     bottom: 10px;
-    left: 75%;
+    left: 70%;
     transform: translateX(-50%);
     padding: 8px 16px;
     background-color: #334155;
@@ -1098,5 +1098,31 @@ export default {
     background-color: #1e293b;
     margin-right: auto;
   }
+  
+  .popup-überschrift {
+    color: rgb(255, 255, 255);
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    background-color: rgb(255, 10, 10);
+    border-radius: 5px;
+    z-index: 10;
+    font-size: 16px;
+    margin-top: 10px;
+    text-align: center;
+    /* Added text-align center */
+    }
+
+    .popup-text {
+        color: white;
+        padding-left: 10px;
+        padding-right: 10px;
+        z-index: 10;
+        font-size: 16px;
+        margin-top: 10px;
+        text-align: center;
+        /* Added text-align center */
+    }
 </style>
 
