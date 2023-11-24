@@ -236,9 +236,34 @@ export default {
             Error: false,
             Server: false,
             DB: false,
-            // ... Weitere Datenfelder nach Bedarf
+            
+            kundenmanagement: {
+                name: '',
+                vorname: '',
+                dezernat: '',
+                telefon: ''
+            },
+            fachadministration: {
+                name: '',
+                vorname: '',
+                dezernat: '',
+                telefon: ''
+            },
+            auftraggeber: {
+                name: '',
+                vorname: '',
+                dezernat: '',
+                telefon: ''
+            },
+            verfahrensbetreuer: {
+                name: '',
+                vorname: '',
+                dezernat: '',
+                telefon: ''
+            },
         };
     },
+    // Weitere Methoden und Optionen
     methods: {
         async getServerDetails(fachverfahren) {
             try {
@@ -360,7 +385,7 @@ export default {
             this.auftraggeber = { ...emptyPersonData };
             this.verfahrensbetreuer = { ...emptyPersonData };
         },
-        
+
         openPopupError() {
             this.Error = true;
         },
