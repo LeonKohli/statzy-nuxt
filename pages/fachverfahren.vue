@@ -330,27 +330,33 @@ export default {
 
                     // Rufe zusätzliche Personendaten mit der verfahrensId ab
                     const personenData = await fetchPersonVerf(this.fachverfahrenId);
-                    if (personenData) {
-                        // Verarbeite die Personendaten für jede Rolle
-                        this.kundenmanagement.name = personenData.kundenmanagement_name;
-                        this.kundenmanagement.vorname = personenData.kundenmanagement_vornam;
-                        this.kundenmanagement.dezernat = personenData.kundenmanagement_dez;
-                        this.kundenmanagement.telefon = personenData.kundenmanagement_telefon;
+                    if (personenData && personenData.fachverfahren.length > 0) {
+                        const person = personenData.fachverfahren[0]; // Da es ein Array ist, nehmen wir das erste Element
 
-                        this.fachadministration.name = personenData.fachadministration_name;
-                        this.fachadministration.vorname = personenData.fachadministration_vornam;
-                        this.fachadministration.dezernat = personenData.fachadministration_dez;
-                        this.fachadministration.telefon = personenData.fachadministration_telefon;
+                        // Zuweisen der Daten zu den entsprechenden Objekten in Ihrer Komponente
+                        this.kundenmanagement.name = person.kundenmanagement_name;
+                        this.kundenmanagement.vorname = person.kundenmanagement_vornam;
+                        this.kundenmanagement.dezernat = person.kundenmanagement_dez;
+                        this.kundenmanagement.telefon = person.kundenmanagement_telefon;
 
-                        this.auftraggeber.name = personenData.auftraggeber_name;
-                        this.auftraggeber.vorname = personenData.auftraggeber_vornam;
-                        this.auftraggeber.dezernat = personenData.auftraggeber_dez;
-                        this.auftraggeber.telefon = personenData.auftraggeber_telefon;
+                        this.fachadministration.name = person.fachadministration_name;
+                        this.fachadministration.vorname = person.fachadministration_vornam;
+                        this.fachadministration.dezernat = person.fachadministration_dez;
+                        this.fachadministration.telefon = person.fachadministration_telefon;
 
-                        this.verfahrensbetreuer.name = personenData.verfahrensbetreuer_name;
-                        this.verfahrensbetreuer.vorname = personenData.verfahrensbetreuer_vornam;
-                        this.verfahrensbetreuer.dezernat = personenData.verfahrensbetreuer_dez;
-                        this.verfahrensbetreuer.telefon = personenData.verfahrensbetreuer_telefon;
+                        this.auftraggeber.name = person.auftraggeber_name;
+                        this.auftraggeber.vorname = person.auftraggeber_vornam;
+                        this.auftraggeber.dezernat = person.auftraggeber_dez;
+                        this.auftraggeber.telefon = person.auftraggeber_telefon;
+
+                        this.verfahrensbetreuer.name = person.verf_betreuung_name;
+                        this.verfahrensbetreuer.vorname = person.verf_betreuung_vornam;
+                        this.verfahrensbetreuer.dezernat = person.verf_betreuung_dez;
+                        this.verfahrensbetreuer.telefon = person.verf_betreuung_telefon;
+
+                        console.log('Personendaten erfolgreich zugeordnet:', this.kundenmanagement, this.fachadministration, this.auftraggeber, this.verfahrensbetreuer);
+                    } else {
+                        console.warn('Keine Personendaten gefunden.');
                     }
 
                     console.log('Fachverfahren erfolgreich gefunden:', fachverfahrenData);
