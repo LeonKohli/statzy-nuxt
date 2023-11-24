@@ -656,13 +656,13 @@ export default {
 
     div.db-details {
         position: absolute;
-        top: 63%;
+        top: 50.4%;
         right: 5%;
     }
 
     div.server-details {
         position: absolute;
-        top: 63%;
+        top: 50.4%;
         right: 23%;
     }
 
