@@ -269,7 +269,7 @@ export default {
             try {
                 const response = await fetch(`/api/servers/${fachverfahren}`);
                 const responseData = await response.json();
-
+                console.log('Antwort der API:', responseData);
                 // Annahme: In der Antwort gibt es eine Eigenschaft 'servers' als Array von Servern
                 if (responseData.servers && responseData.servers.length > 0) {
                 // Fülle das serverDetails-Array mit den Serverdaten
@@ -398,6 +398,36 @@ export default {
     },
 }
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <style>
     table.verfahren, table.personen, table.systeme, table.server
