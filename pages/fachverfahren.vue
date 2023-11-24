@@ -23,7 +23,7 @@
             <button class="button" @click="openPopupServer('Server')"> Server </button>
             <button class="button" @click="openPopupDB('DB')"> DB </button>
             <div v-if="Error" class="popupVerfahren">
-                <button class="close-button-verfahren" @click="Error = false"> Close </button>
+                <button class="close-button-verfahren" @click="Error = false"> Schließen </button>
                 <button class="create-button" @click="Error = false"> Erstellen </button>
                 <div class="cardVerfahren">
                     <div class="bgVerfahren"></div>
@@ -85,7 +85,7 @@
         <hr class="line">
         <br>
         <div v-if="Server" class="popupVerfahrenServer">
-            <button class="close-button-verfahren-server" @click="Server = false"> Close </button>
+            <button class="close-button-verfahren-server" @click="Server = false"> Schließen </button>
             <div class="cardVerfahrenServer">
                 <div class="blob-server"></div>
             </div>
@@ -149,7 +149,7 @@
         </div>
         <br>
         <div v-if="DB" class="popupVerfahrenDB">
-            <button class="close-button-verfahren-db" @click="DB = false"> Close </button>
+            <button class="close-button-verfahren-db" @click="DB = false"> Schließen </button>
             <div class="cardVerfahrenDB">
                 <div class="blob-db"></div>
             </div>
