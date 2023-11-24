@@ -13,10 +13,10 @@
                 </tr>
                 <tr>
                     <td class="tabledata"> <input class="eingabe" v-model="fachverfahrenId" placeholder="Verfahrens-ID"/> </td>
-                    <td class="tabledata"> <input class="eingabe" placeholder="Verfahrens-Name"/> </td>
-                    <td class="tabledata"> <input class="eingabe" placeholder="Tag"/> </td>
-                    <td class="tabledata"> <input class="eingabe" placeholder="Zweck"/> </td>
-                    <td class="tabledata"> <input class="eingabe" placeholder="Laufzeit"/> </td>
+                    <td class="tabledata"> <input class="eingabe" v-model="name" placeholder="Verfahrens-Name"/> </td>
+                    <td class="tabledata"> <input class="eingabe" v-model="tag" placeholder="Tag"/> </td>
+                    <td class="tabledata"> <input class="eingabe" v-model="verwendungszweck" placeholder="Zweck"/> </td>
+                    <td class="tabledata"> <input class="eingabe" v-model="laufzeitverfahren" placeholder="Laufzeit"/> </td>
                 </tr>
             </table>
             <button class="button" @click="sucheFachverfahren"> Suchen </button>
@@ -220,10 +220,10 @@ export default {
                 fachverfahrenName: '',
             },],
             fachverfahrenId: '',
-            verfahrensName: '',
-            verfahrensTag: '',
-            verfahrensZweck: '',
-            verfahrensLaufzeit: '',
+            name: '',
+            tag: '',
+            verwendungszweck: '',
+            laufzeitverfahren: '',
             Error: false,
             Server: false,
             DB: false,
@@ -274,10 +274,10 @@ export default {
                 // Überprüfe, ob Daten zurückgegeben wurden
                 if (fachverfahrenData) {
                     // Setze die Eingabefelder mit den abgerufenen Daten
-                    this.verfahrensName = fachverfahrenData.verfahrensName;
-                    this.verfahrensTag = fachverfahrenData.verfahrensTag;
-                    this.verfahrensZweck = fachverfahrenData.verfahrensZweck;
-                    this.verfahrensLaufzeit = fachverfahrenData.verfahrensLaufzeit;
+                    this.name = fachverfahrenData.name;
+                    this.tag = fachverfahrenData.tag;
+                    this.verwendungszweck = fachverfahrenData.verwendungszweck;
+                    this.laufzeitverfahren = fachverfahrenData.laufzeitverfahren;
                     // ... Setze weitere Felder nach Bedarf
 
                     // Rufe zusätzliche Personendaten mit der verfahrensId ab
@@ -357,16 +357,16 @@ export default {
                 } else {
                     console.warn('Fachverfahren nicht gefunden.');
                     this.resetFachverfahrenData();
-                    this.showPopup = true;
+                    this.Error = true;
                 }
             } catch (error) {
                 console.error('Fehler bei der Suche nach Fachverfahren:', error);
                 // Handle den Fehler angemessen, zum Beispiel zeige eine Fehlermeldung an
                 // Zeige das Popup für den Fehler an
-                this.showPopup = true;
+                this.Error = true;
             } finally {
                 // Schließe das Popup, unabhängig davon, ob die Suche erfolgreich war oder nicht
-                this.showPopup = false;
+                this.Error = false;
             }
         },
 
