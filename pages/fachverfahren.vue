@@ -235,7 +235,7 @@
         <br>
         <br>
         <div v-if="fachverfahrenDatabases.length > 0">
-    <h2 class="fachverfahrenh2">Datenbank Details</h2>
+            <h2 class="fachverfahrenh2">Datenbank Details</h2>
     <table class="db">
         <!-- ... your table headers -->
         <button v-for="database in fachverfahrenDatabases" :key="database.id"
@@ -252,14 +252,16 @@
         <br>
     </div>
 
-
+<div v-if="fachverfahrenServer.length > 0">
+    <h2 class="fachverfahrenh2">Server Details</h2>
+<table class="server">
     <!-- Für JACOB -->
     <button v-for="server in serverDetails" :key="server.serverId" @click="openPopupServer('Server')"
     class="list-button">
         {{ server.name }}
     </button>
-
-
+</table>
+</div>
 
 </template>
 
@@ -328,6 +330,7 @@ export default {
                 telefon: ''
             },
             fachverfahrenDatabases: [],
+            fachverfahrenServer: [],
         };
     },
     // Weitere Methoden und Optionen
