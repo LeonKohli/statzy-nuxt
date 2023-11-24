@@ -109,7 +109,7 @@ export async function fetchAuswahlData() {
 
   
 
-  // Funktion zum Abrufen von Fachverfahrensdetails anhand der verfId
+// Funktion zum Abrufen von Fachverfahrensdetails anhand der verfId
 export async function fetchFachverfahrenById(verfId) {
   try {
     // Basis-URL für API-Anfragen, verwendet die Umgebungsvariable BASE_URL oder den lokalen Standardwert

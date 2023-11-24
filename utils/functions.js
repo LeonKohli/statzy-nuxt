@@ -109,7 +109,7 @@ export async function fetchAuswahlData() {
 
   
 
-  // Funktion zum Abrufen von Fachverfahrensdetails anhand der verfId
+// Funktion zum Abrufen von Fachverfahrensdetails anhand der verfId
 export async function fetchFachverfahrenById(verfId) {
   try {
     // Basis-URL für API-Anfragen, verwendet die Umgebungsvariable BASE_URL oder den lokalen Standardwert
@@ -393,5 +393,22 @@ export async function searchPersonsByName(name) {
   } catch (error) {
     console.error('Fehler bei der Suche nach Personen:', error);
     return []; // Gibt ein leeres Array zurück im Fehlerfall
+  }
+}
+
+export async function fetchPersonVerf(verf_id) {
+  const apiUrl = `/api/fachverfahren/${verf_id}`;
+
+  try {
+    const response = await fetch(apiUrl);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Fehler beim Abrufen der Fachverfahren-Daten:', error);
+    return null;
   }
 }

@@ -12,7 +12,7 @@
                     <th class="tablehead"> Verfahrens-Laufzeit </th>
                 </tr>
                 <tr>
-                    <td class="tabledata"> <input class="eingabe" placeholder="Verfahrens-ID"/> </td>
+                    <td class="tabledata"> <input class="eingabe" v-model="fachverfahrenId" placeholder="Verfahrens-ID"/> </td>
                     <td class="tabledata"> <input class="eingabe" placeholder="Verfahrens-Name"/> </td>
                     <td class="tabledata"> <input class="eingabe" placeholder="Tag"/> </td>
                     <td class="tabledata"> <input class="eingabe" placeholder="Zweck"/> </td>
@@ -342,10 +342,6 @@ export default {
         },
     },
 }
-
-
-
-
 </script>
 
 <style>
