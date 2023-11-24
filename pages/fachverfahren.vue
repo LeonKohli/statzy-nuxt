@@ -441,9 +441,6 @@ export default {
                 // Handle den Fehler angemessen, zum Beispiel zeige eine Fehlermeldung an
                 // Zeige das Popup für den Fehler an
                 this.openPopupError();
-            } finally {
-                // Schließe das Popup, unabhängig davon, ob die Suche erfolgreich war oder nicht
-                this.openPopupError = false;
             }
         },
 
