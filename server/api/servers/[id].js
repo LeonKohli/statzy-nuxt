@@ -19,7 +19,7 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 404, statusMessage: 'Server not found' });
   }
   
-  return { server: result.rows[0] };
+  return { server: result.rows };
 });
 // SELECT s.*, f.name as fachverfahren_name
 // FROM public.server s
