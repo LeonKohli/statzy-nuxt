@@ -2,10 +2,10 @@
 export async function fetchFachverfahrenData() {
   try {
       // Basis-URL für die API, falls nicht vorhanden wird localhost:3000 verwendet
-      const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
+      
 
       // Anfrage an den Server, um Fachverfahrensdaten abzurufen
-      const response = await fetch(`${baseUrl}/api/fachverf/index`);
+      const response = await fetch(`/api/fachverf/index`);
 
       // Überprüfen, ob die Anfrage erfolgreich war (HTTP-Status 200-299)
       if (!response.ok) {
@@ -26,10 +26,10 @@ export async function fetchFachverfahrenData() {
 export async function fetchPersonsData() {
   try {
       // Basis-URL für die API, falls nicht durch Umgebungsvariable definiert, wird der lokale Entwicklungsserver (http://localhost:3000) verwendet
-      const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
+      
 
       // API-Anfrage an den Endpunkt für Personen-Daten
-      const response = await fetch(`${baseUrl}/api/persons/index`);
+      const response = await fetch(`/api/persons/index`);
 
       // Überprüfe, ob die Anfrage erfolgreich war (HTTP-Status 200-299)
       if (!response.ok) {
@@ -53,10 +53,10 @@ export async function fetchPersonsData() {
 export async function fetchServersData() {
   try {
       // Basis-URL für die API, kann aus der Umgebungsvariable oder einem Standardwert abgeleitet werden
-      const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
+      
 
       // API-Anfrage an den Endpunkt für Serverdaten
-      const response = await fetch(`${baseUrl}/api/servers/index`);
+      const response = await fetch(`/api/servers/index`);
 
       // Überprüfen, ob die Anfrage erfolgreich war (HTTP-Status 2xx)
       if (!response.ok) {
@@ -82,10 +82,10 @@ export async function fetchServersData() {
 export async function fetchAuswahlData() {
   try {
     // Basis-URL für die API, fallback zu 'http://localhost:3000', wenn nicht definiert
-    const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
+    
 
     // Anfrage an den Server, um Auswahl-Daten abzurufen
-    const response = await fetch(`${baseUrl}/api/servers/auswahl_data`);
+    const response = await fetch(`/api/servers/auswahl_data`);
 
     // Überprüfe, ob die Anfrage erfolgreich war (HTTP-Statuscode 2xx)
     if (!response.ok) {
@@ -113,10 +113,10 @@ export async function fetchAuswahlData() {
 export async function fetchFachverfahrenById(verfId) {
   try {
     // Basis-URL für API-Anfragen, verwendet die Umgebungsvariable BASE_URL oder den lokalen Standardwert
-    const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
+    
 
     // API-Anfrage an die spezifische Route für Fachverfahrensdetails mit der verfId
-    const response = await fetch(`${baseUrl}/api/fachverf/${verfId}`);
+    const response = await fetch(`/api/fachverf/${verfId}`);
 
     // Überprüfen, ob die Anfrage erfolgreich war (Status 200 OK)
     if (!response.ok) {
@@ -152,10 +152,10 @@ export async function fetchFachverfahrenById(verfId) {
 export async function updateFachverfahrenById(verfId, updateData) {
   try {
     // Basis-URL für die API (verwende entweder die Umgebungsvariable BASE_URL oder den lokalen Standardwert)
-    const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
+    
 
     // Sendet eine PUT-Anfrage an die API, um das Fachverfahren zu aktualisieren
-    const response = await fetch(`${baseUrl}/api/fachverf/${verfId}`, {
+    const response = await fetch(`/api/fachverf/${verfId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json', // Setzt den Header für JSON-Daten
@@ -183,10 +183,10 @@ export async function updateFachverfahrenById(verfId, updateData) {
 export async function createFachverfahren(newFachverfahrenData) {
   try {
     // Basis-URL für die API, falls nicht vorhanden, verwende 'http://localhost:3000'
-    const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
+    
 
     // Senden einer HTTP POST-Anfrage an die API mit den bereitgestellten Daten
-    const response = await fetch(`${baseUrl}/api/fachverf`, {
+    const response = await fetch(`/api/fachverf`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -214,10 +214,10 @@ export async function createFachverfahren(newFachverfahrenData) {
 export async function fetchFachverfData() {
   try {
     // Basis-URL für die API, falls nicht vorhanden, verwende localhost:3000
-    const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
+    
     
     // API-Aufruf, um Fachverfahrensdaten abzurufen
-    const response = await fetch(`${baseUrl}/api/fachverfahren/fachverf`);
+    const response = await fetch(`/api/fachverfahren/fachverf`);
     
     // Überprüfe, ob die Antwort erfolgreich ist (HTTP-Statuscode 2xx)
     if (!response.ok) {
@@ -242,10 +242,10 @@ export async function fetchFachverfData() {
 export async function deleteServerById(serverId) {
   try {
     // Basis-URL für die API-Anfragen. Falls nicht definiert, wird die lokale Entwicklungsumgebung angenommen.
-    const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
+    
 
     // API-Anfrage zum Löschen des Servers mit der angegebenen ID
-    const response = await fetch(`${baseUrl}/api/servers/${serverId}`, {
+    const response = await fetch(`/api/servers/${serverId}`, {
       method: 'DELETE',
     });
 
@@ -272,10 +272,10 @@ export async function deleteServerById(serverId) {
 export async function fetchServerById(serverId) {
   try {
     // Basis-URL für API-Anfragen, verwendet die Umgebungsvariable BASE_URL oder standardmäßig http://localhost:3000
-    const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
+    
 
     // API-Anfrage, um Serverdetails abzurufen
-    const response = await fetch(`${baseUrl}/api/servers/${serverId}`);
+    const response = await fetch(`/api/servers/${serverId}`);
 
     // Überprüfung, ob die Anfrage erfolgreich war
     if (!response.ok) {
@@ -305,10 +305,10 @@ export async function fetchServerById(serverId) {
 export async function updateServerById(serverId, updateData) {
   try {
     // Basis-URL für die API, falls die Umgebungsvariable BASE_URL nicht gesetzt ist, wird der lokale Entwicklungs-Server verwendet
-    const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
+    
 
     // HTTP-Anfrage an die API senden, um den Server mit der angegebenen ID zu aktualisieren
-    const response = await fetch(`${baseUrl}/api/servers/${serverId}`, {
+    const response = await fetch(`/api/servers/${serverId}`, {
       method: 'PUT', // Verwendung der PUT-Methode für Aktualisierungen
       headers: {
         'Content-Type': 'application/json', // Der Inhalt der Anfrage ist im JSON-Format
@@ -338,10 +338,10 @@ export async function updateServerById(serverId, updateData) {
 export async function createServer(newServerData) {
   try {
     // Basis-URL für die API, fallback auf 'http://localhost:3000', wenn BASE_URL nicht definiert ist
-    const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
+    
 
     // Anfrage an die API senden, um einen neuen Server zu erstellen
-    const response = await fetch(`${baseUrl}/api/servers/create`, {
+    const response = await fetch(`/api/servers/create`, {
       method: 'POST', // HTTP-Methode: POST für das Erstellen neuer Ressourcen
       headers: {
         'Content-Type': 'application/json', // Der Inhalt der Anfrage ist im JSON-Format
@@ -379,9 +379,9 @@ export async function searchPersonsByName(name) {
       return []; // Frühzeitige Rückkehr, wenn die Eingabe zu kurz ist
     }
 
-    const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
+    
     const encodedName = encodeURIComponent(name);
-    const response = await fetch(`${baseUrl}/api/persons/${encodedName}`);
+    const response = await fetch(`/api/persons/${encodedName}`);
 
     if (!response.ok) {
       // Behandelt alle HTTP-Fehler, inklusive 404, wie vom Server definiert
