@@ -1,7 +1,8 @@
 // server/api/servers/create.post.js
 import { query } from '../../db.js';
-
+console.log('create.post.js');
 export default defineEventHandler(async (event) => {
+  console.log('Test1');
   const {
     fachverfahren,
     name,

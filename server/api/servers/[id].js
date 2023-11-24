@@ -1,19 +1,19 @@
-// server/api/servers/[fachverfahren].js
+// server/api/servers/[id].js
 import { query } from '../../db.js';
 
 console.log('fachverfahren.js');
 export default defineEventHandler(async (event) => {
   console.log('Test1');
-  const fachverfahren = event.context.params.fachverfahren;
+  const id = event.context.params.id;
   const searchQuery = `
     SELECT server.*, fachverfahren.name AS fachverfahren_name
     FROM public.server
     LEFT JOIN public.fachverfahren ON server.fachverfahren = fachverfahren.verf_id
-    WHERE server.server_id = $1
+    WHERE server.fachverfahren = $1
   `;
   // test with: http://localhost:3000/api/servers/4711 
   console.log('Test2');
-  const result = await query(searchQuery, [fachverfahren]);
+  const result = await query(searchQuery, [id]);
 
   if (result.rowCount === 0) {
     throw createError({ statusCode: 404, statusMessage: 'Server not found' });

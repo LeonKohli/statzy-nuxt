@@ -1,7 +1,9 @@
 // server/api/auswahl_data.js
 import { query } from '../../db.js';
 
+console.log('auswahl_data.js');
 export default defineEventHandler(async () => {
+  console.log('Test1');
   const tables = [
     'auswahl_cpu',
     'auswahl_datenbank', //not used

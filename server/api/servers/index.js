@@ -1,10 +1,11 @@
 // server/api/servers/index.js
 import { query } from '../../db.js';
-
+console.log('index.js');
 export default defineEventHandler(async (event) => {
+  console.log('Test1');
   const { rows } = await query(`
     SELECT s.*, f.name as fachverfahren_name, 
-           array_agg(p.name || ' (' || p.vornam || ')') as associated_persons
+    array_agg(p.name || ' (' || p.vornam || ')') as associated_persons
     FROM public.server s
     LEFT JOIN public.fachverfahren f ON s.fachverfahren = f.verf_id
     LEFT JOIN public.server_person sp ON s.server_id = sp.server_id
