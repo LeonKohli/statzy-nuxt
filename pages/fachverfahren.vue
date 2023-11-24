@@ -184,6 +184,21 @@
         </div>
         <br>
         <br>
+        <div v-if="fachverfahrenDatabases.length > 0">
+    <h2 class="fachverfahrenh2">Datenbank Details</h2>
+    <table class="db">
+        <!-- ... your table headers -->
+        <tr v-for="database in fachverfahrenDatabases" :key="database.id">
+            <td>{{ database.name }}</td>
+            <!-- ... additional data fields -->
+        </tr>
+    </table>
+</div>
+<div v-else>
+    <p>Keine Datenbanken gefunden.</p>
+</div>
+<br>
+        <br>
     </div>
 
 </template>
@@ -252,6 +267,7 @@ export default {
                 dezernat: '',
                 telefon: ''
             },
+            fachverfahrenDatabases: [],
         };
     },
     // Weitere Methoden und Optionen
@@ -268,6 +284,9 @@ export default {
 
         async sucheFachverfahren() {
             try {
+                // Führe die API-Anfrage durch, um Datenbanken für die angegebene Fachverfahren ID abzurufen
+                this.fetchDatabasesForFachverfahren();
+
                 // Führe die API-Anfrage durch, um Fachverfahrensdaten für die angegebene ID abzurufen
                 const fachverfahrenData = await fetchFachverfahrenById(this.fachverfahrenId);
 
@@ -395,6 +414,24 @@ export default {
         openPopupDB() {
             this.DB = true;
         },
+        async fetchDatabasesForFachverfahren() {
+        if (!this.fachverfahrenId) {
+            alert('Please enter a Fachverfahren ID.');
+            return;
+        }
+        
+        try {
+            const response = await fetch(`/api/databases/${encodeURIComponent(this.fachverfahrenId)}`);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            this.fachverfahrenDatabases = await response.json();
+        } catch (error) {
+            console.error('Error fetching databases for Fachverfahren:', error.message);
+            this.fachverfahrenDatabases = []; // Reset in case of error
+            this.Error = true;
+        }
+    },
     },
 }
 </script>
