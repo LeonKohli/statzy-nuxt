@@ -238,7 +238,8 @@
 
 
     <!--! Für JACOB -->
-    <button v-for="server in serverDetails" :key="server.serverId" @click="handleButtonClick(server)">
+    <button v-for="server in serverDetails" :key="server.serverId" @click="handleButtonClick(server)"
+    class="list-button">
       {{ server.name }}
     </button>
 
@@ -1054,6 +1055,39 @@ export default {
         filter: blur(12px);
         animation: blob-bounce 5s infinite ease;
     }
-
+    button.list-button {
+    width: 146px;
+    height: 31px;
+    background: #334155;
+    border-radius: 9px;
+    margin: 0 auto;
+    display: block;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    font-weight: bolder;
+    color: white;
+    scale: 120%;
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+  button.list-button:active {
+    scale: 90%;
+    background: #475569;
+    border-radius: 9px;
+    transition-duration: 30ms;
+  }
+  button.list-button:hover {
+    transition-duration: 30ms;
+    background: #475569;
+  }
+  
+  .server-list {
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #1e293b;
+    margin-right: auto;
+  }
 </style>
 
