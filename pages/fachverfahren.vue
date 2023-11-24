@@ -94,59 +94,109 @@
                 <table class="server">
                     <tr>
                         <th> Name </th>
-                        <td class=tableSeperator> <input class="eingabe" placeholder="Name" /> </td>
+                        <td class="tableSeperator"> 
+                            <input class="eingabe" v-model="serverDetails.name" placeholder="Name" />
+                        </td>
                         <th> Hochverfügbar </th>
-                        <td > <input class="eingabeCheck" type="checkbox" /> </td>
+                        <td> 
+                            <input class="eingabeCheck" type="checkbox" v-model="serverDetails.hochverfügbar" />
+                        </td>
                     </tr>
                     <tr>
                         <th> Umgebung </th>
-                        <td class=tableSeperator> <select class="eingabe" /> </td>
+                        <td class="tableSeperator"> 
+                            <select class="eingabe" v-model="serverDetails.umgebung">
+                                <!-- Optionen hier -->
+                            </select>
+                        </td>
                         <th> Verfügbarkeit </th>
-                        <td > <input class="eingabe" placeholder="Verfügbarkeit" /> </td>
+                        <td> 
+                            <input class="eingabe" v-model="serverDetails.verfügbarkeit" placeholder="Verfügbarkeit" />
+                        </td>
                     </tr>
                     <tr>
                         <th> Netzwerk </th>
-                        <td class=tableSeperator> <select class="eingabe" /> </td>
+                        <td class="tableSeperator"> 
+                            <select class="eingabe" v-model="serverDetails.netzwerk">
+                                <!-- Optionen hier -->
+                            </select>
+                        </td>
                         <th> Vertraulichkeit </th>
-                        <td > <input class="eingabe" placeholder="Vertraulichkeit" /> </td>
+                        <td> 
+                            <input class="eingabe" v-model="serverDetails.vertraulichkeit" placeholder="Vertraulichkeit" />
+                        </td>
                     </tr>
                     <tr>
                         <th> CPU </th>
-                        <td class=tableSeperator> <select class="eingabe" /> </td>
+                        <td class="tableSeperator"> 
+                            <select class="eingabe" v-model="serverDetails.cpu">
+                                <!-- Optionen hier -->
+                            </select>
+                        </td>
                         <th> Integrität </th>
-                        <td > <input class="eingabe" placeholder="Integrität" /> </td>
+                        <td> 
+                            <input class="eingabe" v-model="serverDetails.integrität" placeholder="Integrität" />
+                        </td>
                     </tr>
                     <tr>
                         <th> Arbeitsspeicher </th>
-                        <td class=tableSeperator> <select class="eingabe" /> </td>
+                        <td class="tableSeperator"> 
+                            <select class="eingabe" v-model="serverDetails.arbeitsspeicher">
+                                <!-- Optionen hier -->
+                            </select>
+                        </td>
                         <th> Verwendungszweck </th>
-                        <td > <select class="eingabe" /> </td>
+                        <td> 
+                            <select class="eingabe" v-model="serverDetails.verwendungszweck">
+                                <!-- Optionen hier -->
+                            </select>
+                        </td>
                     </tr>
                     <tr>
                         <th> Betriebssystem </th>
-                        <td class=tableSeperator> <select class="eingabe" /> </td>
+                        <td class="tableSeperator"> 
+                            <select class="eingabe" v-model="serverDetails.betriebssystem">
+                                <!-- Optionen hier -->
+                            </select>
+                        </td>
                         <th> Anmerkungen </th>
-                        <td > <input class="eingabe" placeholder="Integrietät" /> </td>
+                        <td> 
+                            <input class="eingabe" v-model="serverDetails.anmerkungen" placeholder="Anmerkungen" />
+                        </td>
                     </tr>
                     <tr>
                         <th> HD-Typ </th>
-                        <td class=tableSeperator> <select class="eingabe" /> </td>
+                        <td class="tableSeperator"> 
+                            <select class="eingabe" v-model="serverDetails.hdTyp">
+                                <!-- Optionen hier -->
+                            </select>
+                        </td>
                         <th> Bereitstellungszeitpunkt </th>
-                        <td > <input class="eingabeDate" type="date" /> </td>
+                        <td> 
+                            <input class="eingabeDate" type="date" v-model="serverDetails.bereitstellungszeitpunkt" />
+                        </td>
                     </tr>
                     <tr>
                         <th> HD-Kapazität </th>
-                        <td class=tableSeperator> <input class="eingabe" placeholder="Kapazität" /> </td>
+                        <td class="tableSeperator"> 
+                            <input class="eingabe" v-model="serverDetails.hdKapazität" placeholder="Kapazität" />
+                        </td>
                         <th> vorraussichtl. Lieferzeit </th>
-                        <td > <input class="eingabe" placeholder="Lieferzeit" /> </td>
+                        <td> 
+                            <input class="eingabe" v-model="serverDetails.lieferzeit" placeholder="Lieferzeit" />
+                        </td>
                     </tr>
                     <tr>
                         <th> Erreichbarkeit </th>
-                        <td class=tableSeperator> <select class="eingabe" /> </td>
+                        <td class="tableSeperator"> 
+                            <select class="eingabe" v-model="serverDetails.erreichbarkeit">
+                                <!-- Optionen hier -->
+                            </select>
+                        </td>
                     </tr>
                 </table>
-            </div>
-        </div>
+            </div>  
+        </div>           
         <br>
         <div v-if="DB" class="popupVerfahrenDB">
             <button class="close-button-verfahren-db" @click="DB = false"> Schließen </button>
@@ -200,6 +250,15 @@
 <br>
         <br>
     </div>
+
+
+    <!--! Für JACOB -->
+    <button v-for="server in serverDetails" :key="server.serverId" @click="handleButtonClick(server)"
+    class="list-button">
+      {{ server.name }}
+    </button>
+
+
 
 </template>
 
@@ -331,13 +390,12 @@ export default {
                     }
                     // Janneck nistet sich hier ein
                     const response = await fetch(`/api/servers/${this.fachverfahrenId}`);
-                    const responseData = await response.json();
-                    console.log('Antwort der API:', responseData);
+                    const serverData = await response.json();
+                    console.log('Antwort der Server API:', serverData);
                     // Annahme: In der Antwort gibt es eine Eigenschaft 'servers' als Array von Servern
-                    if (responseData.servers && responseData.servers.length > 0) {
+                    if (serverData.server && serverData.server.length > 0) {
                         // Fülle das serverDetails-Array mit den Serverdaten
-                        console.log('im if');
-                        this.serverDetails = responseData.servers.map(server => ({
+                        this.serverDetails = serverData.server.map(server => ({
                             serverId: server.serverId,
                             fachverfahrenId: server.fachverfahrenId,
                             name: server.name,
@@ -376,16 +434,16 @@ export default {
                 } else {
                     console.warn('Fachverfahren nicht gefunden.');
                     this.resetFachverfahrenData();
-                    this.Error = true;
+                    this.openPopupError();
                 }
             } catch (error) {
                 console.error('Fehler bei der Suche nach Fachverfahren:', error);
                 // Handle den Fehler angemessen, zum Beispiel zeige eine Fehlermeldung an
                 // Zeige das Popup für den Fehler an
-                this.Error = true;
+                this.openPopupError();
             } finally {
                 // Schließe das Popup, unabhängig davon, ob die Suche erfolgreich war oder nicht
-                this.Error = false;
+                this.openPopupError = false;
             }
         },
 
@@ -435,34 +493,6 @@ export default {
     },
 }
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1034,6 +1064,39 @@ export default {
         filter: blur(12px);
         animation: blob-bounce 5s infinite ease;
     }
-
+    button.list-button {
+    width: 146px;
+    height: 31px;
+    background: #334155;
+    border-radius: 9px;
+    margin: 0 auto;
+    display: block;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    font-weight: bolder;
+    color: white;
+    scale: 120%;
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+  button.list-button:active {
+    scale: 90%;
+    background: #475569;
+    border-radius: 9px;
+    transition-duration: 30ms;
+  }
+  button.list-button:hover {
+    transition-duration: 30ms;
+    background: #475569;
+  }
+  
+  .server-list {
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #1e293b;
+    margin-right: auto;
+  }
 </style>
 
