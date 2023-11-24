@@ -12,11 +12,11 @@
                     <th class="tablehead"> Verfahrens-Laufzeit </th>
                 </tr>
                 <tr>
-                    <td class="tabledata"> <input class="eingabe" v-model="fachverfahrenId" @keyup.enter="sucheFachverfahren" placeholder="Verfahrens-ID"/> </td>
-                    <td class="tabledata"> <input class="eingabe" v-model="name" placeholder="Verfahrens-Name"/> </td>
-                    <td class="tabledata"> <input class="eingabe" v-model="tag" placeholder="Tag"/> </td>
-                    <td class="tabledata"> <input class="eingabe" v-model="verwendungszweck" placeholder="Zweck"/> </td>
-                    <td class="tabledata"> <input class="eingabe" v-model="laufzeitverfahren" placeholder="Laufzeit"/> </td>
+                    <td class="tabledata"> <input class="eingabe" v-model="fachverfahrenId" @keyup.enter="sucheFachverfahren" placeholder="-"/> </td>
+                    <td class="tabledata"> <input class="eingabe" v-model="name" placeholder="-"/> </td>
+                    <td class="tabledata"> <input class="eingabe" v-model="tag" placeholder="-"/> </td>
+                    <td class="tabledata"> <input class="eingabe" v-model="verwendungszweck" placeholder="-"/> </td>
+                    <td class="tabledata"> <input class="eingabe" v-model="laufzeitverfahren" placeholder="-"/> </td>
                 </tr>
             </table>
             <button class="button" @click="sucheFachverfahren"> Suchen </button>
@@ -47,31 +47,31 @@
                 </tr> 
                 <tr>
                     <th class="tableheadside"> Kundenmanagement: </th>
-                    <td class="tabledata"><input class="eingabe" v-model="kundenmanagement.name" placeholder="Name"/></td>
-                    <td class="tabledata"><input class="eingabe" v-model="kundenmanagement.vorname" placeholder="Vorname"/></td>
-                    <td class="tabledata"><input class="eingabe" v-model="kundenmanagement.dezernat" placeholder="Dezernat"/></td>
-                    <td class="tabledata"><input class="eingabe" v-model="kundenmanagement.telefon" placeholder="Telefon"/></td>
+                    <td class="tabledata"><input class="eingabe" v-model="kundenmanagement.name" placeholder="-"/></td>
+                    <td class="tabledata"><input class="eingabe" v-model="kundenmanagement.vorname" placeholder="-"/></td>
+                    <td class="tabledata"><input class="eingabe" v-model="kundenmanagement.dezernat" placeholder="-"/></td>
+                    <td class="tabledata"><input class="eingabe" v-model="kundenmanagement.telefon" placeholder="-"/></td>
                 </tr>
                 <tr>
                     <th class="tableheadside"> Fachadministration: </th>
-                    <td class="tabledata"><input class="eingabe" v-model="fachadministration.name" placeholder="Name"/></td>
-                    <td class="tabledata"><input class="eingabe" v-model="fachadministration.vorname" placeholder="Vorname"/></td>
-                    <td class="tabledata"><input class="eingabe" v-model="fachadministration.dezernat" placeholder="Dezernat"/></td>
-                    <td class="tabledata"><input class="eingabe" v-model="fachadministration.telefon" placeholder="Telefon"/></td>
+                    <td class="tabledata"><input class="eingabe" v-model="fachadministration.name" placeholder="-"/></td>
+                    <td class="tabledata"><input class="eingabe" v-model="fachadministration.vorname" placeholder="-"/></td>
+                    <td class="tabledata"><input class="eingabe" v-model="fachadministration.dezernat" placeholder="-"/></td>
+                    <td class="tabledata"><input class="eingabe" v-model="fachadministration.telefon" placeholder="-"/></td>
                 </tr>
                 <tr>
                     <th class="tableheadside"> Auftraggeber: </th>
-                    <td class="tabledata"><input class="eingabe" v-model="auftraggeber.name" placeholder="Name"/></td>
-                    <td class="tabledata"><input class="eingabe" v-model="auftraggeber.vorname" placeholder="Vorname"/></td>
-                    <td class="tabledata"><input class="eingabe" v-model="auftraggeber.dezernat" placeholder="Dezernat"/></td>
-                    <td class="tabledata"><input class="eingabe" v-model="auftraggeber.telefon" placeholder="Telefon"/></td>
+                    <td class="tabledata"><input class="eingabe" v-model="auftraggeber.name" placeholder="-"/></td>
+                    <td class="tabledata"><input class="eingabe" v-model="auftraggeber.vorname" placeholder="-"/></td>
+                    <td class="tabledata"><input class="eingabe" v-model="auftraggeber.dezernat" placeholder="-"/></td>
+                    <td class="tabledata"><input class="eingabe" v-model="auftraggeber.telefon" placeholder="-"/></td>
                 </tr>
                 <tr>
                     <th class="tableheadside"> Verfahrensbetreuer: </th>
-                    <td class="tabledata"><input class="eingabe" v-model="verfahrensbetreuer.name" placeholder="Name"/></td>
-                    <td class="tabledata"><input class="eingabe" v-model="verfahrensbetreuer.vorname" placeholder="Vorname"/></td>
-                    <td class="tabledata"><input class="eingabe" v-model="verfahrensbetreuer.dezernat" placeholder="Dezernat"/></td>
-                    <td class="tabledata"><input class="eingabe" v-model="verfahrensbetreuer.telefon" placeholder="Telefon"/></td>
+                    <td class="tabledata"><input class="eingabe" v-model="verfahrensbetreuer.name" placeholder="-"/></td>
+                    <td class="tabledata"><input class="eingabe" v-model="verfahrensbetreuer.vorname" placeholder="-"/></td>
+                    <td class="tabledata"><input class="eingabe" v-model="verfahrensbetreuer.dezernat" placeholder="-"/></td>
+                    <td class="tabledata"><input class="eingabe" v-model="verfahrensbetreuer.telefon" placeholder="-"/></td>
                 </tr>
             </table>                        
             <table class="personen-button">
@@ -95,7 +95,7 @@
                     <tr>
                         <th> Name </th>
                         <td class="tableSeperator"> 
-                            <input class="eingabe" v-model="serverDetails.name" placeholder="Name" />
+                            <input class="eingabe" v-model="serverDetails.name" placeholder="-" />
                         </td>
                         <th> Hochverfügbar </th>
                         <td> 
@@ -111,7 +111,7 @@
                         </td>
                         <th> Verfügbarkeit </th>
                         <td> 
-                            <input class="eingabe" v-model="serverDetails.verfügbarkeit" placeholder="Verfügbarkeit" />
+                            <input class="eingabe" v-model="serverDetails.verfügbarkeit" placeholder="-" />
                         </td>
                     </tr>
                     <tr>
@@ -123,7 +123,7 @@
                         </td>
                         <th> Vertraulichkeit </th>
                         <td> 
-                            <input class="eingabe" v-model="serverDetails.vertraulichkeit" placeholder="Vertraulichkeit" />
+                            <input class="eingabe" v-model="serverDetails.vertraulichkeit" placeholder="-" />
                         </td>
                     </tr>
                     <tr>
@@ -135,7 +135,7 @@
                         </td>
                         <th> Integrität </th>
                         <td> 
-                            <input class="eingabe" v-model="serverDetails.integrität" placeholder="Integrität" />
+                            <input class="eingabe" v-model="serverDetails.integrität" placeholder="-" />
                         </td>
                     </tr>
                     <tr>
@@ -161,7 +161,7 @@
                         </td>
                         <th> Anmerkungen </th>
                         <td> 
-                            <input class="eingabe" v-model="serverDetails.anmerkungen" placeholder="Anmerkungen" />
+                            <input class="eingabe" v-model="serverDetails.anmerkungen" placeholder="-" />
                         </td>
                     </tr>
                     <tr>
@@ -179,11 +179,11 @@
                     <tr>
                         <th> HD-Kapazität </th>
                         <td class="tableSeperator"> 
-                            <input class="eingabe" v-model="serverDetails.hdKapazität" placeholder="Kapazität" />
+                            <input class="eingabe" v-model="serverDetails.hdKapazität" placeholder="-" />
                         </td>
                         <th> vorraussichtl. Lieferzeit </th>
                         <td> 
-                            <input class="eingabe" v-model="serverDetails.lieferzeit" placeholder="Lieferzeit" />
+                            <input class="eingabe" v-model="serverDetails.lieferzeit" placeholder="-" />
                         </td>
                     </tr>
                     <tr>
@@ -208,7 +208,7 @@
                 <table class="db">
                     <tr>
                         <th> Name </th>
-                        <td> <input class="eingabe" placeholder="Name" /> </td>
+                        <td> <input class="eingabe" placeholder="-" /> </td>
                     </tr>
                     <tr>
                         <th> Datenbank-Typ </th>
@@ -216,15 +216,15 @@
                     </tr>
                     <tr>
                         <th> Clusterlösung </th>
-                        <td> <input class="eingabe" placeholder="Lösung" /> </td>
+                        <td> <input class="eingabe" placeholder="-" /> </td>
                     </tr>
                     <tr>
                         <th> Größe der Instanz </th>
-                        <td> <input class="eingabe" placeholder="Größe" /> </td>
+                        <td> <input class="eingabe" placeholder="-" /> </td>
                     </tr>
                     <tr>
                         <th> Festplattengröße </th>
-                        <td> <input class="eingabe" placeholder="Größe" /> </td>
+                        <td> <input class="eingabe" placeholder="-" /> </td>
                     </tr>
                 </table>
                 <button class="button-db"> Bearbeiten </button>
@@ -450,10 +450,10 @@ export default {
 
         resetFachverfahrenData() {
             // Setze alle Datenfelder zurück
-            this.verfahrensName = '';
-            this.verfahrensTag = '';
-            this.verfahrensZweck = '';
-            this.verfahrensLaufzeit = '';
+            this.name = '';
+            this.tag = '';
+            this.verwendungszweck = '';
+            this.laufzeitverfahren = '';
             // ... Setze weitere Felder nach Bedarf
 
             // Setze Personendaten zurück
@@ -473,12 +473,7 @@ export default {
         openPopupDB() {
             this.DB = true;
         },
-        async fetchDatabasesForFachverfahren() {
-        if (!this.fachverfahrenId) {
-            alert('Please enter a Fachverfahren ID.');
-            return;
-        }
-        
+        async fetchDatabasesForFachverfahren() {        
         try {
             const response = await fetch(`/api/databases/${encodeURIComponent(this.fachverfahrenId)}`);
             if (!response.ok) {
