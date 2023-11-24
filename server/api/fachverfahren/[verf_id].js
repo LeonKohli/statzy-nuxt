@@ -1,9 +1,9 @@
 // server/api/fachverfahren/[verf_id].js
 import { query } from '../../db.js';
-
+console.log('verf_id.js');
 export default defineEventHandler(async (event) => {
   const verf_id = event.context.params.verf_id;
-
+  console.log('Test1');
   if (!verf_id) {
     throw createError({ statusCode: 400, statusMessage: 'Keine Fachverfahren-ID angegeben' });
   }
@@ -23,7 +23,7 @@ export default defineEventHandler(async (event) => {
     LEFT JOIN person fa ON f.fachadministation = fa.person_id
     WHERE 
         f.verf_id = $1`;
-  
+  console.log('Test2');
   const result = await query(searchQuery, [verf_id]);
 
   if (result.rowCount === 0) {
