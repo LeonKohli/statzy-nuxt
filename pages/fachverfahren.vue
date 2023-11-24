@@ -12,7 +12,7 @@
                     <th class="tablehead"> Verfahrens-Laufzeit </th>
                 </tr>
                 <tr>
-                    <td class="tabledata"> <input class="eingabe" v-model="fachverfahrenId" placeholder="Verfahrens-ID"/> </td>
+                    <td class="tabledata"> <input class="eingabe" v-model="fachverfahrenId" @keyup.enter="sucheFachverfahren" placeholder="Verfahrens-ID"/> </td>
                     <td class="tabledata"> <input class="eingabe" v-model="name" placeholder="Verfahrens-Name"/> </td>
                     <td class="tabledata"> <input class="eingabe" v-model="tag" placeholder="Tag"/> </td>
                     <td class="tabledata"> <input class="eingabe" v-model="verwendungszweck" placeholder="Zweck"/> </td>
@@ -36,7 +36,7 @@
         <hr class="line">
         <br>
         <div class="personen"> 
-            <h2 class="fachverfahrenh2"> Personen-Daten </h2>
+            <h2 class="fachverfahrenh2-personen"> Personen-Daten </h2>
             <table class="personen">
                 <tr>
                     <th class="tableheadtop">  </th>
@@ -48,32 +48,32 @@
                 <tr>
                     <th class="tableheadside"> Kundenmanagement: </th>
                     <td class="tabledata"><input class="eingabe" v-model="kundenmanagement.name" placeholder="Name"/></td>
-                    <td class="tabledata">{{ kundenmanagement.vorname }}</td>
-                    <td class="tabledata">{{ kundenmanagement.dezernat }}</td>
-                    <td class="tabledata">{{ kundenmanagement.telefon }}</td>
+                    <td class="tabledata"><input class="eingabe" v-model="kundenmanagement.vorname" placeholder="Vorname"/></td>
+                    <td class="tabledata"><input class="eingabe" v-model="kundenmanagement.dezernat" placeholder="Dezernat"/></td>
+                    <td class="tabledata"><input class="eingabe" v-model="kundenmanagement.telefon" placeholder="Telefon"/></td>
                 </tr>
                 <tr>
                     <th class="tableheadside"> Fachadministration: </th>
                     <td class="tabledata"><input class="eingabe" v-model="fachadministration.name" placeholder="Name"/></td>
-                    <td class="tabledata">{{ fachadministration.vorname }}</td>
-                    <td class="tabledata">{{ fachadministration.dezernat }}</td>
-                    <td class="tabledata">{{ fachadministration.telefon }}</td>
+                    <td class="tabledata"><input class="eingabe" v-model="fachadministration.vorname" placeholder="Vorname"/></td>
+                    <td class="tabledata"><input class="eingabe" v-model="fachadministration.dezernat" placeholder="Dezernat"/></td>
+                    <td class="tabledata"><input class="eingabe" v-model="fachadministration.telefon" placeholder="Telefon"/></td>
                 </tr>
                 <tr>
                     <th class="tableheadside"> Auftraggeber: </th>
                     <td class="tabledata"><input class="eingabe" v-model="auftraggeber.name" placeholder="Name"/></td>
-                    <td class="tabledata">{{ auftraggeber.vorname }}</td>
-                    <td class="tabledata">{{ auftraggeber.dezernat }}</td>
-                    <td class="tabledata">{{ auftraggeber.telefon }}</td>
+                    <td class="tabledata"><input class="eingabe" v-model="auftraggeber.vorname" placeholder="Vorname"/></td>
+                    <td class="tabledata"><input class="eingabe" v-model="auftraggeber.dezernat" placeholder="Dezernat"/></td>
+                    <td class="tabledata"><input class="eingabe" v-model="auftraggeber.telefon" placeholder="Telefon"/></td>
                 </tr>
                 <tr>
                     <th class="tableheadside"> Verfahrensbetreuer: </th>
                     <td class="tabledata"><input class="eingabe" v-model="verfahrensbetreuer.name" placeholder="Name"/></td>
-                    <td class="tabledata">{{ verfahrensbetreuer.vorname }}</td>
-                    <td class="tabledata">{{ verfahrensbetreuer.dezernat }}</td>
-                    <td class="tabledata">{{ verfahrensbetreuer.telefon }}</td>
+                    <td class="tabledata"><input class="eingabe" v-model="verfahrensbetreuer.vorname" placeholder="Vorname"/></td>
+                    <td class="tabledata"><input class="eingabe" v-model="verfahrensbetreuer.dezernat" placeholder="Dezernat"/></td>
+                    <td class="tabledata"><input class="eingabe" v-model="verfahrensbetreuer.telefon" placeholder="Telefon"/></td>
                 </tr>
-            </table>            
+            </table>                        
             <table class="personen-button">
                 <tr>
                     <td class="tabledata"> <button class="button-person"> Bearbeiten </button> </td>
@@ -498,7 +498,7 @@ export default {
 
 
 <style>
-    table.verfahren, table.personen, table.systeme, table.server
+    table.verfahren, table.systeme, table.server
     {
         text-align: center;
         border-radius: 10px;
@@ -508,11 +508,20 @@ export default {
         color: white
     }
 
+    table.personen {
+        text-align: center;
+        border-radius: 10px;
+        background-color: #1e293b;
+        margin-left: 50px;
+        margin-right: auto;
+        color: white
+    }
+
     table.personen-button
     {
         text-align: center;
         border-radius: 10px;
-        margin-left: auto;
+        margin-left: 500px;
         margin-right: auto;
         color: white;
     }
@@ -618,6 +627,13 @@ export default {
         font-size: x-large;
         text-align: center;
         margin: 15px;
+    }
+
+    h2.fachverfahrenh2-personen
+    {
+        font-size: x-large;
+        margin: 15px;
+        margin-left: 625px;
     }
 
     div.suchmaske
