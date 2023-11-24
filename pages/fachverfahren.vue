@@ -238,10 +238,11 @@
     <h2 class="fachverfahrenh2">Datenbank Details</h2>
     <table class="db">
         <!-- ... your table headers -->
-        <tr v-for="database in fachverfahrenDatabases" :key="database.id">
-            <td>{{ database.name }}</td>
+        <button v-for="database in fachverfahrenDatabases" :key="database.id"
+        class="list-button">
+        {{ database.name }} 
             <!-- ... additional data fields -->
-        </tr>
+        </button>
     </table>
 </div>
 <div v-else>
