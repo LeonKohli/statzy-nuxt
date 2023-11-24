@@ -490,6 +490,18 @@ export default {
             this.fachverfahrenDatabases = []; // Reset in case of error
             this.Error = true;
         }
+
+        try {
+            const response = await fetch(`/api/databases/${encodeURIComponent(this.fachverfahrenId)}`);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            this.fachverfahrenServer = await response.json();
+        } catch (error) {
+            console.error('Error fetching databases for Fachverfahren:', error.message);
+            this.fachverfahrenServer = []; // Reset in case of error
+            this.Error = true;
+        }
     },
     },
 }
