@@ -46,34 +46,34 @@
                     <th class="tableheadtop"> Telefon </th>
                 </tr> 
                 <tr>
-                    <th class="tableheadside"> Kundenmanagament: </th>
-                    <td class="tabledata"> <input class="eingabe" placeholder="Muster Name"/> </td>
-                    <td class="tabledata"> "Muster Vorname" </td>
-                    <td class="tabledata"> "Muster Dezernat" </td>
-                    <td class="tabledata"> "Muster Telefon" </td>
+                    <th class="tableheadside"> Kundenmanagement: </th>
+                    <td class="tabledata"><input class="eingabe" v-model="kundenmanagement.name" placeholder="Name"/></td>
+                    <td class="tabledata">{{ kundenmanagement.vorname }}</td>
+                    <td class="tabledata">{{ kundenmanagement.dezernat }}</td>
+                    <td class="tabledata">{{ kundenmanagement.telefon }}</td>
                 </tr>
                 <tr>
                     <th class="tableheadside"> Fachadministration: </th>
-                    <td class="tabledata"> <input class="eingabe" placeholder="Muster Name"/> </td>
-                    <td class="tabledata"> "Muster Vorname" </td>
-                    <td class="tabledata"> "Muster Dezernat" </td>
-                    <td class="tabledata"> "Muster Telefon" </td>
+                    <td class="tabledata"><input class="eingabe" v-model="fachadministration.name" placeholder="Name"/></td>
+                    <td class="tabledata">{{ fachadministration.vorname }}</td>
+                    <td class="tabledata">{{ fachadministration.dezernat }}</td>
+                    <td class="tabledata">{{ fachadministration.telefon }}</td>
                 </tr>
                 <tr>
                     <th class="tableheadside"> Auftraggeber: </th>
-                    <td class="tabledata"> <input class="eingabe" placeholder="Muster Name"/> </td>
-                    <td class="tabledata"> "Muster Vorname" </td>
-                    <td class="tabledata"> "Muster Dezernat" </td>
-                    <td class="tabledata"> "Muster Telefon" </td>
+                    <td class="tabledata"><input class="eingabe" v-model="auftraggeber.name" placeholder="Name"/></td>
+                    <td class="tabledata">{{ auftraggeber.vorname }}</td>
+                    <td class="tabledata">{{ auftraggeber.dezernat }}</td>
+                    <td class="tabledata">{{ auftraggeber.telefon }}</td>
                 </tr>
                 <tr>
                     <th class="tableheadside"> Verfahrensbetreuer: </th>
-                    <td class="tabledata"> <input class="eingabe" placeholder="Muster Name"/> </td>
-                    <td class="tabledata"> "Muster Vorname" </td>
-                    <td class="tabledata"> "Muster Dezernat" </td>
-                    <td class="tabledata"> "Muster Telefon" </td>
+                    <td class="tabledata"><input class="eingabe" v-model="verfahrensbetreuer.name" placeholder="Name"/></td>
+                    <td class="tabledata">{{ verfahrensbetreuer.vorname }}</td>
+                    <td class="tabledata">{{ verfahrensbetreuer.dezernat }}</td>
+                    <td class="tabledata">{{ verfahrensbetreuer.telefon }}</td>
                 </tr>
-            </table>
+            </table>            
             <table class="personen-button">
                 <tr>
                     <td class="tabledata"> <button class="button-person"> Bearbeiten </button> </td>
