@@ -36,7 +36,7 @@
         <hr class="line">
         <br>
         <div class="personen"> 
-            <h2 class="fachverfahrenh2"> Personen-Daten </h2>
+            <h2 class="fachverfahrenh2-personen"> Personen-Daten </h2>
             <table class="personen">
                 <tr>
                     <th class="tableheadtop">  </th>
@@ -495,7 +495,7 @@ export default {
 
 
 <style>
-    table.verfahren, table.personen, table.systeme, table.server
+    table.verfahren, table.systeme, table.server
     {
         text-align: center;
         border-radius: 10px;
@@ -505,11 +505,20 @@ export default {
         color: white
     }
 
+    table.personen {
+        text-align: center;
+        border-radius: 10px;
+        background-color: #1e293b;
+        margin-left: 50px;
+        margin-right: auto;
+        color: white
+    }
+
     table.personen-button
     {
         text-align: center;
         border-radius: 10px;
-        margin-left: auto;
+        margin-left: 500px;
         margin-right: auto;
         color: white;
     }
@@ -615,6 +624,13 @@ export default {
         font-size: x-large;
         text-align: center;
         margin: 15px;
+    }
+
+    h2.fachverfahrenh2-personen
+    {
+        font-size: x-large;
+        margin: 15px;
+        margin-left: 625px;
     }
 
     div.suchmaske
