@@ -2,6 +2,7 @@
 import { query } from '../../db.js';
 
 export default defineEventHandler(async (event) => {
+  console.log('Test1');
   const serverId = event.context.params.id;
   const serverData = await readBody(event);
 
