@@ -20,10 +20,6 @@
                 class="bg-slate-600 border border-transparent text-white sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 placeholder="••••••••" v-model="password" required />
             </div>
-            <div class="flex items-center justify-between">
-              <a href="#" class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">Passwort
-                vergessen?</a>
-            </div>
             <button type="submit"
               class="w-full px-5 py-3 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue"
               @click="showPopup = false">
@@ -61,7 +57,7 @@ export default {
       try {
         const userStore = useUserStore();
         await userStore.login(this.username, this.password);
-        this.$router.push('/'); // Redirect after successful login
+        this.$router.push('/fachverfahren'); // Redirect after successful login
       } catch (error) {
         this.showPopup = true;
       }
