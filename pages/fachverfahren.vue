@@ -20,8 +20,6 @@
                 </tr>
             </table>
             <button class="button" @click="sucheFachverfahren"> Suchen </button>
-            <button class="button" @click="openPopupServer('Server')"> Server </button>
-            <button class="button" @click="openPopupDB('DB')"> DB </button>
             <div v-if="Error" class="popupVerfahren">
                 <button class="close-button-verfahren" @click="Error = false"> Schließen </button>
                 <button class="create-button" @click="Error = false"> Erstellen </button>
@@ -234,35 +232,30 @@
         </div>
         <br>
         <br>
-        <div v-if="fachverfahrenDatabases.length > 0">
+        <div v-if="fachverfahrenDatabases.length > 0" class="db-details">
             <h2 class="fachverfahrenh2">Datenbank Details</h2>
-    <table class="db">
-        <!-- ... your table headers -->
-        <button v-for="database in fachverfahrenDatabases" :key="database.id"
-        class="list-button">
-        {{ database.name }} 
-            <!-- ... additional data fields -->
-        </button>
-    </table>
-</div>
-<div v-else>
-    <p>Keine Datenbanken gefunden.</p>
-</div>
-<br>
+            <table class="db">
+            <!-- ... your table headers -->
+                <button v-for="database in fachverfahrenDatabases" :key="database.id"
+                class="list-button" @click="openPopupDB('DB')">
+                {{ database.name }} 
+                <!-- ... additional data fields -->
+                </button>
+            </table>
+        </div>
+        <br>
         <br>
     </div>
-
-<div v-if="fachverfahrenServer.length > 0">
-    <h2 class="fachverfahrenh2">Server Details</h2>
-<table class="server">
-    <!-- Für JACOB -->
-    <button v-for="server in serverDetails" :key="server.serverId" @click="openPopupServer('Server')"
-    class="list-button">
-        {{ server.name }}
-    </button>
-</table>
-</div>
-
+    <div v-if="fachverfahrenServer.length > 0" class="server-details">
+        <h2 class="fachverfahrenh2">Server Details</h2>
+        <table class="server">
+            <!-- Für JACOB -->
+            <button v-for="server in serverDetails" :key="server.serverId" @click="openPopupServer('Server')"
+            class="list-button">
+            {{ server.name }}
+            </button>
+        </table>
+    </div>
 </template>
 
 <script>
@@ -656,6 +649,18 @@ export default {
         font-weight: bolder;
     }
 
+    div.db-details {
+        position: absolute;
+        top: 50.4%;
+        right: 5%;
+    }
+
+    div.server-details {
+        position: absolute;
+        top: 50.4%;
+        right: 23%;
+    }
+
     button.button
     {
         width: 146px; 
@@ -809,6 +814,7 @@ export default {
 
     .popupVerfahrenServer {
         position: absolute;
+        z-index: 1;
         left: 50%;
         transform: translateX(-50%) translateY(-50%);
         top: 70%;
@@ -832,10 +838,10 @@ export default {
 
     .cardVerfahrenServer {
         position: relative;
-        width: 820px;
+        width: 782px;
         height: 690px;
         border-radius: 14px;
-        z-index: 1111;
+        z-index: 1;
         overflow: hidden;
         display: flex;
         flex-direction: column;
@@ -853,6 +859,7 @@ export default {
 
     .popupVerfahrenDB {
         position: absolute;
+        z-index: 1;
         left: 50%;
         transform: translateX(-50%) translateY(-50%);
         top: 70%;
@@ -876,6 +883,7 @@ export default {
 
     .cardVerfahrenDB {
         position: relative;
+        z-index: 1;
         width: 390px;
         height: 580px;
         border-radius: 14px;
