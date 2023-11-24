@@ -13,14 +13,18 @@ export default defineEventHandler((event) => {
   }
 
   const token = getCookie(event, 'auth_token');
+  console.log('auth.js token in auth.js: ', token);
 
   if (!token) {
-    throw createError({ statusCode: 401, message: 'Not authenticated' });
+    event.res.writeHead(302, { Location: '/login' });
+    event.res.end();
+    return;
   }
-
+  
   try {
     jwt.verify(token, process.env.JWT_SECRET);
   } catch (err) {
-    throw createError({ statusCode: 401, message: 'Invalid token' });
+    event.res.writeHead(302, { Location: '/login' });
+    event.res.end();
   }
 });

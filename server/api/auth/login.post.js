@@ -28,6 +28,13 @@ export default defineEventHandler(async (event) => {
       maxAge: 3600 // 1 hour
     });
 
+    console.log('Login successful with cookie login.post: ', event.res.getHeader('Set-Cookie'));
+    console.log('Request URL: ', event.req.url);
+    console.log('Request Method: ', event.req.method);
+    console.log('Request Headers: ', event.req.headers);
+    console.log('Response Headers: ', event.res.getHeaders());
+    console.log('Response Status Code: ', event.res.statusCode);
+    console.log('Response Body: ', event.res.body);
         console.log('Login successful');
       return { message: 'Login successful', token };
   } catch (error) {
