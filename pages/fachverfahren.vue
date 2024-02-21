@@ -13,10 +13,10 @@
                 </tr>
                 <tr>
                     <td class="tabledata"> <input class="eingabe" v-model="fachverfahrenId" @keyup.enter="sucheFachverfahren" placeholder="-"/> </td>
-                    <td class="tabledata"> <input class="eingabe" v-model="name" placeholder="-"/> </td>
+                    <td class="tabledata"> <input class="eingabe" v-model="name" placeholder="-" readonly/> </td>
                     <td class="tabledata"> <input class="eingabe" v-model="tag" placeholder="-"/> </td>
-                    <td class="tabledata"> <input class="eingabe" v-model="verwendungszweck" placeholder="-"/> </td>
-                    <td class="tabledata"> <input class="eingabe" v-model="laufzeitverfahren" placeholder="-"/> </td>
+                    <td class="tabledata"> <input class="eingabe" v-model="verwendungszweck" placeholder="-" readonly/> </td>
+                    <td class="tabledata"> <input class="eingabe" v-model="laufzeitverfahren" placeholder="-" readonly/> </td>
                 </tr>
             </table>
             <button class="button" @click="sucheFachverfahren"> Suchen </button>
