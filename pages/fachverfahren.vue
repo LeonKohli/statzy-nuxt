@@ -241,6 +241,7 @@
                 {{ database.name }} 
                 <!-- ... additional data fields -->
                 </button>
+                <button class="button-add-db-or-server"> Erstellen </button>
             </table>
         </div>
         <br>
@@ -254,6 +255,7 @@
             class="list-button">
             {{ server.name }}
             </button>
+            <button class="button-add-db-or-server"> Erstellen </button>
         </table>
     </div>
 </template>
@@ -745,6 +747,35 @@ export default {
     {
         transition-duration: 30ms;
         background: #475569; 
+    }
+    button.button-add-db-or-server
+    {
+        width: 146px; 
+        height: 31px; 
+        background: #184223; 
+        border-radius: 9px;
+        margin: 0 auto;
+        display: block;
+        margin-top: 25px;
+        margin-bottom: 25px;
+        font-weight: bolder;
+        color: white;
+        scale: 120%;
+        margin-right: 20px;
+        margin-left: 20px
+    }
+    button.button-add-db-or-server:active
+    {
+        scale: 90%;
+        background: #475569; 
+        border-radius: 9px;
+        transition-duration: 30ms;
+    }
+    button.button-add-db-or-server:hover
+    {
+        transition-duration: 30ms;
+        background: #8EE4AF; /* Light green */
+        color: white;
     }
 
     hr.line
