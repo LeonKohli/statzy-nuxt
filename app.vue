@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Navbar v-if="!isLoginPage"></Navbar>
+    <navbar v-if="!isLoginPage && !isPasswordForgotPage"></navbar>
     <router-view></router-view>
   </div>
 </template>
@@ -9,7 +9,6 @@
 import navbar from '/components/navbar.vue';
 import { onMounted } from 'vue';
 import { useUserStore } from '@/stores/user';
-
 
 export default {
   name: 'App',
@@ -20,6 +19,10 @@ export default {
     isLoginPage() {
       // Überprüfe, ob die aktuelle Seite die Login-Seite ist
       return this.$route.name === 'login';
+    },
+    isPasswordForgotPage() {
+      // Überprüfe, ob die aktuelle Seite die Passwort vergessen-Seite ist
+      return this.$route.name === 'passwortVergessen';
     },
   },
   setup() {

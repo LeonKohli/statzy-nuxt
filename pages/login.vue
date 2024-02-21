@@ -25,6 +25,9 @@
               @click="showPopup = false">
               Login
             </button>
+            <div class="flex justify-center mt-4">
+              <router-link to="/passwortVergessen" tag="button" class="btn btn-primary">Passwort vergessen</router-link>
+            </div>
           </form>
         </div>
       </div>
