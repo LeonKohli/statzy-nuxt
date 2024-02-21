@@ -12,9 +12,23 @@
                     <th class="tablehead"> Verfahrens-Laufzeit </th>
                 </tr>
                 <tr>
-                    <td class="tabledata"> <input class="eingabe" v-model="fachverfahrenId" @keyup.enter="sucheFachverfahren" placeholder="-"/> </td>
+                    <td class="tabledata"> 
+                        <input class="eingabe" list="Verfahrens-ID" placeholder="Verfahrens-ID"/>
+                        <datalist class="eingabe" id="Verfahrens-ID">
+                            <option value="ID 1" />
+                            <option value="ID 2" />
+                            <option value="ID 3" />
+                        </datalist> 
+                    </td>
                     <td class="tabledata"> <input class="eingabe" v-model="name" placeholder="-"/> </td>
-                    <td class="tabledata"> <input class="eingabe" v-model="tag" placeholder="-"/> </td>
+                    <td class="tabledata"> 
+                        <input class="eingabe" list="Verfahrens-Tag" placeholder="Tag"/>
+                        <datalist class="eingabe" id="Verfahrens-Tag">
+                            <option value="#Tag 1" />
+                            <option value="#Tag 2" />
+                            <option value="#Tag 3" />
+                        </datalist>     
+                    </td>
                     <td class="tabledata"> <input class="eingabe" v-model="verwendungszweck" placeholder="-"/> </td>
                     <td class="tabledata"> <input class="eingabe" v-model="laufzeitverfahren" placeholder="-"/> </td>
                 </tr>
