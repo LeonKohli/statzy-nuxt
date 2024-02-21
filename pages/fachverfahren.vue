@@ -13,7 +13,7 @@
                 </tr>
                 <tr>
                     <td class="tabledata"> 
-                        <input class="eingabe" list="Verfahrens-ID" placeholder="Verfahrens-ID"/>
+                        <input class="eingabe" list="Verfahrens-ID" v-model="fachverfahrenId" placeholder="Verfahrens-ID"/>
                         <datalist class="eingabe" id="Verfahrens-ID">
                             <option value="ID 1" />
                             <option value="ID 2" />
