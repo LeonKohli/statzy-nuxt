@@ -5,6 +5,7 @@
       <MessageContainerComponent/>
       <ServerComponent/>
       <DatabaseComponent/>
+      <ProcedureTableComponent/>
     </div>
   </template>
   
