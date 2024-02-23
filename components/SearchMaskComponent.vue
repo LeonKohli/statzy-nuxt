@@ -1,10 +1,7 @@
 <template>
-  <div class="suchmaske">
+  <div class="mb-10">
     <TitleComponent title="Verfahrens-Daten"/>
     <ProcedureTableComponent/>
-    <TitleComponent title="Personen-Daten"/>
-    <PersonTableComponent/>
-    <SystemeComponent/>
     <ButtonComponent text="Suchen" />
   </div>
 </template>
