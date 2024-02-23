@@ -1,20 +1,24 @@
 <template>
-  <div class="user-button">
-    <button class="user-avatar" @click="toggleDropdown">
-      <img src="https://avatars.githubusercontent.com/u/98176333?v=4" alt="User" />
+  <div class="relative">
+    <button @click="toggleDropdown" class="flex items-center justify-center border-none bg-transparent rounded-full p-2 cursor-pointer">
+      <img src="https://avatars.githubusercontent.com/u/98176333?v=4" alt="User" class="w-10 h-10 rounded-full" />
     </button>
-    <div v-if="showDropdown" class="dropdown">
-      <ul>
-        <li @click="logout">Logout</li>
+    <div v-if="showDropdown" class="absolute top-full right-0 mt-2 bg-white/10 backdrop-blur-sm border border-white/30 rounded-md p-2 flex flex-col items-start">
+      <ul class="list-none p-0 m-0">
+        <li @click="logout" class="p-2 cursor-pointer hover:bg-slate-200/20">Logout</li>
       </ul>
     </div>
   </div>
 </template>
 
+<style scoped>
+/* no styles */
+</style>
+
 
 <script>
 import { useRouter } from 'vue-router';
-import { useUserStore } from '@/stores/user'; // Import the user store
+import { useUserStore } from '@/stores/user';
 
 export default {
   data() {
@@ -24,11 +28,11 @@ export default {
   },
   setup() {
     const router = useRouter();
-    const userStore = useUserStore(); // Use the user store
+    const userStore = useUserStore();
 
     const logout = () => {
-      userStore.logout(); // Call the logout action from the store
-      router.push('/login'); // Redirect to the login page
+      userStore.logout();
+      router.push('/login');
     };
 
     return { logout };
@@ -40,57 +44,3 @@ export default {
   }
 }
 </script>
-
-
-<style scoped>
-.user-button {
-  position: relative;
-}
-
-.user-avatar {
-  border: none;
-  background: transparent;
-  border-radius: 50%;
-  padding: 0.5rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.user-avatar img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-}
-
-.dropdown {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 0.5rem;
-  padding: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-}
-
-.dropdown ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.dropdown li {
-  padding: 0.5rem;
-  cursor: pointer;
-}
-
-.dropdown li:hover {
-  background-color: rgba(100, 116, 139, 0.2); /* Lighter slate color for hover */
-}
-</style>
