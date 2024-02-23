@@ -1,95 +1,81 @@
 <template>
-  <div class="server">
-    <TitleComponent title="Server" />
-    <table class="table">
-      <tr>
-        <th> Name </th>
-        <td class=tableSeperator> <input class="input" placeholder="Name" /> </td>
-        <th> Hochverfügbar </th>
-        <td> <input class="inputCheck" type="checkbox" /> </td>
-      </tr>
-      <tr>
-        <th> Umgebung </th>
-        <td class=tableSeperator> <select class="input" /> </td>
-        <th> Verfügbarkeit </th>
-        <td> <input class="input" placeholder="Verfügbarkeit" /> </td>
-      </tr>
-      <tr>
-        <th> Netzwerk </th>
-        <td class=tableSeperator> <select class="input" /> </td>
-        <th> Vertraulichkeit </th>
-        <td> <input class="input" placeholder="Vertraulichkeit" /> </td>
-      </tr>
-      <tr>
-        <th> CPU </th>
-        <td class=tableSeperator> <select class="input" /> </td>
-        <th> Integrität </th>
-        <td> <input class="input" placeholder="Integrität" /> </td>
-      </tr>
-      <tr>
-        <th> Arbeitsspeicher </th>
-        <td class=tableSeperator> <select class="input" /> </td>
-        <th> Verwendungszweck </th>
-        <td> <select class="input" /> </td>
-      </tr>
-      <tr>
-        <th> Betriebssystem </th>
-        <td class=tableSeperator> <select class="input" /> </td>
-        <th> Anmerkungen </th>
-        <td> <input class="input" placeholder="Integrietät" /> </td>
-      </tr>
-      <tr>
-        <th> HD-Typ </th>
-        <td class=tableSeperator> <select class="input" /> </td>
-        <th> Bereitstellungszeitpunkt </th>
-        <td> <input class="inputDate" type="date" /> </td>
-      </tr>
-      <tr>
-        <th> HD-Kapazität </th>
-        <td class=tableSeperator> <input class="input" placeholder="Kapazität" /> </td>
-        <th> vorraussichtl. Lieferzeit </th>
-        <td> <input class="input" placeholder="Lieferzeit" /> </td>
-      </tr>
-      <tr>
-        <th> Erreichbarkeit </th>
-        <td class=tableSeperator> <select class="input" /> </td>
-      </tr>
-    </table>
+  <div class="flex justify-center">
+    <div class="bg-statzy-dark text-statzy-white rounded-lg mx-auto p-4">
+      <TitleComponent :title="'Server'" />
+      <div class="grid grid-cols-2 gap-4">
+        <div class="flex items-center">
+          <p class="font-bold">Name</p>
+          <input class="input text-black" placeholder="Name" />
+        </div>
+        <div class="flex items-center">
+          <p class="font-bold">Hochverfügbar</p>
+          <input class="inputCheck" type="checkbox" />
+        </div>
+        <div class="flex items-center">
+          <p class="font-bold">Umgebung</p>
+          <select class="input"></select>
+        </div>
+        <div class="flex items-center">
+          <p class="font-bold">Verfügbarkeit</p>
+          <input class="input" placeholder="Verfügbarkeit" />
+        </div>
+        <div class="flex items-center">
+          <p class="font-bold">Netzwerk</p>
+          <select class="input"></select>
+        </div>
+        <div class="flex items-center">
+          <p class="font-bold">Vertraulichkeit</p>
+          <input class="input" placeholder="Vertraulichkeit" />
+        </div>
+        <div class="flex items-center">
+          <p class="font-bold">CPU</p>
+          <select class="input"></select>
+        </div>
+        <div class="flex items-center">
+          <p class="font-bold">Integrität</p>
+          <input class="input" placeholder="Integrität" />
+        </div>
+        <div class="flex items-center">
+          <p class="font-bold">Arbeitsspeicher</p>
+          <select class="input"></select>
+        </div>
+        <div class="flex items-center">
+          <p class="font-bold">Verwendungszweck</p>
+          <select class="input"></select>
+        </div>
+        <div class="flex items-center">
+          <p class="font-bold">Betriebssystem</p>
+          <select class="input"></select>
+        </div>
+        <div class="flex items-center">
+          <p class="font-bold">Anmerkungen</p>
+          <input class="input" placeholder="Anmerkungen" />
+        </div>
+        <div class="flex items-center">
+          <p class="font-bold">HD-Typ</p>
+          <select class="input"></select>
+        </div>
+        <div class="flex items-center">
+          <p class="font-bold">Bereitstellungszeitpunkt</p>
+          <input class="inputDate" type="date" />
+        </div>
+        <div class="flex items-center">
+          <p class="font-bold">HD-Kapazität</p>
+          <input class="input" placeholder="Kapazität" />
+        </div>
+        <div class="flex items-center">
+          <p class="font-bold">voraussichtl. Lieferzeit</p>
+          <input class="input" placeholder="Lieferzeit" />
+        </div>
+        <div class="flex items-center">
+          <p class="font-bold">Erreichbarkeit</p>
+          <select class="input"></select>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
-<script setup>
-</script>
-
 <style>
-.input {
-  @apply text-center m-2 rounded-md p-1;
-  color: black;
-}
-.inputCheck {
-  @apply text-center m-2 rounded-md p-1;
-  transform: scale(1.25);
-  color: black;
-}
-.inputDate {
-  @apply text-center m-2 rounded-md p-1 text-gray-500;
-  color: black;
-}
-
-.table {
-  @apply text-center rounded-lg bg-slate-800 mx-auto text-white;
-}
-
-.table-head {
-  @apply p-2;
-}
-
-.table-head-side {
-  @apply p-2 border-r-2 border-gray-600;
-}
-
-.table-data {
-  @apply p-2;
-}
-
+  /*style*/
 </style>
