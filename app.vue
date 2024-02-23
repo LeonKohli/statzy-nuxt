@@ -6,15 +6,9 @@
 </template>
 
 <script>
-import navbar from '/components/navbar.vue';
-import { onMounted } from 'vue';
-import { useUserStore } from '@/stores/user';
 
 export default {
   name: 'App',
-  components: {
-    navbar,
-  },
   computed: {
     isLoginPage() {
       // Überprüfe, ob die aktuelle Seite die Login-Seite ist
