@@ -76,7 +76,7 @@ export default {
   padding: 0.5rem;
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: flex-start;
 }
 
 .dropdown ul {
