@@ -1,27 +1,10 @@
 <template>
-  <div>
-    <table class="table">
-      <tr>
-        <td class="tableSeperator"> Anzahl zugeordneter Systeme: "Anzahl" </td>
-        <td class="tableSeperator"> <input class="input" type="number" placeholder="Zahl" /> </td>
-      </tr>
-    </table>
+  <div class="flex justify-center">
+    <div class="bg-statzy-dark text-statzy-white rounded-lg mx-auto p-4">
+      <div class="flex items-center justify-between">
+        <p class="text-statzy-lightgray">Anzahl zugeordneter Systeme:</p>
+        <input class="input text-black" type="number" placeholder="Zahl"/>
+      </div>
+    </div>
   </div>
 </template>
-
-<script lang="ts" setup>
-
-</script>
-
-<style>
-.input {
-  @apply text-center m-2 rounded-md p-1;
-  color: black;
-}
-
-
-.table {
-  @apply text-center rounded-lg bg-slate-800 mx-auto text-white;
-}
-
-</style>
