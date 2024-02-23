@@ -17,8 +17,6 @@
 
 
 <script>
-import { useRouter } from 'vue-router';
-import { useUserStore } from '@/stores/user';
 
 export default {
   data() {

@@ -29,8 +29,6 @@
 </template>
 
 <script setup>
-import ButtonComponent from './ButtonComponent.vue';
-import TitleComponent from './TitleComponent.vue';
 </script>
 
 <style>

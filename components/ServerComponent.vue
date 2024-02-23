@@ -59,7 +59,6 @@
 </template>
 
 <script setup>
-import TitleComponent from './TitleComponent.vue';
 </script>
 
 <style>

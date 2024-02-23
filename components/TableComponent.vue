@@ -7,13 +7,9 @@
   </template>
   
   <script>
-  import TableRow from './TableRow.vue';
   
   export default {
     name: 'TableComponent',
-    components: {
-      TableRow
-    },
     props: {
       tableClass: String,
       rows: Array
