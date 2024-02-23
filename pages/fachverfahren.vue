@@ -270,6 +270,18 @@
             </button>
         </table>
     </div>
+    <div class="add-buttons-div">
+        <table class="addButtons">
+            <tr>
+                <td>
+                    <button class="button-Plus"> Server hinzufügen</button>
+                </td>
+                <td>
+                    <button class="button-Plus"> DB hinzufügen</button>
+                </td>
+            </tr>
+        </table>
+    </div>
 </template>
 
 <script>
@@ -550,6 +562,16 @@ export default {
         margin-bottom: 20px;
     }
 
+    table.addButtons
+    {
+        text-align: center;
+        border-radius: 10px;
+        background-color: #1e293b;
+        margin-left: auto;
+        color: white;
+        background-color: transparent;
+    }
+
     body {
         margin-top: 120px;
     }
@@ -650,6 +672,14 @@ export default {
         margin-left: 625px;
     }
 
+    div.add-buttons-div
+    {
+        width: 415px;
+        position: absolute;
+        top: 450px;
+        right: 225px;
+    }
+
     div.suchmaske
     {
         align-items: center;
@@ -697,6 +727,35 @@ export default {
         transition-duration: 30ms;
     }
     button.button:hover
+    {
+        transition-duration: 30ms;
+        background: #475569; 
+    }
+
+    button.button-Plus
+    {
+        width: 150px; 
+        background: #1E293B; 
+        border-radius: 9px;
+        margin: 0 auto;
+        display: block;
+        margin-top: 25px;
+        margin-bottom: 25px;
+        font-weight: bolder;
+        color: white;
+        scale: 120%;
+        margin-right: 140px;
+        margin-left: 20px;
+        padding: 5px;
+    }
+    button.button-Plus:active
+    {
+        scale: 90%;
+        background: #475569; 
+        border-radius: 9px;
+        transition-duration: 30ms;
+    }
+    button.button-Plus:hover
     {
         transition-duration: 30ms;
         background: #475569; 
