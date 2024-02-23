@@ -7,3 +7,7 @@
 <script setup>
 defineProps(['title']);
 </script>
+
+<style>
+/* Intentionally left empty as we're using Tailwind CSS */
+</style>
