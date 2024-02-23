@@ -1,24 +1,11 @@
 <template>
-  <table class="table">
-    <tr>
-      <td class="table-data"> <input class="input" placeholder="Verfahrens-ID"/> </td>
-      <td class="table-data"> <input class="input" placeholder="Verfahrens-Name"/> </td>
-      <td class="table-data"> <input class="input" placeholder="Tag"/> </td>
-      <td class="table-data"> <input class="input" placeholder="Zweck"/> </td>
-      <td class="table-data"> <input class="input" placeholder="Laufzeit"/> </td>
-    </tr>
-  </table>
+  <div class="flex flex-col items-center">
+    <div class="flex justify-center bg-statzy-dark text-statzy-white rounded-lg mx-auto">
+      <input class="input p-2 bg-statzy-white text-statzy-darkgray placeholder-statzy-darkgray" placeholder="Verfahrens-ID"/>
+      <input class="input p-2 bg-statzy-white text-statzy-darkgray placeholder-statzy-darkgray" placeholder="Verfahrens-Name"/>
+      <input class="input p-2 bg-statzy-white text-statzy-darkgray placeholder-statzy-darkgray" placeholder="Tag"/>
+      <input class="input p-2 bg-statzy-white text-statzy-darkgray placeholder-statzy-darkgray" placeholder="Zweck"/>
+      <input class="input p-2 bg-statzy-white text-statzy-darkgray placeholder-statzy-darkgray" placeholder="Laufzeit"/>
+    </div>
+  </div>
 </template>
-
-<style>
-.table {
-  @apply text-center rounded-lg bg-slate-800 mx-auto text-white;
-}
-.table-data {
-  @apply p-2;
-}
-.input {
-  @apply text-center m-2 rounded-md p-1;
-  color: black;
-}
-</style>
