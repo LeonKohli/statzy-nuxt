@@ -3,9 +3,8 @@
       <TitleComponent title="Fachverfahren"/>
       <SearchMaskComponent/>
       <MessageContainerComponent/>
-      <ServerComponent/>
-      <DatabaseComponent/>
       <ProcedureTableComponent/>
+      <ServerComponent/>
     </div>
   </template>
   
