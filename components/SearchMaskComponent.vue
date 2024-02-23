@@ -10,9 +10,4 @@
 </template>
 
 <script setup>
-import TitleComponent from './TitleComponent.vue';
-import ProcedureTableComponent from './ProcedureTableComponent.vue';
-import PersonTableComponent from './PersonTableComponent.vue';
-import ButtonComponent from './ButtonComponent.vue';
-import SystemeComponent from './SystemeComponent.vue';
 </script>
